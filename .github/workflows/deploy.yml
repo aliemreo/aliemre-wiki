@@ -1,15 +1,15 @@
-# Staging mirror on GitHub Pages: push to `preview`, look at it, then merge to
-# `main` where DigitalOcean deploys production.
+# Production deploy to GitHub Pages: https://aliemreo.github.io/aliemre-wiki/
 #
-# Unlike production, this deploy is gated — `needs: preflight` means a broken
-# <noscript> mirror or a missing Turkish string never reaches the staging URL.
+# The deploy is gated — `needs: preflight` means a broken <noscript> mirror, a
+# missing Turkish string or an un-bumped meta.updated never reaches the live
+# site. Pull requests are covered separately by preflight.yml.
 #
 # One-time setup: repo Settings -> Pages -> Source = "GitHub Actions".
-name: staging
+name: deploy
 
 on:
   push:
-    branches: [preview]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -19,7 +19,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false      # never interrupt a production deploy
 
 jobs:
   preflight:
@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0         # the meta.updated rule diffs against the base commit
       - run: node .github/scripts/preflight.mjs
         env:
           PREFLIGHT_BASE: ${{ github.event.before }}
@@ -40,12 +40,6 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
-      - name: Keep the staging mirror out of search results
-        # Edits the checkout only; the committed robots.txt is untouched. The
-        # canonical link, og:url and the JSON-LD url already point at production,
-        # which is the stronger signal to a crawler than this file.
-        run: |
-          printf '%s\n' 'User-agent: *' 'Disallow: /' > public/robots.txt
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

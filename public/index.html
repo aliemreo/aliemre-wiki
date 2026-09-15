@@ -6,20 +6,20 @@
 
 <title>Ali Emre Özcan — computer engineering student, ML intern</title>
 <meta name="description" content="Final-year computer engineering student at İTÜ and machine learning intern at TAZI, working on ML models and tool-using agent systems.">
-<link rel="canonical" href="https://aliemreozcan-site.ondigitalocean.app/">
+<link rel="canonical" href="https://aliemreo.github.io/aliemre-wiki/">
 <meta property="og:title" content="Ali Emre Özcan">
 <meta property="og:description" content="Computer engineering student at İTÜ, machine learning intern at TAZI. ML models and tool-using agents.">
 <meta property="og:type" content="profile">
-<meta property="og:url" content="https://aliemreozcan-site.ondigitalocean.app/">
-<meta property="og:image" content="https://aliemreozcan-site.ondigitalocean.app/og.png">
+<meta property="og:url" content="https://aliemreo.github.io/aliemre-wiki/">
+<meta property="og:image" content="https://aliemreo.github.io/aliemre-wiki/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ali Emre Özcan">
 <meta name="twitter:description" content="Computer engineering student at İTÜ, machine learning intern at TAZI.">
-<meta name="twitter:image" content="https://aliemreozcan-site.ondigitalocean.app/og.png">
+<meta name="twitter:image" content="https://aliemreo.github.io/aliemre-wiki/og.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Emre Özcan","url":"https://aliemreozcan-site.ondigitalocean.app/","jobTitle":"Machine learning intern","worksFor":{"@type":"Organization","name":"TAZI Bilişim Teknolojileri"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Istanbul Technical University"},"address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Emre Özcan","url":"https://aliemreo.github.io/aliemre-wiki/","jobTitle":"Machine learning intern","worksFor":{"@type":"Organization","name":"TAZI Bilişim Teknolojileri"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Istanbul Technical University"},"address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"}}</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -891,7 +891,7 @@ const CONTENT = {
     github: 'https://github.com/placeholder', githubLabel: 'github.com/placeholder',
     linkedin: 'https://www.linkedin.com/in/placeholder', linkedinLabel: 'linkedin.com/in/placeholder',
     cv: '#',
-    updated: '2026-09-14',   // bump on every content change
+    updated: '2026-09-16',   // bump on every content change
   },
   hero: {
     line1: { en: "I'm a final-year computer engineering student at İTÜ and a machine learning intern at TAZI, where I build ML models and tool-using agent systems.", tr: "İTÜ Bilgisayar Mühendisliği son sınıf öğrencisiyim. TAZI'de makine öğrenmesi stajyeri olarak ML modelleri ve araç kullanan ajan sistemleri geliştiriyorum." },
@@ -2008,9 +2008,8 @@ function startBanner() {
   paint(0);
 }
 
-/* App Platform serves index.html for every path (catchall_document), and the
-   GitHub Pages staging mirror arrives here through 404.html.  Either way the
-   last path segment may be a section name.  Everything is measured against
+/* GitHub Pages serves 404.html for an unknown path, and it sends us here with
+   the last path segment as a hash.  That segment may be a section name.  Everything is measured against
    whatever the base is, so this is correct at a domain root and under a
    project-site subpath like /<repo>/ alike. */
 function normalisePath() {

@@ -2,15 +2,13 @@
 # the page itself, between the preflight markers, so this and the browser dev
 # check never drift apart.
 #
-# Note: production deploys from DigitalOcean App Platform with deploy_on_push,
-# which fires whether or not this passes. To make it actually block, protect
-# `main` and require this check, and land work through pull requests.
+# On main this also runs as the first job of deploy.yml, which is what gates the
+# live site. Here it covers pull requests, so a problem is visible before merge.
+# To make it actually block a merge, protect `main` and require this check.
 name: preflight
 
 on:
   pull_request:
-  push:
-    branches: [main, preview]
 
 jobs:
   preflight:

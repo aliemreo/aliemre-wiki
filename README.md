@@ -6,14 +6,13 @@ operating manual.
 
 ```
 /
-  .do/app.yaml          DigitalOcean App Spec (production)
   .github/
-    scripts/preflight.mjs   the checks, run by CI and by you
-    workflows/preflight.yml  runs on every PR and push
-    workflows/staging.yml    preview branch -> GitHub Pages staging mirror
+    scripts/preflight.mjs    the checks, run by CI and by you
+    workflows/deploy.yml     main -> GitHub Pages, gated on preflight
+    workflows/preflight.yml  the same checks on every pull request
   public/               the only files that are served
     index.html          markup, CSS, JS and all CONTENT, in one file
-    404.html            redirect shim, used by GitHub Pages only
+    404.html            redirect shim: /projects -> /#projects
     favicon.svg         $ glyph
     og.png              1200x630 social card
     robots.txt
@@ -43,7 +42,8 @@ node .github/scripts/preflight.mjs
 ```
 
 Zero dependencies, no `npm install`. It runs on every pull request and on every
-push to `main` and `preview`, and it is the gate on the staging deploy.
+every push to `main` as the first job of the deploy, which cannot publish
+without it.
 
 The content rules live **inside `public/index.html`**, between the
 `preflight:start` and `preflight:end` markers, so the browser dev check and CI
@@ -104,45 +104,28 @@ labels and `CONTENT.meta` are not mirrored and are not checked.
 
 ## Deploying
 
-DigitalOcean App Platform, Static Site component, source = this GitHub repo.
-
-1. Push this repo to GitHub (`aliemreo/aliemre-wiki`, already set in `.do/app.yaml`).
-2. In DigitalOcean: Apps → Create App → GitHub → this repo → it detects a static
-   site. **Leave the build command empty.** Source directory `/public`, output
-   directory `/`.
-3. `deploy_on_push: true` on `main`, so merging to `main` is the release. Work on
-   branches.
-
-Until a domain is attached the site lives at
-`https://<app-name>-<hash>.ondigitalocean.app`.
-
-### Staging
-
-Production is DigitalOcean. A **GitHub Pages mirror** gives you a free place to
-look at a change first:
+GitHub Pages, from `main`, by GitHub Actions. Live at
+**https://aliemreo.github.io/aliemre-wiki/**
 
 ```
-git switch -c preview        # once
-git push -u origin preview   # deploys to https://aliemreo.github.io/aliemre-wiki/
+git push origin main      # runs preflight, then publishes if it passes
 ```
 
-`.github/workflows/staging.yml` runs preflight, and only deploys if it passes —
-`needs: preflight`. That gating is the one thing production cannot do: DO's
-`deploy_on_push: true` fires whether or not CI is green. To get the same
-protection on `main`, protect the branch, require the `preflight` check, and land
-work through pull requests.
+`.github/workflows/deploy.yml` runs the checks first and the `deploy` job is
+`needs: preflight`, so a failure stops the release instead of reporting it after
+the fact. Pull requests run the same checks through `preflight.yml`; to make a
+red check block a merge too, protect `main` and require it.
 
 One-time setup: repo **Settings → Pages → Source = "GitHub Actions"**.
 
-The staging artifact gets a `Disallow: /` `robots.txt` written into it at deploy
-time so the mirror does not compete with production in search results; the
-committed `robots.txt` is untouched. `canonical`, `og:url` and the JSON-LD `url`
-keep pointing at production, which is the stronger signal to a crawler.
+There is **no staging URL** — GitHub Pages serves one site per repository.
+Preview a change by opening `public/index.html` from `file://`, which is the
+deploy reality anyway, or from a pull request.
 
-Because a Pages project site is served from `/<repo>/` rather than the domain
-root, `public/404.html` redirects unknown paths relatively (`./#<segment>`) and
-`normalisePath()` measures everything against whatever the base is. Both hosts
-are covered by the same code.
+The site is served from `/aliemre-wiki/`, not a domain root. Nothing assumes a
+root base: `public/404.html` redirects relatively and `normalisePath()` measures
+against whatever the base is, so attaching a custom domain later changes nothing
+in the page.
 
 ### Before every deploy
 
@@ -154,13 +137,14 @@ are covered by the same code.
 
 ### When the domain arrives
 
-1. Uncomment `domains` in `.do/app.yaml`, apex as `PRIMARY`, `www` as `ALIAS`; push.
-2. Add the DNS records App Platform shows in Settings → Domains.
+1. Put a `CNAME` file containing the domain in `public/`, and set the domain in
+   **Settings → Pages**. GitHub issues the certificate.
+2. At the registrar: `www` as a CNAME to `aliemreo.github.io`; for the apex use
+   ALIAS/ANAME, or GitHub's A records if the registrar supports neither.
 3. In `public/index.html` update `<link rel="canonical">`, `og:url`, `og:image`,
    `twitter:image`, the JSON-LD `url`, and `CONTENT.meta.updated`. Uncomment the
    `Sitemap:` line in `robots.txt` if you add a `sitemap.xml`.
-4. Check `https://www.` redirects to the apex and that `curl -I` returns `200`
-   with `content-type: text/html; charset=utf-8`.
+4. Check `curl -I` returns `200` with `content-type: text/html; charset=utf-8`.
 
 ## The terminal
 
@@ -180,9 +164,9 @@ Worth knowing:
 - `print` settles the headings and opens the print dialogue (terminal, forms,
   tools, guestbook and colophon are left out of the paper version)
 
-`.do/app.yaml` sets `catchall_document`, so App Platform serves this page for every
-path. `/projects` is rewritten to `/#projects`; anything unrecognised goes to the
-top with a "no page at …" line in the terminal.
+`public/404.html` catches any path GitHub Pages does not recognise and sends it to
+the page with the last segment as a hash, so `/aliemre-wiki/projects` opens the
+projects section. Anything unrecognised lands at the top.
 
 State remembered in `localStorage`: `aeo-theme-v2`, `aeo-palette`, `aeo-lang`,
 `aeo-bg`. The banner is shown once per tab session (`aeo-banner`, `sessionStorage`).

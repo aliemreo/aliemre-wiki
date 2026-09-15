@@ -16,20 +16,20 @@ Fidelity: **high**. Colours, type, spacing, motion timings and command behaviour
 - One `index.html`, inline `<style>` and inline `<script>`. No framework, no bundler, no build step, no analytics, no external JS.
 - Two Google Fonts, loaded with `display=swap`: IBM Plex Sans (400/500/600) and IBM Plex Mono (400/500).
 - Must be fully readable and navigable with JavaScript disabled (plain anchors `#projects`, `#contact`…). With JS off the terminal simply does not render.
-- Deploy target: **DigitalOcean App Platform, Static Site component, source = this GitHub repo.** See §9. No other host config for production; §9.3 adds a GitHub Pages mirror used for staging only.
+- Deploy target: **GitHub Pages, deployed from `main` by GitHub Actions, source = `public/`.** Live at `https://aliemreo.github.io/aliemre-wiki/`. See §9. No other host config in the repo.
 - Also produce: `favicon.svg` (a `$` glyph, `#6FE3CF` on `#000`), `robots.txt`, `og.png` placeholder (1200×630).
 
 Repo layout (served tree is `public/` only — see §9):
 
 ```
 /
-  .do/app.yaml          # DigitalOcean App Spec (production)
   .github/
-    scripts/preflight.mjs   # the §9.2 checklist, enforced (§9.4)
-    workflows/              # preflight on every PR; staging deploy from `preview`
+    scripts/preflight.mjs   # the §9.2 checklist, enforced (§9.3)
+    workflows/deploy.yml    # main -> GitHub Pages, gated on preflight
+    workflows/preflight.yml # the same checks on every pull request
   public/
     index.html          # everything: markup, CSS, JS, CONTENT
-    404.html            # redirect shim; GitHub Pages only, DO ignores it
+    404.html            # redirect shim: /projects -> /#projects
     favicon.svg
     og.png
     robots.txt
@@ -236,49 +236,43 @@ cursor blink · output typing · banner pixel reveal · split-flap scroll reveal
 - Commit messages: `content: …`, `design: …`, `terminal: …`, `fix: …`.
 - Before opening a PR: open `index.html` from `file://` (no server) and confirm it works; that is the deploy reality.
 
-## 9. Deployment — DigitalOcean App Platform via GitHub
+## 9. Deployment — GitHub Pages via GitHub Actions
 
-Create `.do/app.yaml` in the repo root so the app is reproducible (App Spec). Replace `OWNER/REPO`; leave `domains` commented until the domain is known.
-
-```yaml
-name: aliemreozcan-site
-region: fra
-static_sites:
-  - name: site
-    github:
-      repo: OWNER/REPO
-      branch: main
-      deploy_on_push: true
-    source_dir: /public
-    output_dir: /
-    index_document: index.html
-    error_document: index.html      # hash routes never 404, but keep it
-    catchall_document: index.html
-    routes:
-      - path: /
-# domains:
-#   - domain: example.com
-#     type: PRIMARY
-#   - domain: www.example.com
-#     type: ALIAS
-```
+The site is served from `public/` at **https://aliemreo.github.io/aliemre-wiki/**
+by `.github/workflows/deploy.yml`, which runs on every push to `main`.
 
 Rules:
-- **No build command.** There is nothing to build; `output_dir: /` serves the repo as-is. If App Platform's autodetect asks for one, leave it empty.
-- Only `public/` is served (`source_dir: /public`). `CLAUDE.md`, `README.md`, `.do/`, `docs/` never reach the CDN. Do not put anything private in `public/`.
-- Static sites on App Platform are free tier (3 per account); no Dockerfile, no `package.json`. Do not add either.
-- `deploy_on_push: true` on `main`. Work on branches; merging to `main` is the release.
-- Caching: App Platform serves static files behind its CDN with reasonable defaults. Do not add cache headers via a server; there is none. Font files come from Google Fonts CDN.
-- HTTPS is automatic (Let's Encrypt) once a domain is attached.
 
-### 9.1 When the domain arrives
+- **No build command.** The deploy uploads `public/` as-is
+  (`actions/upload-pages-artifact` with `path: ./public`). There is nothing to
+  build; do not add a bundler, a `package.json` or a Dockerfile.
+- Only `public/` is published. `CLAUDE.md`, `README.md`, `.github/` and `docs/`
+  live in the repo but never reach the CDN. The repo is public, so do not put
+  anything private anywhere in it.
+- **The deploy is gated.** The `deploy` job is `needs: preflight`, so a failing
+  check (§9.3) stops the release rather than reporting it afterwards. Pull
+  requests run the same checks through `preflight.yml`.
+- Work on branches; merging to `main` is the release. To make a red check block
+  a merge as well, protect `main` and require the `preflight` check.
+- **The site is served from a subpath**, `/aliemre-wiki/`, not a domain root.
+  Nothing may assume a root base: `public/404.html` redirects relatively and
+  `normalisePath()` measures against whatever the base is. Keep it that way — it
+  is also what makes a custom domain a one-line change later.
+- One-time repo setting: **Settings → Pages → Source = "GitHub Actions"**.
+- HTTPS is automatic. GitHub Pages does not let you set cache headers; there is
+  no server to configure, and none is wanted.
 
-1. Uncomment `domains` in `.do/app.yaml`, set the apex as `PRIMARY` and `www` as `ALIAS`; push.
-2. At the registrar, add the CNAME/A records App Platform shows in Settings → Domains (usually a CNAME to `<app>.ondigitalocean.app`; for the apex use DigitalOcean DNS or ALIAS/ANAME if the registrar supports it).
-3. Then update in `index.html`: canonical `<link rel="canonical">`, `og:url`, JSON-LD `url`, `robots.txt` `Sitemap:` line (add a one-URL `sitemap.xml` if you want), and `meta.updated`.
-4. Verify `https://www.` redirects to the apex (App Platform handles this for ALIAS domains) and that `curl -I` returns `200` with `content-type: text/html; charset=utf-8`.
+### 9.1 When a domain arrives
 
-Until then the site is live at `https://<app-name>-<hash>.ondigitalocean.app`; keep `og:url` pointing there temporarily so shared links unfurl.
+1. Add a `CNAME` file containing the domain to `public/`, and set the domain in
+   **Settings → Pages**. GitHub issues the certificate.
+2. At the registrar, point `www` at `aliemreo.github.io` with a CNAME; for the
+   apex use ALIAS/ANAME, or GitHub's A records if the registrar has neither.
+3. Then update in `public/index.html`: `<link rel="canonical">`, `og:url`,
+   `og:image`, `twitter:image`, the JSON-LD `url`, and `meta.updated`. Uncomment
+   the `Sitemap:` line in `robots.txt` if you add a `sitemap.xml`.
+4. The base becomes `/` instead of `/aliemre-wiki/`. Nothing in the page needs to
+   change for that — `404.html` and `normalisePath()` are already base-agnostic.
 
 ### 9.2 Deploy checklist
 
@@ -287,26 +281,11 @@ Until then the site is live at `https://<app-name>-<hash>.ondigitalocean.app`; k
 - Both `?lang=en` and `?lang=tr` open without layout overflow at 360px.
 - After deploy, run Lighthouse on the live URL (§6 targets).
 
-### 9.3 Staging on GitHub Pages
+There is no separate staging URL: GitHub Pages serves one site per repository.
+Preview a change by opening `public/index.html` from `file://`, or from a pull
+request where preflight runs.
 
-**Production is DigitalOcean and nothing here changes that.** GitHub Pages is a
-free mirror of the same `public/` directory, deployed from a `preview` branch by
-`.github/workflows/staging.yml`, so a change can be looked at before it is merged
-to `main`.
-
-- Staging exists because DO's `deploy_on_push: true` cannot be gated: it fires
-  whether or not CI passed. The Pages job runs `needs: preflight`, so a broken
-  build never reaches the staging URL.
-- A Pages project site is served from `/<repo>/`, not the domain root. Nothing
-  may assume a root base: `public/404.html` redirects relatively and
-  `normalisePath()` measures against whatever the base is.
-- The staging artifact gets `Disallow: /` written into its `robots.txt` at deploy
-  time. The committed `robots.txt` is never modified, and `canonical`, `og:url`
-  and the JSON-LD `url` continue to point at production.
-- Do not add anything to `public/` that is only meaningful on one of the two
-  hosts, apart from `404.html`, which DO ignores by design.
-
-### 9.4 Preflight
+### 9.3 Preflight
 
 `node .github/scripts/preflight.mjs` enforces what §9.2 and §2 describe: the
 `<noscript>` mirror is in sync, every `en` string has a `tr` sibling,
