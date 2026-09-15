@@ -1,0 +1,22 @@
+# DigitalOcean App Platform — App Spec.
+# Static site only: no build command, no Dockerfile, no package.json.
+name: aliemreozcan-site
+region: fra
+static_sites:
+  - name: site
+    github:
+      repo: aliemreo/aliemre-wiki
+      branch: main
+      deploy_on_push: true
+    source_dir: /public
+    output_dir: /
+    index_document: index.html
+    error_document: index.html      # hash routes never 404, but keep it
+    catchall_document: index.html
+    routes:
+      - path: /
+# domains:
+#   - domain: example.com
+#     type: PRIMARY
+#   - domain: www.example.com
+#     type: ALIAS

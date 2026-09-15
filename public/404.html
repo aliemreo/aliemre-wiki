@@ -1,0 +1,22 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ali Emre Özcan</title>
+<meta name="robots" content="noindex">
+<!--
+  GitHub Pages serves this for any path it does not recognise, and sends it to
+  the real page with the last path segment as a hash: /projects -> /#projects.
+  DigitalOcean never uses this file — .do/app.yaml names index.html as both
+  error_document and catchall_document — so shipping it costs production nothing.
+  The redirect is relative, so it is correct at a domain root and under /<repo>/
+  on a Pages project site alike.
+-->
+<script>
+  (function () {
+    var seg = location.pathname.replace(/\/+$/, '').split('/').pop() || '';
+    location.replace('./' + location.search + (seg ? '#' + encodeURIComponent(seg) : ''));
+  })()
+</script>
+<p style="font-family:system-ui,sans-serif;padding:2rem">
+  <a href="./">Ali Emre Özcan — go to the site</a>
+</p>

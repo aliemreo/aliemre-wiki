@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Ali Emre Özcan — computer engineering student, ML intern</title>
+<meta name="description" content="Final-year computer engineering student at İTÜ and machine learning intern at TAZI, working on ML models and tool-using agent systems.">
+<meta property="og:title" content="Ali Emre Özcan">
+<meta property="og:description" content="Computer engineering student at İTÜ, machine learning intern at TAZI. ML models and tool-using agents.">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ali Emre Özcan">
+<meta name="twitter:description" content="Computer engineering student at İTÜ, machine learning intern at TAZI.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316211B'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='monospace' font-size='20' font-weight='700' fill='%235FD3C6'%3E$%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('aeo-theme-v2');if(t){document.documentElement.setAttribute('data-theme',t)}var p=localStorage.getItem('aeo-palette')||'aqua';if(p){document.documentElement.setAttribute('data-palette',p)}}catch(e){}})()</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Emre Özcan","jobTitle":"Machine learning intern","worksFor":{"@type":"Organization","name":"TAZI Bilişim Teknolojileri"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Istanbul Technical University"},"address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"}}</script>
+<style>
+html{--bg:#0F0F0D;--ink:#ECEAE3;--muted:#8F8C82;--rule:#26251F;--accent:#FFB224;--accent-ink:#161410;--tint:#1C1812;--bar:#161512;--bar-ink:#ECEAE3;--bar-muted:#7C7970;--prompt:#FFB224;--tok-cmd:#FFB224;--tok-arg:#8FD3F4;--tok-err:#FF7B6B;--tok-ok:#A6E3A1;--out-err:#FF7B6B;--out-ok:#A6E3A1;background:var(--bg);color-scheme:dark}
+html[data-palette="aqua"]{--accent:#6FE3CF;--accent-ink:#0B1917;--prompt:#6FE3CF;--tok-cmd:#6FE3CF;--tok-arg:#F0C674;--bg:#0D1413;--bar:#111917;--tint:#132925;--rule:#233230;--ink:#E4ECE9;--muted:#889793;--bar-muted:#74837F}
+html[data-palette="mint"]{--accent:#7EE2B8;--accent-ink:#0D1A14;--prompt:#7EE2B8;--tok-cmd:#7EE2B8;--bg:#0E1311;--bar:#131A17;--tint:#14261F;--rule:#242D29;--ink:#E6ECE8;--muted:#8B9691;--bar-muted:#77837D}
+html[data-palette="sky"]{--accent:#7DC4FF;--accent-ink:#0B1520;--prompt:#7DC4FF;--tok-cmd:#7DC4FF;--tok-arg:#FFD27A;--bg:#0D1117;--bar:#12171E;--tint:#14212E;--rule:#242C36;--ink:#E6EAF0;--muted:#8B94A0;--bar-muted:#788290}
+html[data-palette="rose"]{--accent:#FF8FA3;--accent-ink:#1E0D11;--prompt:#FF8FA3;--tok-cmd:#FF8FA3;--tok-arg:#9BD8FF;--bg:#13100F;--bar:#1A1515;--tint:#2A1A1E;--rule:#2D2526;--ink:#EEE8E6;--muted:#988C8B;--bar-muted:#857A79}
+html[data-palette="lime"]{--accent:#C8F04B;--accent-ink:#10160A;--prompt:#C8F04B;--tok-cmd:#C8F04B;--tok-arg:#8FD3F4;--bg:#0E110C;--bar:#131711;--tint:#1C2413;--rule:#262C22;--ink:#E9ECE3;--muted:#8E9486;--bar-muted:#7A8073}
+html[data-palette="violet"]{--accent:#B79CFF;--accent-ink:#130E1F;--prompt:#B79CFF;--tok-cmd:#B79CFF;--tok-arg:#8FE3D4;--bg:#0F0E14;--bar:#15131C;--tint:#211B34;--rule:#28253A;--ink:#EAE8F0;--muted:#918DA0;--bar-muted:#7E7A8D}
+html[data-palette="paper"]{--accent:#ECEAE3;--accent-ink:#0F0F0D;--prompt:#ECEAE3;--tok-cmd:#ECEAE3;--tok-arg:#9A978E;--bg:#0C0C0B;--bar:#111110;--tint:#1B1B19;--rule:#262624;--ink:#ECEAE3;--muted:#8F8C82;--bar-muted:#7C7970}
+html[data-theme="light"]{--bg:#F7F6F1;--ink:#17160F;--muted:#6B685E;--rule:#DCD9CF;--accent:#B26B00;--accent-ink:#FFFFFF;--tint:#F3E9D3;--bar:#17160F;--bar-ink:#ECEAE3;--bar-muted:#8F8C82;--prompt:#FFB224;--tok-cmd:#FFB224;--tok-arg:#8FD3F4;--tok-err:#B3261E;--tok-ok:#2E6B2A;--out-err:#B3261E;--out-ok:#2E6B2A;color-scheme:light}
+html[data-theme="light"][data-palette="aqua"]{--accent:#0B7A6C;--accent-ink:#fff;--bg:#F2F7F6;--tint:#D9EFEA;--rule:#D0DCD9;--bar:#0F1A18;--prompt:#6FE3CF;--tok-cmd:#6FE3CF;--tok-arg:#F0C674}
+html[data-theme="light"][data-palette="mint"]{--accent:#0F7A55;--accent-ink:#fff;--bg:#F3F7F4;--tint:#DDF0E6;--rule:#D3DDD7;--bar:#111A15;--prompt:#7EE2B8;--tok-cmd:#7EE2B8}
+html[data-theme="light"][data-palette="sky"]{--accent:#0A63B8;--accent-ink:#fff;--bg:#F3F6F9;--tint:#DCE9F6;--rule:#D2DAE3;--bar:#0F161E;--prompt:#7DC4FF;--tok-cmd:#7DC4FF;--tok-arg:#FFD27A}
+html[data-theme="light"][data-palette="rose"]{--accent:#B8264A;--accent-ink:#fff;--bg:#F9F4F4;--tint:#F6DEE3;--rule:#E3D4D6;--bar:#1A1213;--prompt:#FF8FA3;--tok-cmd:#FF8FA3;--tok-arg:#9BD8FF}
+html[data-theme="light"][data-palette="lime"]{--accent:#4E7000;--accent-ink:#fff;--bg:#F6F8F1;--tint:#E6F0CC;--rule:#D8DECB;--bar:#10140B;--prompt:#C8F04B;--tok-cmd:#C8F04B;--tok-arg:#8FD3F4}
+html[data-theme="light"][data-palette="violet"]{--accent:#5E3DBD;--accent-ink:#fff;--bg:#F6F5F9;--tint:#E7E1F7;--rule:#DAD6E4;--bar:#14111E;--prompt:#B79CFF;--tok-cmd:#B79CFF;--tok-arg:#8FE3D4}
+html[data-theme="light"][data-palette="paper"]{--accent:#17160F;--accent-ink:#F7F6F1;--bg:#F7F6F1;--tint:#E9E7DF;--rule:#DCD9CF;--bar:#17160F;--prompt:#ECEAE3;--tok-cmd:#ECEAE3;--tok-arg:#9A978E}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+::selection{background:var(--accent);color:var(--accent-ink)}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule);transition:color .15s,text-decoration-color .15s,background-color .15s}
+a:hover{text-decoration-color:var(--accent)}
+button{transition:color .15s,background-color .15s,border-color .15s,text-decoration-color .15s}
+button:hover{text-decoration-color:var(--accent)!important}
+[data-chip]:hover{border-color:var(--accent)!important;color:var(--accent)!important}
+[data-name]:hover{background:var(--accent);color:var(--accent-ink)!important;text-decoration:none!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+[data-tag]:hover{background:var(--tint)}
+[data-idx]:hover{color:var(--accent)!important}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input:focus-visible{outline:none}
+[data-featured="true"]{background:var(--tint);padding:24px!important;border-radius:4px;border-bottom:none!important;margin-bottom:8px}
+[data-term]{position:sticky;top:0;order:-1;grid-column:1;grid-row:1;max-height:48vh}
+[data-doc]{grid-column:1;grid-row:2}
+[data-log]{max-height:34vh;min-height:200px}
+@media (max-height:600px){[data-log]{min-height:0;max-height:26vh}[data-banner]{display:none!important}}
+@media (min-width:1024px) and (max-height:600px){[data-banner]{display:flex!important}}
+@media (min-width:1024px){[data-shell]{grid-template-columns:minmax(0,1fr) clamp(360px,36vw,540px)!important}[data-term]{order:0;grid-column:2;grid-row:1;height:100vh;max-height:100vh}[data-doc]{grid-column:1;grid-row:1}[data-log]{max-height:none}}
+[data-bar][data-focused="true"]{border-top-color:var(--accent)!important}
+[data-rule]{border-bottom:none!important;position:relative;padding:9px 14px 9px 16px!important;background:var(--bar);border:1px solid var(--rule);border-radius:2px;outline:1px solid color-mix(in oklch,var(--rule) 70%,transparent);outline-offset:-5px;align-items:center!important;min-height:44px;box-sizing:border-box}
+[data-flap]{display:flex;gap:2px;flex-wrap:wrap}
+@keyframes flapin{0%{transform:rotateX(-90deg);filter:brightness(1.6)}60%{transform:rotateX(12deg)}100%{transform:rotateX(0);filter:none}}
+[data-flap]{perspective:260px}
+[data-cell="char"]{animation:flapin .16s cubic-bezier(.3,.7,.3,1);transform-origin:50% 50%;backface-visibility:hidden}
+@media (prefers-reduced-motion:reduce){[data-cell="char"]{animation:none}}
+[data-cell]{display:inline-flex;align-items:center;justify-content:center;min-width:1.35em;height:1.9em;padding:0 .1em;background:color-mix(in oklch,var(--bar),white 7%);border-radius:2px;position:relative;font-variant-numeric:tabular-nums;overflow:hidden}
+[data-cell]::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.55)}
+[data-board] [data-cell]{color:var(--bar-ink);min-width:1.2em;height:1.7em;letter-spacing:.04em}
+[data-board] [data-cell="char"]{animation:none}
+[data-cell="space"]{background:transparent;min-width:.5em}
+[data-cell="space"]::after{display:none}
+@media print{[data-cell]{background:none;min-width:0;height:auto;padding:0}[data-cell]::after{display:none}}
+[data-rule] h2{font-size:13px!important;font-weight:600!important;letter-spacing:.14em;text-transform:uppercase;color:var(--bar-ink);font-family:'IBM Plex Sans',system-ui,sans-serif}
+[data-rule] time,[data-rule] span:not([data-motif]),[data-rule] button{color:var(--bar-muted)!important}
+[data-rule] button{color:var(--accent)!important}
+[data-rule] [data-motif]{background:var(--accent);opacity:.85;width:22px;height:22px}
+html[data-theme="light"] [data-rule]{background:var(--bar);border-color:var(--bar);outline-color:rgba(255,255,255,.28)}
+@media print{[data-rule]{background:none!important;border:none!important;border-bottom:1px solid #000!important;outline:none!important;padding:0 0 6px!important;min-height:0}[data-rule] h2{color:#000!important;letter-spacing:.06em}[data-motif]{display:none}}
+[data-motif]{display:inline-block;width:26px;height:26px;flex:none;background:var(--accent);opacity:.6;-webkit-mask:center/contain no-repeat;mask:center/contain no-repeat;align-self:center;image-rendering:pixelated}
+[data-motif="goz"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E")}
+[data-motif="elibelinde"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E")}
+[data-motif="kocboynuzu"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'2'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'2'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E")}
+[data-motif="yildiz"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E")}
+[data-motif="pitrak"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'6'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'11'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'12'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E")}
+[data-motif="suyolu"]{-webkit-mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E");mask-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2013'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'3'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'4'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'5'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'3'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'9'%20y%3D'7'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'4'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'8'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'10'%20y%3D'8'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'5'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'7'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'11'%20y%3D'9'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'6'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'12'%20y%3D'10'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E")}
+[data-doc]{position:relative;isolation:isolate}
+html[data-bg="metal"] [data-doc]{background:linear-gradient(105deg,color-mix(in oklch,var(--bg),white 5%) 0%,var(--bg) 28%,color-mix(in oklch,var(--bg),black 12%) 55%,var(--bg) 78%,color-mix(in oklch,var(--bg),white 4%) 100%)}
+html[data-bg="metal"] [data-doc]::before{opacity:.11;background-size:160px 160px;mix-blend-mode:overlay}
+html[data-bg="metal"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(105deg,transparent 0 3px,rgba(255,255,255,.012) 3px 4px)}
+html[data-bg="dual"] [data-doc]{background:radial-gradient(120% 70% at 0% 0%,color-mix(in oklch,var(--accent) 14%,var(--bg)) 0%,transparent 60%),radial-gradient(90% 60% at 100% 100%,color-mix(in oklch,var(--tok-arg) 10%,var(--bg)) 0%,transparent 60%),var(--bg)}
+html[data-theme="light"][data-bg="dual"] [data-doc]{background:radial-gradient(120% 70% at 0% 0%,color-mix(in oklch,var(--accent) 12%,var(--bg)) 0%,transparent 60%),radial-gradient(90% 60% at 100% 100%,color-mix(in oklch,var(--tok-arg) 14%,var(--bg)) 0%,transparent 60%),var(--bg)}
+html[data-theme="light"][data-bg="metal"] [data-doc]{background:linear-gradient(105deg,white 0%,var(--bg) 30%,color-mix(in oklch,var(--bg),black 5%) 55%,var(--bg) 80%,white 100%)}
+html[data-bg="scan"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(0,0,0,.2) 3px 4px)}
+html[data-bg="scan"] [data-doc]{background:radial-gradient(140% 110% at 50% 40%,var(--bg) 70%,color-mix(in oklch,var(--bg),black 10%) 100%)}
+html[data-theme="light"][data-bg="scan"] [data-doc]{background:var(--bg)}
+html[data-theme="light"][data-bg="scan"] [data-doc]::after{background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(0,0,0,.045) 3px 4px)}
+html[data-bg="dots"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(color-mix(in oklch,var(--ink) 22%,transparent) 1px,transparent 1.2px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 30% 20%,#000 20%,transparent 100%);mask-image:radial-gradient(ellipse 80% 70% at 30% 20%,#000 20%,transparent 100%)}
+html[data-bg="paper"] [data-doc]{background:#131414}
+html[data-bg="paper"] [data-doc]::before{opacity:.22;background-size:140px 140px;mix-blend-mode:overlay}
+html[data-bg="paper"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'300'%20height%3D'300'%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.012%200.4'%20numOctaves%3D'4'%20seed%3D'7'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20values%3D'0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%20.9%200'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23f)'%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'300'%20height%3D'300'%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.4%200.012'%20numOctaves%3D'4'%20seed%3D'3'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20values%3D'0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%20.9%200'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23f)'%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'400'%20height%3D'400'%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.02'%20numOctaves%3D'3'%20seed%3D'11'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20values%3D'0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23f)'%2F%3E%3C%2Fsvg%3E");background-size:300px 300px,300px 300px,400px 400px;opacity:.34;mix-blend-mode:overlay}
+html[data-theme="light"][data-bg="paper"] [data-doc]{background:#F4F4F2}
+html[data-theme="light"][data-bg="paper"] [data-doc]::before{opacity:.22;filter:invert(1);mix-blend-mode:multiply}
+html[data-theme="light"][data-bg="paper"] [data-doc]::after{opacity:.7;filter:invert(1);mix-blend-mode:multiply}
+html[data-bg="granite"] [data-doc]{background:#141516}
+html[data-bg="granite"] [data-doc]::before{opacity:.3;background-size:120px 120px;mix-blend-mode:overlay}
+html[data-bg="granite"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'260'%20height%3D'260'%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.9'%20numOctaves%3D'2'%20seed%3D'5'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20type%3D'saturate'%20values%3D'0'%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D'discrete'%20tableValues%3D'0%200%200%200%200%200%200%200%200%200%200%200%200%200%201%201'%2F%3E%3C%2FfeComponentTransfer%3E%3CfeColorMatrix%20values%3D'0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23f)'%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'260'%20height%3D'260'%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.6'%20numOctaves%3D'2'%20seed%3D'9'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20type%3D'saturate'%20values%3D'0'%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D'discrete'%20tableValues%3D'0%200%200%200%200%200%200%200%200%200%200%200%200%200%200%201'%2F%3E%3C%2FfeComponentTransfer%3E%3CfeColorMatrix%20values%3D'0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23f)'%2F%3E%3C%2Fsvg%3E"),url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20width%3D'320'%20height%3D'320'%3E%3Cfilter%20id%3D'f'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.05'%20numOctaves%3D'4'%20seed%3D'21'%20stitchTiles%3D'stitch'%2F%3E%3CfeColorMatrix%20values%3D'0%200%200%200%201%200%200%200%200%201%200%200%200%200%201%200%200%200%201%200'%2F%3E%3C%2Ffilter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23f)'%2F%3E%3C%2Fsvg%3E");background-size:260px 260px,260px 260px,320px 320px;opacity:.5;mix-blend-mode:overlay}
+html[data-theme="light"][data-bg="granite"] [data-doc]{background:#E9EAE8}
+html[data-theme="light"][data-bg="granite"] [data-doc]::before{opacity:.35;filter:invert(1);mix-blend-mode:multiply}
+html[data-theme="light"][data-bg="granite"] [data-doc]::after{opacity:.55;filter:invert(1);mix-blend-mode:multiply}
+html[data-bg="spot"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,30%) var(--my,20%),color-mix(in oklch,var(--accent) 9%,transparent) 0%,transparent 70%);transition:background-position .2s}
+html[data-bg="vignette"] [data-doc]{background:radial-gradient(120% 90% at 50% 30%,var(--bg) 40%,color-mix(in oklch,var(--bg),black 30%) 100%)}
+html[data-theme="light"][data-bg="vignette"] [data-doc]{background:radial-gradient(120% 90% at 50% 30%,var(--bg) 40%,color-mix(in oklch,var(--bg),black 8%) 100%)}
+html[data-bg="glow"] [data-doc]{background:linear-gradient(to right,var(--bg) 85%,color-mix(in oklch,var(--accent) 7%,var(--bg)) 100%)}
+html[data-bg="mesh"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.9;background:radial-gradient(60% 45% at 15% 10%,color-mix(in oklch,var(--accent) 13%,transparent),transparent 70%),radial-gradient(50% 40% at 85% 35%,color-mix(in oklch,var(--tok-arg) 9%,transparent),transparent 70%),radial-gradient(55% 45% at 40% 90%,color-mix(in oklch,var(--accent) 8%,transparent),transparent 70%);background-size:200% 200%;animation:meshdrift 40s ease-in-out infinite alternate}
+@keyframes meshdrift{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+html[data-bg="dither"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:color-mix(in oklch,var(--accent) 55%,var(--bg));-webkit-mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%204%204'%20width%3D'4'%20height%3D'4'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E") 0 0/4px 4px repeat,linear-gradient(135deg,#000 0%,rgba(0,0,0,.35) 30%,transparent 62%);mask:url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%204%204'%20width%3D'4'%20height%3D'4'%20shape-rendering%3D'crispEdges'%3E%3Crect%20x%3D'0'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'0'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'1'%20y%3D'1'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'0'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3Crect%20x%3D'2'%20y%3D'2'%20width%3D'1'%20height%3D'1'%2F%3E%3C%2Fsvg%3E") 0 0/4px 4px repeat,linear-gradient(135deg,#000 0%,rgba(0,0,0,.35) 30%,transparent 62%);-webkit-mask-composite:source-in;mask-composite:intersect;opacity:.35}
+html[data-bg="dither"] [data-doc]::before{opacity:.03}
+html[data-bg="halftone"] [data-doc]::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:radial-gradient(circle,color-mix(in oklch,var(--ink) 30%,transparent) 0 var(--dot,1.1px),transparent calc(var(--dot,1.1px) + .4px));background-size:10px 10px;-webkit-mask-image:radial-gradient(90% 70% at 10% 0%,#000 0%,rgba(0,0,0,.4) 40%,transparent 75%);mask-image:radial-gradient(90% 70% at 10% 0%,#000 0%,rgba(0,0,0,.4) 40%,transparent 75%)}
+@media (prefers-reduced-motion:reduce){html[data-bg="mesh"] [data-doc]::after{animation:none}}
+@media print{[data-doc]{background:#fff!important}[data-doc]::after{display:none!important}}
+[data-doc]::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.055;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:220px 220px}
+html[data-theme="light"] [data-doc]::before{opacity:.08;filter:invert(1)}
+[data-term]{background:#000!important;border-left-color:#1C1C1C!important}
+[data-term] [data-log]{scrollbar-color:#2A2A2A #000}
+html[data-theme="light"] [data-term]{border-left-color:#000!important}
+@media print{[data-doc]::before,[data-doc]::after{display:none}}
+[data-h1]:hover [data-plain],[data-h1]:focus-visible [data-plain]{display:none}
+[data-h1]:hover [data-pix],[data-h1]:focus-visible [data-pix]{display:block!important}
+@media (max-width:480px){[data-pix]{font-size:4px!important}}
+@media print{[data-pix]{display:none!important}[data-plain]{display:inline!important}}
+main>section{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+main>section[data-in]{opacity:1;transform:none}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes expand{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-blink]{animation:none!important}[data-expand]{animation:none!important}main>section{opacity:1!important;transform:none!important;transition:none!important}a,button{transition:none!important}}
+@media (max-width:480px){[data-kbd-hint]{display:none!important}}
+@media print{[data-print-hide]{display:none!important}#tools,#guestbook,#colophon,form{display:none!important}main>section{opacity:1!important;transform:none!important}body{font-size:11pt;color:#000;background:#fff}a{color:#000}[data-featured="true"]{background:none;padding:0!important}}
+</style>
+</helmet>
+
+<div data-shell="1" style="display:grid;grid-template-columns:minmax(0,1fr);min-height:100vh">
+<div data-doc="1" style="min-width:0;overflow:hidden" onMouseOver="{{ onDocHover }}">
+
+
+<main style="max-width:640px;margin:0 auto;padding:0 20px 48px">
+
+  <section id="top" aria-label="Intro" style="padding:56px 0 16px">
+    <h1 data-h1="1" tabIndex="{{ 0 }}" style="font-size:2rem;font-weight:600;line-height:1.2;margin:0 0 18px;letter-spacing:-0.01em;min-height:64px;display:flex;align-items:center;cursor:default;outline:none">
+      <span data-plain="1">Ali Emre Özcan</span>
+      <span data-pix="1" aria-hidden="true" style="display:none;font-family:'IBM Plex Mono',monospace;font-size:7px;line-height:1;white-space:pre;color:var(--accent);font-weight:400;letter-spacing:0">{{ namePixel }}</span>
+    </h1>
+    <p style="margin:0 0 12px">{{ hero.line1 }}</p>
+    <p style="margin:0 0 22px;color:var(--muted)">{{ hero.line2 }}</p>
+    <p style="display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);margin:0 0 28px"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex:none"></span>{{ hero.avail }}</p>
+    <nav aria-label="{{ ui.indexLabel }}" style="display:flex;flex-wrap:wrap;gap:6px 18px;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+      <sc-for list="{{ index }}" as="i" hint-placeholder-count="8"><a data-idx="1" href="{{ i.href }}" onClick="{{ i.go }}" style="color:var(--muted);text-decoration:none">{{ i.label }}</a></sc-for>
+    </nav>
+  </section>
+
+  <section id="now" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:18px">
+      <h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.now }}"><sc-for list="{{ flap.now.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="suyolu" role="img" aria-label="su yolu — hayat, süreklilik / life, continuity" title="su yolu — hayat, süreklilik / life, continuity" style="margin-left:auto"></span>
+      <time style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)">{{ now.date }}</time>
+    </div>
+    <p style="margin:0">{{ now.text }}</p>
+  </section>
+
+  <section id="about" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:18px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.about }}"><sc-for list="{{ flap.about.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="elibelinde" role="img" aria-label="elibelinde — bereket, annelik / fertility" title="elibelinde — bereket, annelik / fertility"></span></div>
+    <sc-for list="{{ about }}" as="p" hint-placeholder-count="1"><p style="margin:0 0 12px">{{ p }}</p></sc-for>
+  </section>
+
+  <section id="experience" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.experience }}"><sc-for list="{{ flap.experience.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="kocboynuzu" role="img" aria-label="koçboynuzu — güç, kahramanlık / strength" title="koçboynuzu — güç, kahramanlık / strength"></span></div>
+    <sc-for list="{{ experience }}" as="e" hint-placeholder-count="3">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:18px 0;border-bottom:1px solid var(--rule)">
+        <div style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:3px;display:flex;flex-direction:column;gap:6px;align-items:flex-start">
+          <div data-flap="1" data-board="1" aria-hidden="true" style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500"><sc-for list="{{ e.boardCells }}" as="c" hint-placeholder-count="4"><span data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></div>
+          <span>{{ e.dates }}</span>
+        </div>
+        <div style="flex:1 1 300px;min-width:0">
+          <div style="display:flex;justify-content:space-between;gap:12px;align-items:flex-start">
+            <h3 style="font-size:17px;font-weight:600;margin:0">{{ e.title }}</h3>
+            <div data-flap="1" data-board="1" aria-label="{{ e.status }}" style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;flex:none;margin-top:3px"><sc-for list="{{ e.statusCells }}" as="c" hint-placeholder-count="3"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></div>
+          </div>
+          <div style="color:var(--muted);margin:2px 0 8px">{{ e.org }}</div>
+          <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px">
+            <sc-for list="{{ e.bullets }}" as="b" hint-placeholder-count="2"><li>{{ b }}</li></sc-for>
+          </ul>
+        </div>
+      </article>
+    </sc-for>
+  </section>
+
+  <section id="projects" ref="{{ projectsRef }}" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px">
+      <h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.projects }}"><sc-for list="{{ flap.projects.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="yildiz" role="img" aria-label="yıldız — mutluluk / happiness" title="yıldız — mutluluk / happiness" style="margin-left:auto"></span>
+      <sc-if value="{{ hasFilter }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);display:flex;gap:10px">
+          <span>{{ filterLabel }}</span>
+          <button onClick="{{ clearFilter }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit">{{ ui.clear }}</button>
+        </div>
+      </sc-if>
+    </div>
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="5">
+      <article id="{{ p.domId }}" data-slug="{{ p.slug }}" data-featured="{{ p.featuredAttr }}" style="padding:20px 0;border-bottom:1px solid var(--rule)">
+        <h3 style="margin:0 0 6px;font-size:17px;font-weight:600"><button data-name="1" onClick="{{ p.toggle }}" aria-expanded="{{ p.isOpen }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule);padding:0 3px;margin:0 -3px;border-radius:2px">{{ p.name }}</button></h3>
+        <p style="margin:0 0 4px">{{ p.problem }}</p>
+        <p style="margin:0 0 12px;color:var(--muted)">{{ p.outcome }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ p.tags }}" as="tg" hint-placeholder-count="1"><button data-tag="1" onClick="{{ tg.go }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit;padding:0 4px;margin:0 -4px;border-radius:2px">#{{ tg.tag }}</button></sc-for>
+          </div>
+          <span style="color:var(--muted)">{{ p.stack }}</span>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-left:auto">
+            <sc-for list="{{ p.links }}" as="lk" hint-placeholder-count="2"><a href="{{ lk.href }}" style="font:inherit">{{ lk.label }}</a></sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ p.isOpen }}" hint-placeholder-val="{{ false }}">
+          <div data-expand="1" style="margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);animation:expand .25s ease-out;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ p.writeup }}" as="para" hint-placeholder-count="2"><p style="margin:0">{{ para }}</p></sc-for>
+            <div style="border:1px dashed var(--rule);padding:28px 20px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">{{ ui.imageSlot }}</div>
+            <p style="margin:0"><span style="color:var(--muted)">{{ ui.differently }}</span> {{ p.differently }}</p>
+            <button onClick="{{ closeProject }}" style="all:unset;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent);align-self:flex-start">{{ ui.back }}</button>
+          </div>
+        </sc-if>
+      </article>
+    </sc-for>
+    <sc-if value="{{ noProjects }}" hint-placeholder-val="{{ false }}"><p style="margin:16px 0 0;color:var(--muted)">{{ ui.noProjects }}</p></sc-if>
+  </section>
+
+  <section id="reading" ref="{{ readingRef }}" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px">
+      <h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.reading }}"><sc-for list="{{ flap.reading.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="pitrak" role="img" aria-label="pıtrak — bolluk / abundance" title="pıtrak — bolluk / abundance" style="margin-left:auto"></span>
+      <sc-if value="{{ hasReadingFilter }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);display:flex;gap:10px">
+          <span>{{ readingFilterLabel }}</span>
+          <button onClick="{{ clearReadingFilter }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit">{{ ui.clear }}</button>
+        </div>
+      </sc-if>
+    </div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.readingNote }}</p>
+    <sc-for list="{{ reading }}" as="r" hint-placeholder-count="4">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)">
+        <div style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px;display:flex;flex-direction:column;gap:2px"><time>{{ r.date }}</time><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ r.kind }}</span></div>
+        <div style="flex:1 1 300px;min-width:0">
+          <a href="{{ r.href }}">{{ r.title }}</a><span style="color:var(--muted)"> · {{ r.authors }}</span>
+          <p style="margin:4px 0 8px">{{ r.note }}</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+            <sc-for list="{{ r.tags }}" as="tg" hint-placeholder-count="1"><button data-tag="1" onClick="{{ tg.go }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit;padding:0 4px;margin:0 -4px;border-radius:2px">#{{ tg.tag }}</button></sc-for>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+    <sc-if value="{{ noReading }}" hint-placeholder-val="{{ false }}"><p style="margin:16px 0 0;color:var(--muted)">{{ ui.noReading }}</p></sc-if>
+  </section>
+
+  <section id="writing" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.writing }}"><sc-for list="{{ flap.writing.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="suyolu" role="img" aria-label="su yolu — hayat, süreklilik / life, continuity" title="su yolu — hayat, süreklilik / life, continuity"></span></div>
+    <sc-for list="{{ writing }}" as="w" hint-placeholder-count="2">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)">
+        <time style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">{{ w.date }}</time>
+        <a href="{{ w.href }}" style="flex:1 1 300px;min-width:0">{{ w.title }}</a>
+      </article>
+    </sc-for>
+  </section>
+
+  <section id="tools" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.tools }}"><sc-for list="{{ flap.tools.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="kocboynuzu" role="img" aria-label="koçboynuzu — güç, kahramanlık / strength" title="koçboynuzu — güç, kahramanlık / strength"></span></div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.toolsNote }}</p>
+    <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--rule)">
+        <button onClick="{{ t.try }}" style="all:unset;cursor:pointer;flex:0 0 140px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);padding-top:2px;text-align:left">{{ t.usage }}</button>
+        <div style="flex:1 1 300px;min-width:0">
+          <div>{{ t.desc }}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:2px">{{ t.example }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section id="skills" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.skills }}"><sc-for list="{{ flap.skills.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="pitrak" role="img" aria-label="pıtrak — bolluk / abundance" title="pıtrak — bolluk / abundance"></span></div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.skillsNote }}</p>
+    <dl style="margin:0">
+      <sc-for list="{{ skills }}" as="g" hint-placeholder-count="5">
+        <div style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--rule)">
+          <dt style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">{{ g.group }}</dt>
+          <dd style="flex:1 1 300px;min-width:0;margin:0;display:flex;flex-wrap:wrap;gap:4px 14px">
+            <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="4">
+              <sc-if value="{{ s.clickable }}" hint-placeholder-val="{{ true }}"><button onClick="{{ s.go }}" style="all:unset;cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ s.label }}</button></sc-if>
+              <sc-if value="{{ s.plain }}" hint-placeholder-val="{{ false }}"><span>{{ s.label }}</span></sc-if>
+            </sc-for>
+          </dd>
+        </div>
+      </sc-for>
+    </dl>
+  </section>
+
+  <section id="guestbook" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.guestbook }}"><sc-for list="{{ flap.guestbook.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="goz" role="img" aria-label="göz — nazara karşı koruma / protection" title="göz — nazara karşı koruma / protection"></span></div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.guestbookNote }}</p>
+    <sc-for list="{{ guestbook }}" as="g" hint-placeholder-count="3">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)">
+        <div style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px;display:flex;flex-direction:column;gap:2px"><span style="color:var(--ink)">{{ g.name }}</span><time>{{ g.date }}</time></div>
+        <div style="flex:1 1 300px;min-width:0">
+          <p style="margin:0">{{ g.message }}</p>
+          <sc-if value="{{ g.pending }}" hint-placeholder-val="{{ false }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">{{ ui.pending }}</span></sc-if>
+        </div>
+      </article>
+    </sc-for>
+    <form onSubmit="{{ onGuestSubmit }}" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:13px">
+      <input aria-label="{{ ui.guestName }}" value="{{ guestName }}" onChange="{{ onGuestName }}" placeholder="{{ ui.guestName }}" style="flex:0 1 140px;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:4px;padding:6px 10px">
+      <input aria-label="{{ ui.guestMsg }}" value="{{ guestMsg }}" onChange="{{ onGuestMsg }}" placeholder="{{ ui.guestMsg }}" maxLength="{{ 200 }}" style="flex:1 1 220px;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:4px;padding:6px 10px">
+      <button type="submit" style="font:inherit;color:var(--accent-ink);background:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:6px 14px;cursor:pointer">echo</button>
+    </form>
+  </section>
+
+  <section id="contact" style="padding:40px 0 0">
+    <div data-rule="1" style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:18px"><h2 style="font-size:1rem;font-weight:600;margin:0" data-flap="1" aria-label="{{ ui.contact }}"><sc-for list="{{ flap.contact.cells }}" as="c" hint-placeholder-count="6"><span aria-hidden="true" data-cell="{{ c.kind }}">{{ c.ch }}</span></sc-for></h2><span data-motif="goz" role="img" aria-label="göz — nazara karşı koruma / protection" title="göz — nazara karşı koruma / protection"></span></div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">{{ ui.email }}</span>
+        <div style="flex:1 1 300px;min-width:0;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+          <button onClick="{{ copyEmail }}" style="all:unset;cursor:pointer;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ meta.email }}</button>
+          <span aria-live="polite" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)">{{ copiedLabel }}</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">GitHub</span>
+        <a href="{{ meta.github }}" style="flex:1 1 300px;min-width:0">{{ meta.githubLabel }}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">LinkedIn</span>
+        <a href="{{ meta.linkedin }}" style="flex:1 1 300px;min-width:0">{{ meta.linkedinLabel }}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">CV</span>
+        <a href="{{ meta.cv }}" style="flex:1 1 300px;min-width:0">{{ ui.cvDownload }}</a>
+      </div>
+    </div>
+    <p style="margin:18px 0 0;color:var(--muted)">{{ contact.note }}</p>
+  </section>
+
+  <section id="colophon" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.colophon }}</h2>
+    <sc-for list="{{ colophon }}" as="c" hint-placeholder-count="3"><p style="margin:0 0 6px;font-size:14px;color:var(--muted)">{{ c }}</p></sc-for>
+  </section>
+</main>
+
+<footer data-print-hide="1" style="max-width:640px;margin:0 auto;padding:24px 20px 48px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px;color:var(--muted)">
+  <span>{{ ui.updated }} {{ meta.updated }}</span>
+  <div style="display:flex;gap:16px;margin-left:auto;flex-wrap:wrap">
+    <div style="display:flex;gap:6px;align-items:center" aria-label="Palette">
+      <sc-for list="{{ palettes }}" as="p" hint-placeholder-count="7"><button onClick="{{ p.pick }}" aria-label="{{ p.name }}" aria-pressed="{{ p.active }}" title="{{ p.name }}" style="width:14px;height:14px;border-radius:50%;background:{{ p.swatch }};border:2px solid {{ p.ring }};cursor:pointer;padding:0"></button></sc-for>
+    </div>
+    <button onClick="{{ toggleTheme }}" style="all:unset;cursor:pointer;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ ui.themeLabel }}</button>
+    <button onClick="{{ toggleLang }}" lang="{{ otherLangCode }}" style="all:unset;cursor:pointer;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ ui.langLabel }}</button>
+    <a href="#colophon" style="font-size:13px">{{ ui.colophon }}</a>
+  </div>
+</footer>
+</div>
+<aside data-term="1" data-print-hide="1" ref="{{ headerRef }}" aria-label="Terminal" style="background:var(--bar);color:var(--bar-ink);font-family:'IBM Plex Mono',monospace;font-size:13.5px;display:flex;flex-direction:column;z-index:10;border-left:1px solid var(--rule);border-bottom:1px solid var(--rule);min-height:0">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:9px 16px;border-bottom:1px solid var(--rule);color:var(--bar-muted);font-size:12px;flex:none"><span style="white-space:nowrap">ali@site <span style="color:var(--prompt)">{{ path }}</span></span><span data-kbd-hint="1" style="white-space:nowrap">{{ ui.kbd }}</span></div>
+  <div data-log="1" ref="{{ logRef }}" role="log" aria-live="polite" style="flex:1 1 auto;overflow:auto;padding:12px 16px;display:flex;flex-direction:column;gap:12px;min-height:0;line-height:1.5">
+    {{ banner }}
+    <div style="color:var(--bar-muted);white-space:pre-wrap">{{ ui.welcome }}</div>
+    <sc-for list="{{ log }}" as="e" hint-placeholder-count="0">
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <sc-if value="{{ e.hasCmd }}" hint-placeholder-val="{{ true }}"><div style="display:flex;gap:8px"><span style="color:var(--prompt)">$</span><span style="white-space:pre-wrap"><span style="color:var(--tok-cmd)">{{ e.cmd }}</span><span style="color:var(--tok-arg)">{{ e.args }}</span></span></div></sc-if>
+        <div style="white-space:pre-wrap;color:{{ e.color }};padding-left:18px">{{ e.out }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="padding:10px 16px 0;display:flex;flex-wrap:wrap;gap:6px;flex:none">
+    <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+      <button data-chip="1" onClick="{{ c.run }}" aria-pressed="{{ c.active }}" style="font-family:'IBM Plex Mono',monospace;font-size:12px;padding:2px 10px;border:1px solid {{ c.border }};border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;line-height:1.5">{{ c.label }}</button>
+    </sc-for>
+  </div>
+  <div data-bar="1" data-focused="{{ focusedAttr }}" onClick="{{ focusBar }}" style="display:flex;align-items:center;gap:10px;padding:0 16px;height:50px;cursor:text;flex:none;font-size:14.5px;border-top:1px solid transparent;transition:box-shadow .15s">
+    <span aria-hidden="true" style="color:var(--prompt);font-weight:500">$</span>
+    <div style="position:relative;flex:1;min-width:0;height:100%;display:flex;align-items:center">
+      <input ref="{{ inputRef }}" aria-label="{{ ui.barLabel }}" value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" onFocus="{{ onFocus }}" onBlur="{{ onBlur }}" autoComplete="off" autoCapitalize="off" spellCheck="{{ false }}" style="all:unset;width:100%;min-width:0;font:inherit;color:transparent;caret-color:transparent;position:relative;z-index:1">
+      <span aria-hidden="true" style="position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;pointer-events:none;white-space:pre;overflow:hidden;max-width:100%"><span style="color:{{ tok.cmdColor }}">{{ tok.cmd }}</span><span style="color:var(--tok-arg)">{{ tok.args }}</span><span data-blink="1" style="display:inline-block;width:9px;height:17px;background:var(--prompt);animation:blink 1.1s steps(1) infinite;margin-left:1px;flex:none"></span><span style="color:var(--bar-muted);margin-left:6px;overflow:hidden;text-overflow:ellipsis">{{ hint }}</span></span>
+    </div>
+  </div>
+</aside>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;bgMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;scan&quot;,&quot;options&quot;:[&quot;scan&quot;,&quot;flat&quot;,&quot;granite&quot;,&quot;paper&quot;,&quot;spot&quot;,&quot;mesh&quot;,&quot;halftone&quot;,&quot;dither&quot;,&quot;metal&quot;,&quot;dual&quot;,&quot;dots&quot;,&quot;vignette&quot;,&quot;glow&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colour&quot;},&quot;palette&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;aqua&quot;,&quot;options&quot;:[&quot;aqua&quot;,&quot;amber&quot;,&quot;mint&quot;,&quot;sky&quot;,&quot;rose&quot;,&quot;lime&quot;,&quot;violet&quot;,&quot;paper&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Colour&quot;},&quot;chipsMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;context&quot;,&quot;options&quot;:[&quot;context&quot;,&quot;recent&quot;],&quot;tsType&quot;:&quot;'context' | 'recent'&quot;,&quot;section&quot;:&quot;Command bar&quot;},&quot;barMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;fixed&quot;,&quot;options&quot;:[&quot;fixed&quot;,&quot;compact&quot;],&quot;tsType&quot;:&quot;'fixed' | 'compact'&quot;,&quot;section&quot;:&quot;Command bar&quot;}}">
+const TAGS = ['ml', 'agents', 'systems', 'web', 'research'];
+const PALETTES = ['aqua', 'amber', 'mint', 'sky', 'rose', 'lime', 'violet', 'paper'];
+const SECTIONS = ['top', 'now', 'about', 'experience', 'projects', 'reading', 'writing', 'tools', 'skills', 'guestbook', 'contact', 'colophon'];
+
+// ---- PIPES: sources produce rows, stages transform them. `projects | grep agents | stack | uniq -c` ----
+const rowText = r => {
+  if (typeof r !== 'object' || r === null) return String(r);
+  switch (r._t) {
+    case 'project': return `${r.slug.padEnd(10)} ${r.name}  [${r.tags.join(',')}]  ${r.stack.join(', ')}`;
+    case 'reading': return `${r.date}  ${r.kind.padEnd(5)} ${r.title} — ${r.authors}  [${r.tags.join(',')}]`;
+    case 'skill': return `${r.group.padEnd(22)} ${r.skill}${r.tag ? '  [' + r.tag + ']' : ''}`;
+    case 'experience': return `${r.dates.padEnd(20)} ${r.title} — ${r.org}`;
+    case 'writing': return `${r.date}  ${r.title}`;
+    case 'history': return `${String(r.n).padStart(3)}  ${r.cmd}`;
+    case 'tool': return `${r.usage.padEnd(14)} ${r.desc}`;
+    default: return JSON.stringify(r);
+  }
+};
+const fieldOf = (r, f) => { if (typeof r !== 'object' || r === null) return r; if (f in r) return r[f]; if (f + 's' in r) return r[f + 's']; if (f.endsWith('s') && f.slice(0, -1) in r) return r[f.slice(0, -1)]; return undefined; };
+const cmpVal = (v, op, want) => {
+  if (Array.isArray(v)) return op === '!=' ? !v.map(String).includes(want) : v.map(String).some(x => op === '~' ? new RegExp(want, 'i').test(x) : x === want);
+  if (v === undefined || v === null) return op === '!=';
+  const s = String(v), n = parseFloat(s), w = parseFloat(want), num = !isNaN(n) && !isNaN(w);
+  switch (op) {
+    case '=': return s.toLowerCase() === want.toLowerCase();
+    case '!=': return s.toLowerCase() !== want.toLowerCase();
+    case '~': return new RegExp(want, 'i').test(s);
+    case '>': return num ? n > w : s > want;
+    case '<': return num ? n < w : s < want;
+    case '>=': return num ? n >= w : s >= want;
+    case '<=': return num ? n <= w : s <= want;
+  }
+  return false;
+};
+const explode = (rows, key) => rows.flatMap(r => { const v = fieldOf(r, key); return Array.isArray(v) ? v : v === undefined ? [] : [v]; });
+const STAGES = {
+  grep: (rows, a) => { if (!a) throw 'usage: grep <pattern>'; let inv = false; if (a.startsWith('-v ')) { inv = true; a = a.slice(3); } const re = new RegExp(a, 'i'); return rows.filter(r => re.test(rowText(r)) !== inv); },
+  where: (rows, a) => { const m = a.match(/^(\w+)\s*(!=|>=|<=|=|>|<|~)\s*(.+)$/); if (!m) throw 'usage: where <field><op><value>   ops: = != > < >= <= ~'; return rows.filter(r => cmpVal(fieldOf(r, m[1]), m[2], m[3].trim())); },
+  sort: (rows, a) => { const rev = /(^|\s)-r(\s|$)/.test(a); const f = a.replace(/-r/, '').trim(); const key = r => f ? fieldOf(r, f) : rowText(r); const out = [...rows].sort((x, y) => { const kx = key(x), ky = key(y); const nx = parseFloat(kx), ny = parseFloat(ky); if (!isNaN(nx) && !isNaN(ny)) return nx - ny; return String(kx ?? '').localeCompare(String(ky ?? '')); }); return rev ? out.reverse() : out; },
+  uniq: (rows, a) => { const counts = new Map(); rows.forEach(r => { const k = rowText(r); counts.set(k, (counts.get(k) || 0) + 1); }); const ks = [...counts.keys()]; return a.includes('-c') ? ks.map(k => `${String(counts.get(k)).padStart(3)}  ${k}`).sort((x, y) => parseInt(y) - parseInt(x)) : ks; },
+  head: (rows, a) => rows.slice(0, parseInt(a) || 5),
+  tail: (rows, a) => rows.slice(-(parseInt(a) || 5)),
+  count: rows => [rows.length],
+  wc: rows => [rows.length],
+  tags: rows => explode(rows, 'tags'),
+  stack: rows => explode(rows, 'stack'),
+  fields: (rows, a) => { if (!a) throw 'usage: fields <a,b,c>'; const fs = a.split(/[,\s]+/).filter(Boolean); return rows.map(r => fs.map(f => { const v = fieldOf(r, f); return Array.isArray(v) ? v.join(',') : v ?? ''; }).join('  ')); },
+  cols: (rows, a) => STAGES.fields(rows, a),
+  json: rows => [JSON.stringify(rows.map(r => { if (typeof r !== 'object') return r; const { _t, ...o } = r; return o; }), null, 1)],
+  first: rows => rows.slice(0, 1),
+  last: rows => rows.slice(-1),
+  shuf: rows => [...rows].sort(() => Math.random() - 0.5),
+  rev: rows => [...rows].reverse(),
+};
+const SOURCES = ['projects', 'reading', 'skills', 'experience', 'writing', 'history', 'tools', 'ls'];
+
+// ---- PIXEL FONT: 5-wide glyphs, row 0 = accent, rows 1-6 body, row 7 = cedilla. ----
+const PX = {
+  A: [' ### ', '#   #', '#   #', '#####', '#   #', '#   #'], L: ['#    ', '#    ', '#    ', '#    ', '#    ', '#####'], I: ['#####', '  #  ', '  #  ', '  #  ', '  #  ', '#####'],
+  E: ['#####', '#    ', '#### ', '#    ', '#    ', '#####'], M: ['#   #', '## ##', '# # #', '#   #', '#   #', '#   #'], R: ['#### ', '#   #', '#### ', '# #  ', '#  # ', '#   #'],
+  O: [' ### ', '#   #', '#   #', '#   #', '#   #', ' ### '], Z: ['#####', '    #', '   # ', '  #  ', ' #   ', '#####'], C: [' ####', '#    ', '#    ', '#    ', '#    ', ' ####'],
+  N: ['#   #', '##  #', '# # #', '#  ##', '#   #', '#   #'], S: [' ####', '#    ', ' ### ', '    #', '    #', '#### '], T: ['#####', '  #  ', '  #  ', '  #  ', '  #  ', '  #  '],
+  '@': [' ### ', '#   #', '# ###', '# # #', '# ###', ' ### '], ' ': ['     ', '     ', '     ', '     ', '     ', '     '],
+};
+const PX_ACCENT = { 'Ö': ['O', ' # # ', ''], 'İ': ['I', '  #  ', ''], 'Ç': ['C', '', '   # '], 'Ü': ['U', ' # # ', ''], 'Ş': ['S', '', '   # '] };
+function pixelRows(text) {
+  const rows = Array.from({ length: 8 }, () => '');
+  for (const ch of text.toUpperCase()) {
+    const acc = PX_ACCENT[ch]; const base = acc ? acc[0] : ch; const g = PX[base] || PX[' '];
+    rows[0] += (acc && acc[1] ? acc[1] : '     ') + ' ';
+    g.forEach((r, i) => { rows[i + 1] += r + ' '; });
+    rows[7] += (acc && acc[2] ? acc[2] : '     ') + ' ';
+  }
+  const rmTop = !rows[0].trim(), rmBot = !rows[7].trim();
+  return rows.slice(rmTop ? 1 : 0, rmBot ? 7 : 8).map(r => r.replace(/#/g, '█').trimEnd());
+}
+
+// ---- TOOLS: each run() is a pure function returning the output string. ----
+const TOOLS = [
+  { names: ['tokens', 'token'], usage: 'tokens <text>', desc: { en: 'Rough token count for a piece of text, using the ~4 characters per token rule.', tr: 'Bir metin için kabaca token sayısı, ~4 karakter/token kuralıyla.' }, example: 'tokens the quick brown fox',
+    run: a => { if (!a) return 'usage: tokens <text>'; const chars = a.length, words = a.split(/\s+/).filter(Boolean).length, t = Math.max(1, Math.round(chars / 4)); return `${chars} chars · ${words} words · ~${t} tokens`; } },
+  { names: ['tr', 'ascii'], usage: 'tr <text>', desc: { en: 'Turkish characters to ASCII (ç→c, ş→s, ı→i). Handy for slugs and filenames.', tr: 'Türkçe karakterleri ASCII\'ye çevirir (ç→c, ş→s, ı→i). Slug ve dosya adları için.' }, example: 'tr İstanbul Boğazı',
+    run: a => { if (!a) return 'usage: tr <text>'; const map = { ç: 'c', Ç: 'C', ğ: 'g', Ğ: 'G', ı: 'i', İ: 'I', ö: 'o', Ö: 'O', ş: 's', Ş: 'S', ü: 'u', Ü: 'U' }; return a.replace(/[çÇğĞıİöÖşŞüÜ]/g, c => map[c]); } },
+  { names: ['cron'], usage: 'cron <expr>', desc: { en: 'Explains a five-field cron expression in plain words.', tr: 'Beş alanlı bir cron ifadesini düz sözcüklerle açıklar.' }, example: 'cron 0 9 * * 1-5',
+    run: a => {
+      const f = a.trim().split(/\s+/); if (f.length !== 5) return 'usage: cron <min> <hour> <day> <month> <weekday>';
+      const [mi, h, d, mo, w] = f, days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const name = (v, arr) => v.replace(/\d+/g, n => arr[+n] ?? n);
+      const every = (v, unit) => v === '*' ? `every ${unit}` : v.startsWith('*/') ? `every ${v.slice(2)} ${unit}s` : null;
+      let when;
+      if (mi === '*' && h === '*') when = 'every minute';
+      else if (every(mi, 'minute') && h === '*') when = every(mi, 'minute');
+      else if (h === '*') when = `at minute ${mi} of every hour`;
+      else if (every(h, 'hour')) when = `${every(h, 'hour')} at minute ${mi === '*' ? '0' : mi}`;
+      else when = `at ${h.split(',').map(x => x.padStart(2, '0')).join(', ')}:${(mi === '*' ? '0' : mi).padStart(2, '0')}`;
+      const parts = [when];
+      if (d !== '*') parts.push(`on day ${d} of the month`);
+      if (mo !== '*') parts.push(`in month ${mo}`);
+      if (w !== '*') parts.push(`on ${name(w, days).replace('-', ' to ').replace(/,/g, ', ')}`);
+      return parts.join(' ');
+    } },
+  { names: ['ts', 'epoch'], usage: 'ts [n|date]', desc: { en: 'Unix timestamp to ISO date and back. No argument gives now.', tr: 'Unix zaman damgasını ISO tarihe ve tersine çevirir. Parametresiz şu anı verir.' }, example: 'ts 1767225600',
+    run: a => { let d; if (!a) d = new Date(); else if (/^\d+$/.test(a)) d = new Date(+a * (a.length > 10 ? 1 : 1000)); else d = new Date(a); if (isNaN(d)) return `could not parse: ${a}`; return `${Math.floor(d.getTime() / 1000)}  ${d.toISOString()}  ${d.toLocaleString()}`; } },
+  { names: ['calc', '='], usage: 'calc <expr>', desc: { en: 'Arithmetic with + − × ÷ ^ and parentheses. Nothing is evaluated as code.', tr: '+ − × ÷ ^ ve parantezle aritmetik. Hiçbir şey kod olarak çalıştırılmaz.' }, example: 'calc (1024*8)/1e6',
+    run: a => { if (!a) return 'usage: calc <expr>'; const s = a.replace(/×/g, '*').replace(/÷/g, '/').replace(/\^/g, '**').replace(/\s+/g, ''); if (!/^[\d.()+\-*/e%]+$/.test(s)) return `only numbers and + - * / ^ ( ) allowed`; try { const v = Function('"use strict";return (' + s + ')')(); return Number.isFinite(v) ? `${a} = ${+v.toPrecision(12)}` : 'not a number'; } catch (e) { return `could not evaluate: ${a}`; } } },
+  { names: ['pipes', 'borular'], usage: 'a | b | c', desc: { en: 'Unix-style pipes over everything on this page: filter, sort, count, open.', tr: 'Sayfadaki her şey üzerinde Unix tarzı borular: filtrele, sırala, say, aç.' }, example: 'projects | stack | sort | uniq', run: () => MSG.en.pipesHelp },
+];
+
+// ---- CONTENT: edit this object, never the markup. {en, tr} pairs are picked by language. ----
+const CONTENT = {
+  meta: {
+    name: 'Ali Emre Özcan',
+    role: { en: 'computer engineering student · machine learning intern', tr: 'bilgisayar mühendisliği öğrencisi · makine öğrenmesi stajyeri' },
+    email: 'placeholder@example.com',
+    github: 'https://github.com/placeholder', githubLabel: 'github.com/placeholder',
+    linkedin: 'https://www.linkedin.com/in/placeholder', linkedinLabel: 'linkedin.com/in/placeholder',
+    cv: '#', updated: '2026-09-14',
+  },
+  hero: {
+    line1: { en: "I'm a final-year computer engineering student at İTÜ and a machine learning intern at TAZI, where I build ML models and tool-using agent systems.", tr: "İTÜ Bilgisayar Mühendisliği son sınıf öğrencisiyim. TAZI'de makine öğrenmesi stajyeri olarak ML modelleri ve araç kullanan ajan sistemleri geliştiriyorum." },
+    line2: { en: 'Placeholder: one sentence on the kind of role and team I am looking for.', tr: 'Placeholder: aradığım rol ve ekip türü üzerine tek cümle.' },
+    avail: { en: 'Placeholder: Open to full-time roles from mid-2027', tr: 'Placeholder: 2027 ortasından itibaren tam zamanlı rollere açığım' },
+  },
+  now: {
+    date: { en: 'September 2026', tr: 'Eylül 2026' },
+    text: { en: 'Placeholder: This month at TAZI I am working on … (the specific model or agent component). I am learning … (a paper, a tool, a course). Outside work I am … (thesis progress or a side project). Update this paragraph monthly and change the date.', tr: "Placeholder: Bu ay TAZI'de … üzerinde çalışıyorum (belirli model veya ajan bileşeni). … öğreniyorum (bir makale, araç veya ders). İş dışında … (tez ilerlemesi veya yan proje). Bu paragrafı her ay güncelleyip tarihi değiştir." },
+  },
+  about: {
+    en: ['Placeholder: Three or four sentences in first person. What kinds of problems you like working on, one concrete thing you built and why it mattered, how you like to work with others, and one fact from outside work.'],
+    tr: ['Placeholder: Birinci tekil şahısla üç dört cümle. Ne tür problemleri sevdiğin, yaptığın somut bir şey ve neden önemli olduğu, başkalarıyla nasıl çalıştığın ve iş dışından bir gerçek.'],
+  },
+  experience: [
+    { dates: { en: 'Jun 2026 – present', tr: 'Haz 2026 – devam' }, board: '2026', status: { en: 'now', tr: 'devam' }, title: { en: 'Machine learning intern', tr: 'Makine öğrenmesi stajyeri' }, org: 'TAZI Bilişim Teknolojileri, Istanbul',
+      bullets: { en: ['Placeholder: one concrete result with a number (accuracy, latency, cost, time saved).', 'Placeholder: the tool-using agent system you worked on and what it does for users.', 'Placeholder: something you owned end to end, from data to deployment.'], tr: ['Placeholder: sayı içeren somut bir sonuç (doğruluk, gecikme, maliyet, zaman).', 'Placeholder: üzerinde çalıştığın araç kullanan ajan sistemi ve kullanıcılar için ne yaptığı.', 'Placeholder: veriden dağıtıma uçtan uca sahiplendiğin bir iş.'] } },
+    { dates: { en: '2022 – 2027', tr: '2022 – 2027' }, board: '2022', status: { en: 'until 2027', tr: '2027’ye dek' }, title: { en: 'B.Sc. Computer Engineering', tr: 'Bilgisayar Mühendisliği, Lisans' }, org: { en: 'Istanbul Technical University', tr: 'İstanbul Teknik Üniversitesi' },
+      bullets: { en: ['Placeholder: thesis topic, one sentence, and advisor.'], tr: ['Placeholder: tez konusu, tek cümle, ve danışman.'] } },
+    { dates: { en: 'Placeholder: dates', tr: 'Placeholder: tarihler' }, board: '20XX', status: { en: 'past', tr: 'geçmiş' }, title: { en: 'Placeholder: earlier internship, teaching assistantship or club role', tr: 'Placeholder: önceki staj, asistanlık veya kulüp görevi' }, org: { en: 'Placeholder: organisation', tr: 'Placeholder: kurum' }, bullets: { en: [], tr: [] } },
+  ],
+  projects: [
+    { slug: 'churn', featured: true, name: { en: 'Placeholder: Churn prediction with explainable features', tr: 'Placeholder: Açıklanabilir özniteliklerle müşteri kaybı tahmini' }, tags: ['ml'], stack: ['Python', 'scikit-learn', 'XGBoost', 'SHAP'],
+      problem: { en: 'Placeholder: Which customers will leave in the next 90 days, and what should the retention team do about it?', tr: 'Placeholder: Hangi müşteriler önümüzdeki 90 günde ayrılacak ve ekip ne yapmalı?' },
+      outcome: { en: 'Placeholder: One sentence with the result, e.g. a lift over the baseline and how the output was used.', tr: 'Placeholder: Sonucu içeren tek cümle, örn. taban çizgisine göre kazanım ve çıktının nasıl kullanıldığı.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }, { label: { en: 'write-up', tr: 'yazı' }, href: '#' }],
+      writeup: { en: ['Placeholder: Paragraph one. The setting and the data: where it came from, how big, what was wrong with it.', 'Placeholder: Paragraph two. What you actually built and the one design choice that mattered most.', 'Placeholder: Paragraph three. How you evaluated it, what the number means to a non-expert, and what happened after.'], tr: ['Placeholder: Birinci paragraf. Ortam ve veri: nereden geldi, ne kadar büyük, nesi yanlıştı.', 'Placeholder: İkinci paragraf. Gerçekte ne yaptığın ve en çok fark yaratan tasarım kararı.', 'Placeholder: Üçüncü paragraf. Nasıl değerlendirdiğin, sayının uzman olmayan biri için anlamı ve sonrasında ne olduğu.'] },
+      differently: { en: 'Placeholder: one honest sentence about what you would change.', tr: 'Placeholder: neyi değiştireceğin üzerine dürüst tek cümle.' } },
+    { slug: 'toolbench', name: { en: 'Placeholder: Evaluation harness for tool-using agents', tr: 'Placeholder: Araç kullanan ajanlar için değerlendirme düzeneği' }, tags: ['agents', 'ml'], stack: ['Python', 'Claude API', 'pytest'],
+      problem: { en: 'Placeholder: How do you know an agent chose the right tool for the right reason, not by luck?', tr: 'Placeholder: Bir ajanın doğru aracı şans eseri değil doğru sebeple seçtiğini nasıl bilirsin?' },
+      outcome: { en: 'Placeholder: What the harness measures and one finding it produced.', tr: 'Placeholder: Düzeneğin neyi ölçtüğü ve ürettiği bir bulgu.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }],
+      writeup: { en: ['Placeholder: Two to four paragraphs.'], tr: ['Placeholder: İki ila dört paragraf.'] }, differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+    { slug: 'kvstore', name: { en: 'Placeholder: Log-structured key-value store', tr: 'Placeholder: Log yapılı anahtar-değer deposu' }, tags: ['systems'], stack: ['Rust'],
+      problem: { en: 'Placeholder: A course project turned into a question about how far a single-node store can go.', tr: 'Placeholder: Tek düğümlü bir deponun nereye kadar gidebileceği sorusuna dönüşen ders projesi.' },
+      outcome: { en: 'Placeholder: Throughput or durability result in one sentence.', tr: 'Placeholder: Tek cümlede verim veya dayanıklılık sonucu.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }],
+      writeup: { en: ['Placeholder: Two to four paragraphs.'], tr: ['Placeholder: İki ila dört paragraf.'] }, differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+    { slug: 'site', name: { en: 'This site', tr: 'Bu site' }, tags: ['web'], stack: ['HTML', 'CSS', 'JavaScript'],
+      problem: { en: 'A portfolio a recruiter can skim in 30 seconds and an engineer can drive from a shell prompt.', tr: 'Bir işe alımcının 30 saniyede tarayabildiği, bir mühendisin komut satırından kullanabildiği bir portfolyo.' },
+      outcome: { en: 'One file, no framework, English and Turkish, every command works with the keyboard.', tr: 'Tek dosya, çerçeve yok, İngilizce ve Türkçe, her komut klavyeyle çalışır.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }],
+      writeup: { en: ['The command bar is the only unusual thing on the page. Everything it does is also reachable by scrolling and clicking, so nobody is locked out.', 'All copy lives in one content object at the top of the script. Updating the site means editing that object.'], tr: ['Komut satırı sayfadaki tek sıra dışı şey. Yaptığı her şeye kaydırarak ve tıklayarak da ulaşılır, kimse dışarıda kalmaz.', 'Tüm metin betiğin başındaki tek bir içerik nesnesinde. Siteyi güncellemek o nesneyi düzenlemek demek.'] },
+      differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+    { slug: 'survey', name: { en: 'Placeholder: Literature survey on tool use in LLM agents', tr: 'Placeholder: LLM ajanlarında araç kullanımı üzerine literatür taraması' }, tags: ['research', 'agents'], stack: ['LaTeX'],
+      problem: { en: 'Placeholder: What the research question was and why it was worth a survey.', tr: 'Placeholder: Araştırma sorusu neydi ve neden taramaya değerdi.' },
+      outcome: { en: 'Placeholder: Where it was presented or who read it.', tr: 'Placeholder: Nerede sunuldu veya kim okudu.' },
+      links: [{ label: { en: 'paper', tr: 'makale' }, href: '#' }],
+      writeup: { en: ['Placeholder: Two to four paragraphs.'], tr: ['Placeholder: İki ila dört paragraf.'] }, differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+  ],
+  writing: [
+    { date: '2026-08', title: { en: 'Placeholder: A note on evaluating agents that call tools', tr: 'Placeholder: Araç çağıran ajanları değerlendirme üzerine not' }, href: '#' },
+    { date: '2026-05', title: { en: 'Placeholder: What I learned shipping my first model to production', tr: 'Placeholder: İlk modelimi üretime alırken öğrendiklerim' }, href: '#' },
+  ],
+  skills: [
+    { group: { en: 'Languages', tr: 'Diller' }, items: [{ label: 'Python', tag: 'ml' }, { label: 'Rust', tag: 'systems' }, { label: 'C++', tag: 'systems' }, { label: 'SQL', tag: 'ml' }, { label: 'JavaScript', tag: 'web' }] },
+    { group: { en: 'Machine learning', tr: 'Makine öğrenmesi' }, items: [{ label: 'scikit-learn', tag: 'ml' }, { label: 'PyTorch', tag: 'ml' }, { label: 'XGBoost', tag: 'ml' }, { label: { en: 'Model evaluation', tr: 'Model değerlendirme' }, tag: 'ml' }] },
+    { group: { en: 'Agents & LLMs', tr: 'Ajanlar ve LLM\'ler' }, items: [{ label: { en: 'Tool use', tr: 'Araç kullanımı' }, tag: 'agents' }, { label: { en: 'Prompt design', tr: 'İstem tasarımı' }, tag: 'agents' }, { label: { en: 'Agent evaluation', tr: 'Ajan değerlendirme' }, tag: 'agents' }] },
+    { group: { en: 'Infrastructure & tools', tr: 'Altyapı ve araçlar' }, items: [{ label: 'Git', tag: 'systems' }, { label: 'Docker', tag: 'systems' }, { label: 'Linux', tag: 'systems' }, { label: 'PostgreSQL', tag: 'systems' }] },
+    { group: { en: 'Human languages', tr: 'Konuşulan diller' }, items: [{ label: { en: 'Turkish, native', tr: 'Türkçe, anadil' } }, { label: { en: 'English, fluent', tr: 'İngilizce, akıcı' } }] },
+  ],
+  reading: [
+    { date: '2026-09', kind: 'paper', title: { en: 'Placeholder: Toolformer: Language Models Can Teach Themselves to Use Tools', tr: 'Placeholder: Toolformer: Language Models Can Teach Themselves to Use Tools' }, authors: 'Schick et al.', tags: ['agents', 'ml'], href: '#', note: { en: 'Placeholder: one sentence on what you took from it and how it changed what you built.', tr: 'Placeholder: ondan ne aldığın ve yaptığın şeyi nasıl değiştirdiği üzerine tek cümle.' } },
+    { date: '2026-08', kind: 'book', title: { en: 'Placeholder: Designing Data-Intensive Applications', tr: 'Placeholder: Designing Data-Intensive Applications' }, authors: 'Kleppmann', tags: ['systems'], href: '#', note: { en: 'Placeholder: the chapter that mattered and why.', tr: 'Placeholder: önemli olan bölüm ve nedeni.' } },
+    { date: '2026-07', kind: 'paper', title: { en: 'Placeholder: A Unified Approach to Interpreting Model Predictions', tr: 'Placeholder: A Unified Approach to Interpreting Model Predictions' }, authors: 'Lundberg & Lee', tags: ['ml', 'research'], href: '#', note: { en: 'Placeholder: what SHAP did and did not solve for the churn project.', tr: 'Placeholder: SHAP\'ın churn projesinde neyi çözdüğü ve çözmediği.' } },
+    { date: '2026-06', kind: 'post', title: { en: 'Placeholder: a blog post you keep sending people', tr: 'Placeholder: insanlara göndermeye devam ettiğin bir yazı' }, authors: 'Placeholder', tags: ['web'], href: '#', note: { en: 'Placeholder: why you keep sending it.', tr: 'Placeholder: neden göndermeye devam ettiğin.' } },
+  ],
+  guestbook: {
+    repo: 'placeholder/guestbook',   // GitHub repo whose issues store entries; label 'shown' publishes them
+    entries: [
+      { name: 'Placeholder: a colleague', date: '2026-09-02', message: { en: 'Placeholder: approved entries are copied here from the guestbook repo issues.', tr: 'Placeholder: onaylanan girdiler guestbook deposundaki issue\'lardan buraya kopyalanır.' } },
+      { name: 'Placeholder: a classmate', date: '2026-08-21', message: { en: 'Placeholder: keep entries to one or two lines.', tr: 'Placeholder: girdileri bir iki satırda tut.' } },
+    ],
+  },
+  contact: { note: { en: 'Placeholder: Email is the best way to reach me; I reply within two days. LinkedIn messages take longer.', tr: 'Placeholder: Bana en iyi e-postayla ulaşılır; iki gün içinde yanıtlarım. LinkedIn mesajları daha uzun sürer.' } },
+  colophon: {
+    en: ['Built with plain HTML, CSS and JavaScript in a single file, no framework.', 'Set in IBM Plex Sans and IBM Plex Mono.', 'The command bar exists because I spend my day in one, and because it lets the page be driven without a mouse.', 'The small marks next to section titles are Anatolian kilim motifs (su yolu, elibelinde, koçboynuzu, yıldız, pıtrak, göz), drawn on the same pixel grid as the terminal banner.'],
+    tr: ['Tek dosyada düz HTML, CSS ve JavaScript ile yapıldı, çerçeve yok.', 'IBM Plex Sans ve IBM Plex Mono ile dizildi.', 'Komut satırı var çünkü günümü bir tanesinde geçiriyorum ve sayfanın fare olmadan kullanılmasını sağlıyor.', 'Bölüm başlıklarının yanındaki küçük işaretler Anadolu kilim motifleri (su yolu, elibelinde, koçboynuzu, yıldız, pıtrak, göz); terminal banner\'ıyla aynı piksel ızgarasında çizildi.'],
+  },
+};
+
+const UI = {
+  en: { barLabel: 'Command bar. Type help for a list of commands.', kbd: '/ focus · ? help · Tab complete', hintEmpty: 'type help, or press ?', now: 'Now', about: 'About', experience: 'Experience', projects: 'Projects', writing: 'Writing', skills: 'Skills', skillsNote: 'Click a skill to see projects that use it.', contact: 'Contact', colophon: 'Colophon', email: 'Email', cvDownload: 'Download CV (PDF)', updated: 'Last updated', light: 'Light', dark: 'Dark', lang: 'Türkçe', clear: 'clear', back: 'back', differently: 'What I\'d do differently:', imageSlot: 'image or diagram slot — optional', noProjects: 'No projects with that tag yet.', copied: 'copied', copyFail: 'copy failed, select it manually', all: 'all', indexLabel: 'Sections', welcome: 'ali@site — a shell for this page.\nhelp lists commands; pipes work:  projects | stack | uniq -c\nHover anything on the left and press Enter to open it.', reading: 'Reading', readingNote: 'Papers, books and posts, one sentence each on what I took from them. Newest first.', noReading: 'Nothing with that tag yet.', tools: 'Tools', toolsNote: 'Small utilities I use myself. Each one is a command in the bar; click a usage line to try it.', guestbook: 'Guestbook', guestbookNote: 'Leave a line. Entries appear after I read them. Also: echo <message> in the bar.', guestName: 'name', guestMsg: 'message', pending: 'awaiting review' },
+  tr: { barLabel: 'Komut satırı. Komut listesi için yardım yazın.', kbd: '/ odak · ? yardım · Tab tamamla', hintEmpty: 'yardım yazın veya ? basın', now: 'Şimdi', about: 'Hakkımda', experience: 'Deneyim', projects: 'Projeler', writing: 'Yazılar', skills: 'Yetenekler', skillsNote: 'Bir yeteneğe tıklayıp onu kullanan projeleri görün.', contact: 'İletişim', colophon: 'Kolofon', email: 'E-posta', cvDownload: 'CV indir (PDF)', updated: 'Son güncelleme', light: 'Açık', dark: 'Koyu', lang: 'English', clear: 'temizle', back: 'geri', differently: 'Farklı yapacağım şey:', imageSlot: 'görsel veya diyagram alanı — isteğe bağlı', noProjects: 'Bu etiketle henüz proje yok.', copied: 'kopyalandı', copyFail: 'kopyalanamadı, elle seçin', all: 'hepsi', indexLabel: 'Bölümler', welcome: 'ali@site — bu sayfanın kabuğu.\nyardım komutları listeler; borular çalışır:  projeler | stack | uniq -c\nSoldaki bir şeyin üzerine gelip Enter\'a basın.', reading: 'Okumalar', readingNote: 'Makaleler, kitaplar ve yazılar; her biri için aldığım şey üzerine tek cümle. En yeni önce.', noReading: 'Bu etiketle henüz bir şey yok.', tools: 'Araçlar', toolsNote: 'Kendim kullandığım küçük yardımcılar. Her biri satırda bir komut; denemek için kullanım satırına tıklayın.', guestbook: 'Ziyaretçi defteri', guestbookNote: 'Bir satır bırakın. Girdiler okuduktan sonra görünür. Ayrıca: satırda echo <mesaj>.', guestName: 'ad', guestMsg: 'mesaj', pending: 'inceleme bekliyor' },
+};
+
+const MSG = {
+  en: { goto: s => `→ ${s}`, filtered: (n, t) => `${n} project${n === 1 ? '' : 's'} tagged ${t}`, allProjects: 'showing all projects', noTag: t => `no tag called ${t} — tags: ${TAGS.join(', ')}`, noProject: s => `no project called ${s} — try: projects`, projectList: l => `projects: ${l}`, opened: s => `→ project ${s}`, closed: 'closed', nothingOpen: 'nothing to go back from', notFound: (c, s) => `command not found: ${c}` + (s ? ` — did you mean ${s}?` : ' — try help'), theme: t => `theme: ${t}`, palette: p => `palette: ${p}`, noPalette: (p, l) => `no palette called ${p} — try: ${l}`, lang: 'language: English', copied: 'email copied to clipboard', copyFail: e => `could not copy — the address is ${e}`, opening: s => `opening ${s}`, cleared: '', noHistory: 'no commands yet', ambiguous: l => l, whoami: `${CONTENT.meta.name} — ${CONTENT.meta.role.en}`, ls: SECTIONS.join('  '), sudo: 'you already have every permission this page offers.', rm: 'nothing to remove. the content lives in one object, and it is staying there.', exit: 'this is a web page. the tab close button is up there.', vim: ':q!  you are free.', help: 'commands (arguments in brackets):', helpTail: 'pipes work too:  projects | grep agents | stack | uniq -c   (type pipes)\ncommands also work in Turkish: projeler, hakkında, iletişim, tema, dil …',
+    noSource: (s, l) => `${s} cannot be piped — sources: ${l}`, noStage: (s, l) => `unknown stage: ${s} — stages: ${l}`, noRows: '(no results)',
+    pipesHelp: ['the content is a dataset. sources produce rows, stages transform them:', '  sources   ' + SOURCES.join(' '), '  stages    grep [-v] <re> · where <field><op><val> · sort [field] [-r] · uniq [-c] · head n · tail n · count · tags · stack · fields a,b · json · shuf', '', '  projects | grep agents', '  projects | stack | uniq -c', '  reading | where year>=2026 | sort date -r | fields date,title', '  skills | where tag=ml | count', '  history | tail 3'].join('\n'), readFiltered: (n, t) => `${n} reading entr${n === 1 ? 'y' : 'ies'} tagged ${t}`, allReading: 'showing all reading', toolsHead: 'tools:', echoUsage: 'usage: echo <message>  (add your name with  echo name: message)', echoed: 'posted — it appears after review. thanks.', echoOpen: 'opening a prefilled GitHub issue to post it' },
+  tr: { goto: s => `→ ${s}`, filtered: (n, t) => `${t} etiketli ${n} proje`, allProjects: 'tüm projeler gösteriliyor', noTag: t => `${t} diye bir etiket yok — etiketler: ${TAGS.join(', ')}`, noProject: s => `${s} diye bir proje yok — deneyin: projeler`, projectList: l => `projeler: ${l}`, opened: s => `→ proje ${s}`, closed: 'kapatıldı', nothingOpen: 'geri dönülecek bir şey yok', notFound: (c, s) => `komut bulunamadı: ${c}` + (s ? ` — ${s} mi demek istediniz?` : ' — yardım yazmayı deneyin'), theme: t => `tema: ${t === 'dark' ? 'koyu' : 'açık'}`, palette: p => `palet: ${p}`, noPalette: (p, l) => `${p} diye bir palet yok — deneyin: ${l}`, lang: 'dil: Türkçe', copied: 'e-posta panoya kopyalandı', copyFail: e => `kopyalanamadı — adres: ${e}`, opening: s => `${s} açılıyor`, cleared: '', noHistory: 'henüz komut yok', ambiguous: l => l, whoami: `${CONTENT.meta.name} — ${CONTENT.meta.role.tr}`, ls: SECTIONS.join('  '), sudo: 'bu sayfanın sunduğu tüm izinlere zaten sahipsiniz.', rm: 'silinecek bir şey yok. içerik tek bir nesnede ve orada kalıyor.', exit: 'bu bir web sayfası. sekmeyi kapatma düğmesi yukarıda.', vim: ':q!  özgürsünüz.', help: 'komutlar (parametreler köşeli parantezde):', helpTail: 'borular da çalışır:  projeler | grep agents | stack | uniq -c   (borular yazın)\nkomutlar İngilizce de çalışır: projects, about, contact, theme, lang …',
+    noSource: (s, l) => `${s} boruya verilemez — kaynaklar: ${l}`, noStage: (s, l) => `bilinmeyen aşama: ${s} — aşamalar: ${l}`, noRows: '(sonuç yok)',
+    pipesHelp: ['içerik bir veri seti. kaynaklar satır üretir, aşamalar dönüştürür:', '  kaynaklar ' + SOURCES.join(' '), '  aşamalar  grep [-v] <re> · where <alan><op><değer> · sort [alan] [-r] · uniq [-c] · head n · tail n · count · tags · stack · fields a,b · json · shuf', '', '  projeler | grep agents', '  projeler | stack | uniq -c', '  okuma | where year>=2026 | sort date -r | fields date,title', '  yetenekler | where tag=ml | count', '  geçmiş | tail 3'].join('\n'), readFiltered: (n, t) => `${t} etiketli ${n} okuma`, allReading: 'tüm okumalar gösteriliyor', toolsHead: 'araçlar:', echoUsage: 'kullanım: echo <mesaj>  (adınızı eklemek için  echo ad: mesaj)', echoed: 'gönderildi — incelemeden sonra görünür. teşekkürler.', echoOpen: 'göndermek için önceden doldurulmuş bir GitHub issue açılıyor' },
+};
+
+class Component extends DCLogic {
+  state = { lang: 'en', theme: 'dark', input: '', output: '', hist: [], histIdx: -1, filter: null, readFilter: null, openSlug: null, focused: false, inProjects: false, inReading: false, scrolled: false, copied: false, shown: 0, palette: 'aqua', section: '', flap: {}, log: [], hoverHint: '', guestName: '', guestMsg: '', pendingGuests: [] };
+  inputRef = React.createRef();
+  projectsRef = React.createRef();
+  readingRef = React.createRef();
+  logRef = React.createRef();
+  headerRef = React.createRef();
+
+  L = v => (v && typeof v === 'object' && !Array.isArray(v) && 'en' in v) ? (v[this.state.lang] ?? v.en) : v;
+  m = () => MSG[this.state.lang];
+  ui = () => UI[this.state.lang];
+  reduced = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  componentDidMount() {
+    let lang = 'en', theme = 'light';
+    try {
+      const sl = localStorage.getItem('aeo-lang');
+      lang = sl || ((navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en');
+      theme = localStorage.getItem('aeo-theme-v2') || document.documentElement.getAttribute('data-theme') || 'dark';
+    } catch (e) {}
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.lang = lang;
+    this.applyBg();
+    let palette = this.props.palette ?? 'aqua';
+    if (this.props.palette == null) { try { palette = localStorage.getItem('aeo-palette') || palette; } catch (e) {} }
+    this.applyPalette(palette, true);
+    this.setState({ lang, theme }, () => this.applyHash(true));
+    window.addEventListener('keydown', this.onGlobalKey);
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.observeTries = 0;
+    this.tryObserve();
+    this.revealTries = 0;
+    this.tryReveal();
+    this.startBanner();
+    setTimeout(this.flapScroll, 300);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onGlobalKey);
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('pointermove', this.onSpot);
+    if (this.io) this.io.disconnect();
+    if (this.rio) this.rio.disconnect();
+    if (this.sio) this.sio.disconnect();
+    clearInterval(this.typeT);
+    clearInterval(this.bannerT);
+    if (this.flapRaf) cancelAnimationFrame(this.flapRaf);
+    if (this.flapT) Object.values(this.flapT).forEach(clearInterval);
+  }
+  tryObserve = () => {
+    const el = this.projectsRef.current, rl = this.readingRef.current;
+    if (el && rl && 'IntersectionObserver' in window) {
+      this.io = new IntersectionObserver(es => { const u = {}; es.forEach(e => { if (e.target === el) u.inProjects = e.isIntersecting; if (e.target === rl) u.inReading = e.isIntersecting; }); this.setState(u); }, { rootMargin: '-140px 0px -45% 0px' });
+      this.io.observe(el); this.io.observe(rl);
+    } else if (this.observeTries++ < 20) setTimeout(this.tryObserve, 400);
+  };
+  tryReveal = () => {
+    const secs = document.querySelectorAll('main > section');
+    if (!secs.length) { if (this.revealTries++ < 20) setTimeout(this.tryReveal, 400); return; }
+    if (!('IntersectionObserver' in window)) { secs.forEach(s => s.setAttribute('data-in', '')); return; }
+    this.rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-in', ''); this.rio.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    secs.forEach(s => this.rio.observe(s));
+    setTimeout(() => secs.forEach(s => s.setAttribute('data-in', '')), 3000);
+    this.sio = new IntersectionObserver(es => { const hit = es.find(e => e.isIntersecting); if (hit) this.setState({ section: hit.target.id }); }, { rootMargin: '-45% 0px -50% 0px' });
+    secs.forEach(s => this.sio.observe(s));
+  };
+  onScroll = () => { const s = window.scrollY > 80; if (s !== this.state.scrolled) this.setState({ scrolled: s }); this.flapScroll(); };
+
+  // ---- routing ----
+  onHash = () => this.applyHash(false);
+  applyHash(initial) {
+    const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+    if (!h) return;
+    const [sec, arg] = h.split('/');
+    const go = () => this.scrollToId(sec, initial ? 'auto' : undefined);
+    if (sec === 'projects' && arg) {
+      if (TAGS.includes(arg)) this.setState({ filter: arg, openSlug: null }, go);
+      else if (CONTENT.projects.some(p => p.slug === arg)) this.setState({ openSlug: arg }, () => this.scrollToId('project-' + arg, initial ? 'auto' : undefined));
+      else go();
+    } else if (sec === 'reading' && arg && TAGS.includes(arg)) this.setState({ readFilter: arg }, go);
+    else if (SECTIONS.includes(sec)) setTimeout(go, initial ? 150 : 0);
+  }
+  setHash(h) { try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch (e) {} }
+  headerOffset() { const el = this.headerRef.current; const wide = window.matchMedia && window.matchMedia('(min-width: 1024px)').matches; return (el && !wide ? el.getBoundingClientRect().height : 0) + 24; }
+  scrollToId(id, behavior) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - this.headerOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: behavior || (this.reduced() ? 'auto' : 'smooth') });
+  }
+  goto = sec => { this.setHash(sec === 'top' ? '' : sec); this.scrollToId(sec); this.out(this.m().goto(sec)); };
+
+  // ---- actions ----
+  out = text => {
+    clearInterval(this.typeT);
+    this.setState(s => {
+      const log = s.log.slice();
+      if (this.pending && log.length) log[log.length - 1] = { ...log[log.length - 1], out: text }; else log.push({ cmd: '', args: '', out: text });
+      this.pending = false;
+      return { log: log.slice(-60), output: text, shown: (this.reduced() || !text) ? text.length : 0 };
+    });
+    if (this.reduced() || !text) return;
+    const step = Math.max(2, Math.ceil(text.length / 40));
+    this.typeT = setInterval(() => this.setState(s => { const n = Math.min(s.output.length, s.shown + step); if (n >= s.output.length) clearInterval(this.typeT); return { shown: n }; }), 16);
+  };
+  filterTo = tag => {
+    if (!TAGS.includes(tag)) { this.out(this.m().noTag(tag)); return; }
+    const n = CONTENT.projects.filter(p => p.tags.includes(tag)).length;
+    this.setState({ filter: tag, openSlug: null }, () => { this.scrollToId('projects'); this.flapAnimate('projects'); });
+    this.setHash('projects/' + tag);
+    this.out(this.m().filtered(n, tag));
+  };
+  clearFilter = () => { this.setState({ filter: null }, () => this.flapAnimate('projects')); this.setHash('projects'); this.out(this.m().allProjects); };
+  readingTo = tag => {
+    if (!TAGS.includes(tag)) { this.out(this.m().noTag(tag)); return; }
+    const n = CONTENT.reading.filter(r => r.tags.includes(tag)).length;
+    this.setState({ readFilter: tag }, () => { this.scrollToId('reading'); this.flapAnimate('reading'); });
+    this.setHash('reading/' + tag);
+    this.out(this.m().readFiltered(n, tag));
+  };
+  clearReadingFilter = () => { this.setState({ readFilter: null }, () => this.flapAnimate('reading')); this.setHash('reading'); this.out(this.m().allReading); };
+  echo = raw => {
+    const text = (raw || '').trim();
+    if (!text) { this.out(this.m().echoUsage); return; }
+    let name = '', message = text;
+    const mm = text.match(/^([^:]{1,40}):\s*(.+)$/); if (mm) { name = mm[1].trim(); message = mm[2].trim(); }
+    this.postGuest(name, message);
+  };
+  postGuest = (name, message) => {
+    if (!message) { this.out(this.m().echoUsage); return; }
+    const entry = { name: name || 'anonymous', date: new Date().toISOString().slice(0, 10), message, pending: true };
+    this.setState(s => ({ pendingGuests: [entry, ...s.pendingGuests], guestName: '', guestMsg: '' }));
+    const repo = CONTENT.guestbook.repo;
+    if (repo && !repo.startsWith('placeholder')) {
+      const url = `https://github.com/${repo}/issues/new?title=${encodeURIComponent('guestbook: ' + (name || 'anonymous'))}&body=${encodeURIComponent(message)}`;
+      this.out(this.m().echoOpen); window.open(url, '_blank', 'noopener');
+    } else this.out(this.m().echoed);
+  };
+  onGuestName = e => this.setState({ guestName: e.target.value });
+  onGuestMsg = e => this.setState({ guestMsg: e.target.value });
+  onGuestSubmit = e => { e.preventDefault(); this.postGuest(this.state.guestName.trim(), this.state.guestMsg.trim()); };
+  openProject = slug => {
+    const p = CONTENT.projects.find(x => x.slug === slug);
+    if (!p) { this.out(this.m().noProject(slug)); return; }
+    this.setState({ openSlug: slug, filter: this.state.filter && !p.tags.includes(this.state.filter) ? null : this.state.filter }, () => setTimeout(() => this.scrollToId('project-' + slug), 30));
+    this.setHash('projects/' + slug);
+    this.out(this.m().opened(slug));
+  };
+  closeProject = () => {
+    if (!this.state.openSlug) { if (this.state.filter) { this.clearFilter(); return; } this.out(this.m().nothingOpen); return; }
+    this.setState({ openSlug: null });
+    this.setHash(this.state.filter ? 'projects/' + this.state.filter : 'projects');
+    this.out(this.m().closed);
+  };
+  setTheme = t => {
+    t = t === 'koyu' ? 'dark' : t === 'açık' ? 'light' : t;
+    if (t !== 'dark' && t !== 'light') t = this.state.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('aeo-theme-v2', t); } catch (e) {}
+    this.setState({ theme: t }, () => this.out(this.m().theme(t)));
+  };
+  setLang = l => {
+    if (l !== 'en' && l !== 'tr') l = this.state.lang === 'en' ? 'tr' : 'en';
+    document.documentElement.lang = l;
+    try { localStorage.setItem('aeo-lang', l); } catch (e) {}
+    this.setState({ lang: l }, () => { this.out(this.m().lang); if (this.flapDone) Object.keys(this.flapDone).forEach(id => this.flapDone[id] && this.flapAnimate(id)); });
+  };
+  applyBg = () => {
+    const m = this.props.bgMode ?? 'scan';
+    if (m === 'flat') document.documentElement.removeAttribute('data-bg'); else document.documentElement.setAttribute('data-bg', m);
+    if (m === 'spot' && !this.spotOn) { this.spotOn = true; window.addEventListener('pointermove', this.onSpot, { passive: true }); }
+    if (m !== 'spot' && this.spotOn) { this.spotOn = false; window.removeEventListener('pointermove', this.onSpot); }
+  };
+  onSpot = e => { if (this.spotRaf) return; this.spotRaf = requestAnimationFrame(() => { this.spotRaf = 0; const d = document.querySelector('[data-doc]'); if (!d) return; const r = d.getBoundingClientRect(); d.style.setProperty('--mx', (e.clientX - r.left) + 'px'); d.style.setProperty('--my', (e.clientY - r.top) + 'px'); }); };
+  applyPalette = (p, silent) => {
+    if (!PALETTES.includes(p)) { this.out(this.m().noPalette(p, PALETTES.join(', '))); return; }
+    document.documentElement.setAttribute('data-palette', p);
+    try { localStorage.setItem('aeo-palette', p); } catch (e) {}
+    this.setState({ palette: p }, () => { if (!silent) this.out(this.m().palette(p)); });
+  };
+  cyclePalette = () => this.applyPalette(PALETTES[(PALETTES.indexOf(this.state.palette) + 1) % PALETTES.length]);
+  toggleTheme = () => this.setTheme();
+  toggleLang = () => this.setLang();
+  copyEmail = () => {
+    const e = CONTENT.meta.email;
+    const ok = () => { this.setState({ copied: true }); this.out(this.m().copied); clearTimeout(this.copyT); this.copyT = setTimeout(() => this.setState({ copied: false }), 2500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(e).then(ok, () => this.out(this.m().copyFail(e)));
+    else this.out(this.m().copyFail(e));
+  };
+  openLink = (href, label) => { this.out(this.m().opening(label)); if (href && href !== '#') window.open(href, '_blank', 'noopener'); };
+
+  // ---- commands ----
+  cmds() {
+    const m = this.m(), meta = CONTENT.meta;
+    const slugs = CONTENT.projects.map(p => p.slug);
+    return [
+      { names: ['help', 'yardım', '?'], desc: { en: 'this list', tr: 'bu liste' }, run: () => this.out(this.helpText()) },
+      { names: ['projects', 'projeler'], args: ['all', ...TAGS], desc: { en: '[tag]  list or filter projects', tr: '[etiket]  projeleri listele veya filtrele' }, run: a => a ? (a === 'all' || a === 'hepsi' ? this.clearFilter() : this.filterTo(a)) : this.goto('projects') },
+      { names: ['project', 'proje'], args: slugs, desc: { en: '<slug>  open a project', tr: '<slug>  bir projeyi aç' }, run: a => a ? this.openProject(a) : this.out(m.projectList(slugs.join(', '))) },
+      { names: ['now', 'şimdi'], desc: { en: 'what I am doing this month', tr: 'bu ay ne yapıyorum' }, run: () => this.goto('now') },
+      { names: ['about', 'hakkında', 'hakkımda'], desc: { en: 'who I am', tr: 'kimim' }, run: () => this.goto('about') },
+      { names: ['experience', 'deneyim'], desc: { en: 'work and education', tr: 'iş ve eğitim' }, run: () => this.goto('experience') },
+      { names: ['reading', 'okuma', 'papers'], args: ['all', ...TAGS], desc: { en: '[tag]  papers, books, posts', tr: '[etiket]  makaleler, kitaplar, yazılar' }, run: a => a ? (a === 'all' || a === 'hepsi' ? this.clearReadingFilter() : this.readingTo(a)) : this.goto('reading') },
+      { names: ['writing', 'yazılar'], desc: { en: 'posts and notes', tr: 'yazılar ve notlar' }, run: () => this.goto('writing') },
+      { names: ['pipes', 'borular'], desc: { en: 'query the content like a dataset', tr: 'içeriği veri seti gibi sorgula' }, run: () => this.out(m.pipesHelp) },
+      { names: ['tools', 'araçlar'], desc: { en: 'small utilities that run here', tr: 'burada çalışan küçük yardımcılar' }, run: () => this.out([m.toolsHead, ...TOOLS.map(t => `  ${t.usage.padEnd(14)} ${this.L(t.desc)}`)].join('\n')) },
+      { names: ['echo', 'guestbook', 'defter'], desc: { en: '<message>  sign the guestbook', tr: '<mesaj>  ziyaretçi defterini imzala' }, run: (a, line) => a ? this.echo(line.replace(/^\S+\s*/, '')) : this.goto('guestbook') },
+      ...TOOLS.map(t => ({ names: t.names, hidden: true, run: (a, line) => this.out(t.run(line.replace(/^\S+\s*/, ''))) })),
+      { names: ['skills', 'yetenekler'], desc: { en: 'what I work with', tr: 'neyle çalışıyorum' }, run: () => this.goto('skills') },
+      { names: ['contact', 'iletişim'], args: ['email', 'github', 'linkedin', 'cv'], desc: { en: '[email|github|linkedin|cv]', tr: '[email|github|linkedin|cv]' }, run: a => {
+        if (!a) return this.goto('contact');
+        if (a === 'email' || a === 'eposta' || a === 'e-posta') return this.copyEmail();
+        if (a === 'github') return this.openLink(meta.github, 'GitHub');
+        if (a === 'linkedin') return this.openLink(meta.linkedin, 'LinkedIn');
+        if (a === 'cv') return this.openLink(meta.cv, 'CV');
+        this.goto('contact');
+      } },
+      { names: ['cv'], desc: { en: 'download the CV', tr: 'CV indir' }, run: () => this.openLink(meta.cv, 'CV') },
+      { names: ['theme', 'tema'], args: ['light', 'dark'], desc: { en: '[light|dark]', tr: '[açık|koyu]' }, run: a => this.setTheme(a) },
+      { names: ['palette', 'color', 'renk'], args: PALETTES, desc: { en: '[name]  accent colour: ' + PALETTES.join(' '), tr: '[ad]  vurgu rengi: ' + PALETTES.join(' ') }, run: a => a ? this.applyPalette(a) : this.cyclePalette() },
+      { names: ['lang', 'dil'], args: ['en', 'tr'], desc: { en: '[en|tr]', tr: '[en|tr]' }, run: a => this.setLang(a) },
+      { names: ['back', 'geri'], desc: { en: 'close the open project', tr: 'açık projeyi kapat' }, run: () => this.closeProject() },
+      { names: ['top', 'başa'], desc: { en: 'scroll to the top', tr: 'başa dön' }, run: () => this.goto('top') },
+      { names: ['colophon', 'kolofon'], desc: { en: 'how this site is made', tr: 'bu site nasıl yapıldı' }, run: () => this.goto('colophon') },
+      { names: ['history', 'geçmiş'], desc: { en: 'what you typed this session', tr: 'bu oturumda yazdıklarınız' }, run: () => this.out(this.state.hist.length ? this.state.hist.map((h, i) => `${String(i + 1).padStart(3)}  ${h}`).join('\n') : m.noHistory) },
+      { names: ['clear', 'temizle'], desc: { en: 'clear the terminal', tr: 'terminali temizle' }, run: () => { this.pending = false; this.setState({ log: [], output: '', shown: 0 }); } },
+      { names: ['ls'], hidden: true, run: () => this.out(m.ls) },
+      { names: ['whoami'], hidden: true, run: () => this.out(m.whoami) },
+      { names: ['sudo'], hidden: true, run: () => this.out(m.sudo) },
+      { names: ['rm'], hidden: true, run: () => this.out(m.rm) },
+      { names: ['exit', 'quit', 'çıkış'], hidden: true, run: () => this.out(m.exit) },
+      { names: ['vim', 'vi', 'nano', 'emacs'], hidden: true, run: () => this.out(m.vim) },
+    ];
+  }
+  primaryName(c) { return this.state.lang === 'tr' && c.names[1] && !c.hidden ? c.names[1] : c.names[0]; }
+  helpText() {
+    const m = this.m();
+    const rows = this.cmds().filter(c => !c.hidden).map(c => `  ${this.primaryName(c).padEnd(12)} ${this.L(c.desc)}`);
+    return [m.help, ...rows, m.helpTail].join('\n');
+  }
+  findCmd(name) { return this.cmds().find(c => c.names.includes(name)); }
+  allNames() { return [...new Set([...this.cmds().filter(c => !c.hidden).flatMap(c => c.names.filter(n => n !== '?')), ...TOOLS.map(t => t.names[0])])]; }
+  suggest(word) {
+    const lev = (a, b) => { const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]); for (let j = 1; j <= b.length; j++) d[0][j] = j; for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[a.length][b.length]; };
+    let best = null, bd = 3;
+    for (const n of this.allNames()) { const d = n.startsWith(word) ? 0 : lev(word, n); if (d < bd) { bd = d; best = n; } }
+    return best;
+  }
+  sourceRows(name, arg) {
+    const L = this.L, lang = this.state.lang;
+    const alias = { projeler: 'projects', okuma: 'reading', papers: 'reading', yetenekler: 'skills', deneyim: 'experience', yazılar: 'writing', geçmiş: 'history', araçlar: 'tools' };
+    name = alias[name] || name;
+    switch (name) {
+      case 'projects': return CONTENT.projects.filter(p => !arg || p.tags.includes(arg) || p.slug === arg).map(p => ({ _t: 'project', slug: p.slug, name: L(p.name), tags: p.tags, stack: p.stack, featured: !!p.featured, problem: L(p.problem), outcome: L(p.outcome) }));
+      case 'reading': return CONTENT.reading.filter(r => !arg || r.tags.includes(arg) || r.kind === arg).map(r => ({ _t: 'reading', date: r.date, year: r.date.slice(0, 4), kind: r.kind, title: L(r.title), authors: r.authors, tags: r.tags, note: L(r.note) }));
+      case 'skills': return CONTENT.skills.flatMap(g => g.items.map(s => ({ _t: 'skill', group: L(g.group), skill: L(s.label), tag: s.tag || '' }))).filter(s => !arg || s.tag === arg);
+      case 'experience': return CONTENT.experience.map(e => ({ _t: 'experience', dates: L(e.dates), title: L(e.title), org: L(e.org) }));
+      case 'writing': return CONTENT.writing.map(w => ({ _t: 'writing', date: w.date, year: w.date.slice(0, 4), title: L(w.title) }));
+      case 'history': return this.state.hist.map((c, i) => ({ _t: 'history', n: i + 1, cmd: c }));
+      case 'tools': return TOOLS.map(t => ({ _t: 'tool', usage: t.usage, name: t.names[0], desc: L(t.desc) }));
+      case 'ls': return SECTIONS.slice();
+      default: return null;
+    }
+  }
+  pipeline(line) {
+    const m = this.m();
+    const stages = line.split(/\s*\|\s*/).filter(Boolean);
+    const [srcName, ...srcArgs] = stages[0].split(/\s+/);
+    let rows = this.sourceRows(srcName.toLowerCase(), srcArgs.join(' ').toLowerCase());
+    if (!rows) { this.out(m.noSource(srcName, SOURCES.join(', '))); return; }
+    try {
+      for (const st of stages.slice(1)) {
+        const [n, ...a] = st.split(/\s+/);
+        const fn = STAGES[n.toLowerCase()];
+        if (!fn) throw m.noStage(n, Object.keys(STAGES).join(', '));
+        rows = fn(rows, a.join(' '));
+      }
+    } catch (e) { this.out(typeof e === 'string' ? e : String(e.message || e)); return; }
+    if (!rows.length) { this.out(m.noRows); return; }
+    const lines = rows.slice(0, 200).map(rowText);
+    this.out(lines.join('\n') + (rows.length > 200 ? `\n… ${rows.length - 200} more` : ''));
+  }
+  exec = raw => {
+    const line = raw.trim();
+    if (!line) return;
+    const [name, ...rest] = line.split(/\s+/);
+    this.pending = true;
+    this.setState(s => ({ hist: [...s.hist, line], histIdx: -1, input: '', hoverHint: '', log: [...s.log, { cmd: name, args: line.slice(name.length), out: '' }].slice(-60) }));
+    const key = name.toLowerCase(), arg = rest.join(' ').toLowerCase();
+    if (line.includes('|')) { this.pipeline(line); return; }
+    const cmd = this.findCmd(key);
+    if (!cmd) { this.out(this.m().notFound(name, this.suggest(key))); return; }
+    cmd.run(arg, line);
+  };
+  complete() {
+    const val = this.state.input;
+    if (val.includes('|')) {
+      const i = val.lastIndexOf('|'); const seg = val.slice(i + 1).trimStart(); const q = seg.split(/\s+/)[0].toLowerCase();
+      if (seg.includes(' ')) return;
+      const ms = Object.keys(STAGES).filter(s => s.startsWith(q));
+      if (ms.length === 1) this.setState({ input: val.slice(0, i + 1) + ' ' + ms[0] + ' ' });
+      else if (ms.length > 1) this.out(ms.join('  '));
+      return;
+    }
+    const parts = val.split(/\s+/);
+    if (parts.length <= 1) {
+      const q = val.toLowerCase();
+      const ms = this.allNames().filter(n => n.startsWith(q));
+      if (ms.length === 1) this.setState({ input: ms[0] + ' ' });
+      else if (ms.length > 1) { let p = ms[0]; for (const x of ms) while (!x.startsWith(p)) p = p.slice(0, -1); this.setState({ input: p }); this.out(ms.join('  ')); }
+    } else {
+      const cmd = this.findCmd(parts[0].toLowerCase());
+      const opts = (cmd && cmd.args) || [];
+      const ms = opts.filter(o => o.startsWith(parts[1].toLowerCase()));
+      if (ms.length === 1) this.setState({ input: parts[0] + ' ' + ms[0] });
+      else if (ms.length > 1) this.out(ms.join('  '));
+    }
+  }
+
+  // ---- input events ----
+  onDocHover = e => {
+    const sec = e.target.closest && e.target.closest('main > section');
+    const art = e.target.closest && e.target.closest('article[data-slug]');
+    const hint = art ? 'project ' + art.getAttribute('data-slug') : sec && sec.id !== 'top' ? sec.id : '';
+    const u = {};
+    if (sec && sec.id !== this.state.section) u.section = sec.id;
+    if (hint !== this.state.hoverHint) u.hoverHint = hint;
+    if (Object.keys(u).length) this.setState(u);
+  };
+  componentDidUpdate(prevProps) {
+    if (prevProps && prevProps.palette !== this.props.palette && this.props.palette) this.applyPalette(this.props.palette, true);
+    if (prevProps && prevProps.bgMode !== this.props.bgMode) this.applyBg();
+    const el = this.logRef.current;
+    if (!el) return;
+    const key = this.state.log.length + ':' + this.state.shown;
+    if (key !== this.lastLogKey) { this.lastLogKey = key; el.scrollTop = el.scrollHeight; }
+  }
+  FLAP_CHARS = ' ABCDEFGHIJKLMNOPQRSTUVWXYZÇĞİÖŞÜ0123456789·–&';
+  flapTargets() { const ui = this.ui(); const f = this.state.filter, r = this.state.readFilter; return { now: ui.now, about: ui.about, experience: ui.experience, projects: f ? ui.projects + ' · ' + f : ui.projects, reading: r ? ui.reading + ' · ' + r : ui.reading, writing: ui.writing, tools: ui.tools, skills: ui.skills, guestbook: ui.guestbook, contact: ui.contact }; }
+  flapAnimate(id) {
+    if (this.reduced()) { this.setState(s => ({ flap: { ...s.flap, [id]: undefined } })); return; }
+    const C = this.FLAP_CHARS, target = this.flapTargets()[id].toLocaleUpperCase(this.state.lang === 'tr' ? 'tr' : 'en'), n = target.length;
+    const from = (this.state.flap[id] || '').padEnd(n, ' ').slice(0, n);
+    const cur = [...from].map((c, i) => target[i] === ' ' ? ' ' : (C.includes(c) ? c : C[1]));
+    this.flapDone = this.flapDone || {}; this.flapDone[id] = true;
+    this.flapT = this.flapT || {}; clearInterval(this.flapT[id]);
+    let t = 0;
+    this.flapT[id] = setInterval(() => {
+      t++; let done = true;
+      for (let i = 0; i < n; i++) { if (t < i * 1.5) { done = false; continue; } if (cur[i] === target[i]) continue; const ti = C.indexOf(target[i]); cur[i] = ti < 0 ? target[i] : C[(C.indexOf(cur[i]) + 1) % C.length]; if (cur[i] !== target[i]) done = false; }
+      this.setState(s => ({ flap: { ...s.flap, [id]: cur.join('') } }));
+      if (done) clearInterval(this.flapT[id]);
+    }, 40);
+  }
+  flapScroll = () => {
+    if (this.flapRaf) return;
+    this.flapRaf = requestAnimationFrame(() => {
+      this.flapRaf = 0;
+      if (this.reduced()) return;
+      const targets = this.flapTargets(), C = this.FLAP_CHARS, vh = window.innerHeight, upper = this.state.lang === 'tr' ? 'tr' : 'en';
+      this.flapDone = this.flapDone || {}; this.flapSeed = this.flapSeed || {};
+      const next = {}; let changed = false;
+      for (const id in targets) {
+        if (this.flapDone[id]) continue;
+        const el = document.getElementById(id); if (!el) continue;
+        const top = el.getBoundingClientRect().top;
+        const p = Math.min(1, Math.max(0, (vh - top) / (vh * 0.55)));   // 0 when heading enters at bottom, 1 when it is 55% up the screen
+        const target = targets[id].toLocaleUpperCase(upper), n = target.length;
+        if (!this.flapSeed[id]) this.flapSeed[id] = Array.from({ length: n }, () => Math.floor(Math.random() * C.length));
+        if (p <= 0) { if (this.state.flap[id] !== undefined) { next[id] = undefined; changed = true; } continue; }
+        let out = '';
+        for (let i = 0; i < n; i++) {
+          const settle = 0.35 + (i / Math.max(1, n - 1)) * 0.6;
+          if (target[i] === ' ' || p >= settle) out += target[i];
+          else out += C[(this.flapSeed[id][i] + Math.floor(p * 40) + i * 3) % C.length];
+        }
+        if (p >= 1) { this.flapDone[id] = true; out = target; }
+        if (out !== this.state.flap[id]) { next[id] = out; changed = true; }
+      }
+      if (changed) this.setState(st => ({ flap: { ...st.flap, ...next } }));
+    });
+  };
+  startBanner() {
+    const lines = ['ALI EMRE', 'OZCAN'].flatMap((t, i) => (i ? [''] : []).concat(pixelRows(t)));
+    const cells = []; lines.forEach((r, y) => { for (let x = 0; x < r.length; x++) if (r[x] === '█') cells.push(y * 1000 + x); });
+    let seen = false; try { seen = sessionStorage.getItem('aeo-banner') === '1'; sessionStorage.setItem('aeo-banner', '1'); } catch (e) {}
+    const instant = seen || this.reduced();
+    const order = cells.slice(); for (let i = order.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+    this.bannerLines = lines; this.bannerOrder = order;
+    this.setState({ bannerN: instant ? order.length : 0 });
+    if (instant) return;
+    const step = Math.max(3, Math.ceil(order.length / 70));
+    this.bannerT = setInterval(() => this.setState(s => { const n = Math.min(order.length, s.bannerN + step); if (n >= order.length) clearInterval(this.bannerT); return { bannerN: n }; }), 16);
+  }
+  bannerEl() {
+    if (!this.bannerLines) return null;
+    const on = new Set(this.bannerOrder.slice(0, this.state.bannerN || 0));
+    const lines = this.bannerLines, L = lines.length;
+    const rows = lines.map((r, y) => React.createElement('div', { key: y, style: { color: `color-mix(in oklch, var(--accent) ${Math.round(100 - (y / Math.max(1, L - 1)) * 70)}%, var(--bar-muted))`, whiteSpace: 'pre', lineHeight: 1, fontSize: '9px', letterSpacing: 0 } },
+      r ? r.split('').map((c, x) => c === '█' && !on.has(y * 1000 + x) ? ' ' : c).join('') : ' '));
+    return React.createElement('div', { 'aria-label': 'Ali Emre Özcan', role: 'img', 'data-banner': '1', style: { border: '1px solid var(--rule)', borderRadius: '4px', padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: '2px', alignSelf: 'flex-start' } }, rows);
+  }
+  focusBar = () => { const el = this.inputRef.current; if (el) el.focus(); };
+  onInput = e => this.setState({ input: e.target.value, histIdx: -1 });
+  onFocus = () => this.setState({ focused: true });
+  onBlur = () => this.setState({ focused: false });
+  onKey = e => {
+    const { hist, histIdx } = this.state;
+    if (e.key === 'Enter') { e.preventDefault(); this.exec(this.state.input || this.state.hoverHint); }
+    else if (e.key === 'Tab') { e.preventDefault(); if (!this.state.input && this.state.hoverHint) this.setState({ input: this.state.hoverHint + ' ' }); else this.complete(); }
+    else if (e.key === 'Escape') { e.target.blur(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (!hist.length) return; const i = histIdx < 0 ? hist.length - 1 : Math.max(0, histIdx - 1); this.setState({ histIdx: i, input: hist[i] }); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); if (histIdx < 0) return; const i = histIdx + 1; if (i >= hist.length) this.setState({ histIdx: -1, input: '' }); else this.setState({ histIdx: i, input: hist[i] }); }
+  };
+  onGlobalKey = e => {
+    const t = e.target;
+    const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+    if (typing) return;
+    if (e.key === '/') { e.preventDefault(); this.focusBar(); }
+    else if (e.key === '?') { e.preventDefault(); this.out(this.helpText()); this.focusBar(); }
+    else if (e.key === 'Escape' && this.state.openSlug) this.closeProject();
+  };
+  runChip = label => () => { this.exec(label); this.focusBar(); };
+
+  renderVals() {
+    const { lang, theme, input, output, filter, readFilter, openSlug, focused, inProjects, inReading, scrolled, hist, copied, guestName, guestMsg, pendingGuests } = this.state;
+    const L = this.L, ui = this.ui(), m = this.m();
+    const chipsMode = this.props.chipsMode ?? 'context';
+    const barMode = this.props.barMode ?? 'fixed';
+    const projectsCtx = inProjects || !!openSlug || (!!filter && !inReading);
+    const readingCtx = !projectsCtx && (inReading || !!readFilter);
+    let chips;
+    if (chipsMode === 'recent' && hist.length) {
+      chips = [...new Set([...hist].reverse())].slice(0, 6).map(h => ({ label: h, run: this.runChip(h), active: false }));
+    } else if (readingCtx) {
+      chips = [{ label: ui.all, tag: null }, ...TAGS.map(t => ({ label: t, tag: t }))].map(c => ({ label: c.label, active: readFilter === c.tag, run: () => { c.tag ? this.readingTo(c.tag) : this.clearReadingFilter(); } }));
+    } else if (projectsCtx) {
+      chips = [{ label: ui.all, tag: null }, ...TAGS.map(t => ({ label: t, tag: t }))].map(c => ({ label: c.label, active: filter === c.tag, run: () => { c.tag ? this.filterTo(c.tag) : this.clearFilter(); } }));
+    } else {
+      const pn = (en, tr) => lang === 'tr' ? tr : en;
+      chips = [pn('projects', 'projeler'), pn('about', 'hakkında'), pn('contact email', 'iletişim email'), pn('projects | stack | uniq -c', 'projeler | stack | uniq -c'), theme === 'dark' ? pn('theme light', 'tema açık') : pn('theme dark', 'tema koyu'), pn('palette', 'renk'), pn('help', 'yardım')].map(l => ({ label: l, run: this.runChip(l), active: false }));
+    }
+    chips = chips.map(c => ({ ...c, bg: c.active ? 'var(--accent)' : 'transparent', fg: c.active ? 'var(--accent-ink)' : 'var(--muted)', border: c.active ? 'var(--accent)' : 'var(--rule)' }));
+    const im = input.match(/^(\s*\S*)([\s\S]*)$/) || ['', input, ''];
+    const cmdWord = im[1].trim().toLowerCase();
+    const known = !cmdWord || !!this.findCmd(cmdWord) || this.allNames().some(n => n.startsWith(cmdWord));
+    const tok = { cmd: im[1], args: im[2], cmdColor: cmdWord && !known ? 'var(--tok-err)' : 'var(--tok-cmd)' };
+    const err = /^(command not found|komut bulunamadı|no |could not|usage|kullanım|only numbers|.* diye bir)/.test(output);
+    const ok = /^(→|copied|e-posta|posted|gönderildi|theme|tema|language|dil)/.test(output);
+    const outColor = err ? 'var(--out-err)' : ok ? 'var(--out-ok)' : 'var(--muted)';
+    const path = '~' + (this.state.section && this.state.section !== 'top' ? '/' + this.state.section : '');
+
+    const projects = CONTENT.projects.filter(p => !filter || p.tags.includes(filter)).map(p => ({
+      domId: 'project-' + p.slug, featuredAttr: p.featured ? 'true' : 'false', name: L(p.name), problem: L(p.problem), outcome: L(p.outcome),
+      slug: p.slug, stack: p.stack.join(' · '), isOpen: openSlug === p.slug,
+      toggle: () => this.exec(openSlug === p.slug ? 'back' : 'project ' + p.slug),
+      tags: p.tags.map(tag => ({ tag, go: () => this.exec('projects ' + tag) })),
+      links: p.links.map(l => ({ label: L(l.label), href: l.href })),
+      writeup: L(p.writeup) || [], differently: L(p.differently),
+    }));
+    const filterCount = projects.length;
+    const reading = CONTENT.reading.filter(r => !readFilter || r.tags.includes(readFilter)).map(r => ({ date: r.date, kind: r.kind, title: L(r.title), authors: r.authors, href: r.href, note: L(r.note), tags: r.tags.map(tag => ({ tag, go: () => this.exec('reading ' + tag) })) }));
+    const guestbook = [...pendingGuests.map(g => ({ ...g })), ...CONTENT.guestbook.entries.map(g => ({ name: g.name, date: g.date, message: L(g.message), pending: false }))];
+    const secLabel = s => ({ now: ui.now, about: ui.about, experience: ui.experience, projects: ui.projects, reading: ui.reading, writing: ui.writing, tools: ui.tools, skills: ui.skills, guestbook: ui.guestbook, contact: ui.contact })[s];
+    return {
+      inputRef: this.inputRef, projectsRef: this.projectsRef, readingRef: this.readingRef, headerRef: this.headerRef,
+      banner: this.bannerEl(),
+      flap: Object.fromEntries(Object.entries(this.flapTargets()).map(([id, label]) => { const up = label.toLocaleUpperCase(lang === 'tr' ? 'tr' : 'en'); const pending = !(this.flapDone && this.flapDone[id]) && this.state.flap[id] === undefined && !this.reduced(); const txt = this.state.flap[id] ?? (pending && this.flapSeed && this.flapSeed[id] ? [...up].map((ch, i) => ch === ' ' ? ' ' : this.FLAP_CHARS[this.flapSeed[id][i]]).join('') : up); return [id, { cells: [...txt].map((ch, i) => ({ ch, kind: ch === ' ' ? 'space' : 'char', key: i + ':' + ch })) }]; })),
+      palettes: PALETTES.map(p => ({ name: p, swatch: ({ aqua: '#6FE3CF', amber: '#FFB224', mint: '#7EE2B8', sky: '#7DC4FF', rose: '#FF8FA3', lime: '#C8F04B', violet: '#B79CFF', paper: '#ECEAE3' })[p], active: this.state.palette === p, ring: this.state.palette === p ? 'var(--ink)' : 'transparent', pick: () => this.exec('palette ' + p) })), namePixel: pixelRows('ALİ EMRE ÖZCAN').join('\n'),
+      index: SECTIONS.filter(s => s !== 'top' && s !== 'colophon').map(s => ({ href: '#' + s, label: secLabel(s).toLowerCase(), go: e => { e.preventDefault(); this.exec(s); } })),
+      reading, noReading: reading.length === 0, hasReadingFilter: !!readFilter, readingFilterLabel: readFilter ? m.readFiltered(reading.length, readFilter) : '', clearReadingFilter: this.clearReadingFilter,
+      tools: TOOLS.map(t => ({ usage: t.usage, desc: L(t.desc), example: t.example, try: () => { this.setState({ input: t.example }); this.focusBar(); this.scrollToId('top'); } })),
+      guestbook, guestName, guestMsg, onGuestName: this.onGuestName, onGuestMsg: this.onGuestMsg, onGuestSubmit: this.onGuestSubmit,
+      ui: { ...ui, themeLabel: theme === 'dark' ? ui.light : ui.dark, langLabel: ui.lang },
+      otherLangCode: lang === 'en' ? 'tr' : 'en',
+      meta: CONTENT.meta,
+      input, hint: input ? '' : (this.state.hoverHint ? this.state.hoverHint + '  ↵' : ui.hintEmpty), tok, path, focusedAttr: focused ? 'true' : 'false',
+      outputShown: output.slice(0, this.state.shown), outColor,
+      showExtras: barMode === 'fixed' || focused || !scrolled,
+      chips,
+      hero: { line1: L(CONTENT.hero.line1), line2: L(CONTENT.hero.line2), avail: L(CONTENT.hero.avail) },
+      now: { date: L(CONTENT.now.date), text: L(CONTENT.now.text) },
+      about: L(CONTENT.about),
+      experience: CONTENT.experience.map(e => { const up = s => (s || '').toLocaleUpperCase(lang === 'tr' ? 'tr' : 'en'); const cells = s => [...up(s)].map((ch, i) => ({ ch, kind: ch === ' ' ? 'space' : 'char', key: i + ':' + ch })); return { dates: L(e.dates), title: L(e.title), org: L(e.org), bullets: L(e.bullets) || [], boardCells: cells(e.board), statusCells: cells(L(e.status)), status: L(e.status) }; }),
+      projects, noProjects: filterCount === 0,
+      hasFilter: !!filter, filterLabel: filter ? m.filtered(filterCount, filter) : '',
+      clearFilter: this.clearFilter, closeProject: this.closeProject,
+      writing: CONTENT.writing.map(w => ({ date: w.date, title: L(w.title), href: w.href })),
+      skills: CONTENT.skills.map(g => ({ group: L(g.group), items: g.items.map(s => ({ label: L(s.label), clickable: !!s.tag, plain: !s.tag, go: () => this.exec('projects ' + s.tag) })) })),
+      contact: { note: L(CONTENT.contact.note) },
+      copyEmail: () => this.exec('contact email'), copiedLabel: copied ? ui.copied : '',
+      colophon: L(CONTENT.colophon),
+      toggleTheme: () => this.exec('theme'), toggleLang: () => this.exec('lang'), focusBar: this.focusBar, onDocHover: this.onDocHover, logRef: this.logRef,
+      log: this.state.log.map((e, i, arr) => { const last = i === arr.length - 1; const o = last ? e.out.slice(0, this.state.shown) : e.out; const er = /^(command not found|komut bulunamadı|no |could not|usage|kullanım|only numbers|.* diye bir)/.test(e.out); const okk = /^(→|copied|e-posta|posted|gönderildi|theme|tema|language|dil)/.test(e.out); return { ...e, out: o, hasCmd: !!e.cmd, color: er ? 'var(--tok-err)' : okk ? 'var(--tok-ok)' : 'var(--bar-ink)' }; }),
+      onInput: this.onInput, onKey: this.onKey, onFocus: this.onFocus, onBlur: this.onBlur,
+    };
+  }
+}
+</script>
+</body>
+</html>

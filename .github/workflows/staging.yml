@@ -1,0 +1,54 @@
+# Staging mirror on GitHub Pages: push to `preview`, look at it, then merge to
+# `main` where DigitalOcean deploys production.
+#
+# Unlike production, this deploy is gated — `needs: preflight` means a broken
+# <noscript> mirror or a missing Turkish string never reaches the staging URL.
+#
+# One-time setup: repo Settings -> Pages -> Source = "GitHub Actions".
+name: staging
+
+on:
+  push:
+    branches: [preview]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: node .github/scripts/preflight.mjs
+        env:
+          PREFLIGHT_BASE: ${{ github.event.before }}
+
+  deploy:
+    needs: preflight
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Keep the staging mirror out of search results
+        # Edits the checkout only; the committed robots.txt is untouched. The
+        # canonical link, og:url and the JSON-LD url already point at production,
+        # which is the stronger signal to a crawler than this file.
+        run: |
+          printf '%s\n' 'User-agent: *' 'Disallow: /' > public/robots.txt
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+      - id: deploy
+        uses: actions/deploy-pages@v4

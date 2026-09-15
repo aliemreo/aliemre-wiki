@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Ali Emre Özcan — computer engineering student, ML intern</title>
+<meta name="description" content="Final-year computer engineering student at İTÜ and machine learning intern at TAZI, working on ML models and tool-using agent systems.">
+<meta property="og:title" content="Ali Emre Özcan">
+<meta property="og:description" content="Computer engineering student at İTÜ, machine learning intern at TAZI. ML models and tool-using agents.">
+<meta property="og:type" content="profile">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ali Emre Özcan">
+<meta name="twitter:description" content="Computer engineering student at İTÜ, machine learning intern at TAZI.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2316211B'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='monospace' font-size='20' font-weight='700' fill='%235FD3C6'%3E$%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('aeo-theme-v2');if(t){document.documentElement.setAttribute('data-theme',t)}}catch(e){}})()</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Emre Özcan","jobTitle":"Machine learning intern","worksFor":{"@type":"Organization","name":"TAZI Bilişim Teknolojileri"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Istanbul Technical University"},"address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"}}</script>
+<style>
+html{--bg:#0F0F0D;--ink:#ECEAE3;--muted:#8F8C82;--rule:#26251F;--accent:#FFB224;--accent-ink:#161410;--tint:#1C1812;--bar:#161512;--bar-ink:#ECEAE3;--bar-muted:#7C7970;--prompt:#FFB224;--tok-cmd:#FFB224;--tok-arg:#8FD3F4;--tok-err:#FF7B6B;--tok-ok:#A6E3A1;--out-err:#FF7B6B;--out-ok:#A6E3A1;background:var(--bg);color-scheme:dark}
+html[data-theme="light"]{--bg:#F7F6F1;--ink:#17160F;--muted:#6B685E;--rule:#DCD9CF;--accent:#B26B00;--accent-ink:#FFFFFF;--tint:#F3E9D3;--bar:#17160F;--bar-ink:#ECEAE3;--bar-muted:#8F8C82;--prompt:#FFB224;--tok-cmd:#FFB224;--tok-arg:#8FD3F4;--tok-err:#B3261E;--tok-ok:#2E6B2A;--out-err:#B3261E;--out-ok:#2E6B2A;color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;text-wrap:pretty}
+::selection{background:var(--accent);color:var(--accent-ink)}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule);transition:color .15s,text-decoration-color .15s,background-color .15s}
+a:hover{text-decoration-color:var(--accent)}
+button{transition:color .15s,background-color .15s,border-color .15s,text-decoration-color .15s}
+button:hover{text-decoration-color:var(--accent)!important}
+[data-chip]:hover{border-color:var(--accent)!important;color:var(--accent)!important}
+[data-name]:hover{background:var(--accent);color:var(--accent-ink)!important;text-decoration:none!important;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+[data-tag]:hover{background:var(--tint)}
+[data-idx]:hover{color:var(--accent)!important}
+[data-bar][data-focused="true"]{box-shadow:inset 0 0 0 1px var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+input:focus-visible{outline:none}
+[data-featured="true"]{background:var(--tint);padding:24px!important;border-radius:4px;border-bottom:none!important;margin-bottom:8px}
+main>section{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+main>section[data-in]{opacity:1;transform:none}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes expand{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){[data-blink]{animation:none!important}[data-expand]{animation:none!important}main>section{opacity:1!important;transform:none!important;transition:none!important}a,button{transition:none!important}}
+@media (max-width:480px){[data-kbd-hint]{display:none!important}}
+@media print{[data-print-hide]{display:none!important}#tools,#guestbook,#colophon,form{display:none!important}main>section{opacity:1!important;transform:none!important}body{font-size:11pt;color:#000;background:#fff}a{color:#000}[data-featured="true"]{background:none;padding:0!important}}
+</style>
+</helmet>
+
+<header data-print-hide="1" ref="{{ headerRef }}" style="position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--rule)">
+  <div style="max-width:640px;margin:0 auto;padding:12px 20px 10px;display:flex;flex-direction:column;gap:8px">
+    <div data-bar="1" data-focused="{{ focusedAttr }}" onClick="{{ focusBar }}" style="display:flex;align-items:center;gap:10px;background:var(--bar);color:var(--bar-ink);border-radius:4px;padding:0 12px;height:46px;font-family:'IBM Plex Mono',monospace;font-size:15px;cursor:text;border:1px solid var(--rule);transition:box-shadow .15s">
+      <span aria-hidden="true" style="display:flex;gap:6px;white-space:nowrap"><span style="color:var(--bar-muted)">{{ path }}</span><span style="color:var(--prompt);font-weight:500">$</span></span>
+      <div style="position:relative;flex:1;min-width:0;height:100%;display:flex;align-items:center">
+        <input ref="{{ inputRef }}" aria-label="{{ ui.barLabel }}" value="{{ input }}" onChange="{{ onInput }}" onKeyDown="{{ onKey }}" onFocus="{{ onFocus }}" onBlur="{{ onBlur }}" autoComplete="off" autoCapitalize="off" spellCheck="{{ false }}" style="all:unset;width:100%;min-width:0;font:inherit;color:transparent;caret-color:transparent;position:relative;z-index:1">
+        <span aria-hidden="true" style="position:absolute;left:0;top:0;height:100%;display:flex;align-items:center;pointer-events:none;white-space:pre;overflow:hidden;max-width:100%"><span style="color:{{ tok.cmdColor }}">{{ tok.cmd }}</span><span style="color:var(--tok-arg)">{{ tok.args }}</span><span data-blink="1" style="display:inline-block;width:9px;height:18px;background:var(--prompt);animation:blink 1.1s steps(1) infinite;margin-left:1px;flex:none"></span><span style="color:var(--bar-muted);margin-left:6px;overflow:hidden;text-overflow:ellipsis">{{ hint }}</span></span>
+      </div>
+      <span data-kbd-hint="1" style="color:var(--bar-muted);font-size:12px;white-space:nowrap">{{ ui.kbd }}</span>
+    </div>
+    <sc-if value="{{ showExtras }}" hint-placeholder-val="{{ true }}">
+      <div aria-live="polite" role="status" style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:{{ outColor }};white-space:pre-wrap;min-height:20px;line-height:1.5;padding:0 2px">{{ outputShown }}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="5">
+          <button data-chip="1" onClick="{{ c.run }}" aria-pressed="{{ c.active }}" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:3px 10px;border:1px solid {{ c.border }};border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};cursor:pointer;line-height:1.5">{{ c.label }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+  </div>
+</header>
+
+<main style="max-width:640px;margin:0 auto;padding:0 20px 48px">
+
+  <section id="top" aria-label="Intro" style="padding:56px 0 16px">
+    <h1 style="font-size:2rem;font-weight:600;line-height:1.2;margin:0 0 18px;letter-spacing:-0.01em">Ali Emre Özcan</h1>
+    <p style="margin:0 0 12px">{{ hero.line1 }}</p>
+    <p style="margin:0 0 22px;color:var(--muted)">{{ hero.line2 }}</p>
+    <p style="display:flex;align-items:center;gap:9px;font-size:14px;color:var(--muted);margin:0 0 28px"><span aria-hidden="true" style="width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block;flex:none"></span>{{ hero.avail }}</p>
+    <nav aria-label="{{ ui.indexLabel }}" style="display:flex;flex-wrap:wrap;gap:6px 18px;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+      <sc-for list="{{ index }}" as="i" hint-placeholder-count="8"><a data-idx="1" href="{{ i.href }}" onClick="{{ i.go }}" style="color:var(--muted);text-decoration:none">{{ i.label }}</a></sc-for>
+    </nav>
+  </section>
+
+  <section id="now" style="padding:40px 0 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:18px">
+      <h2 style="font-size:1rem;font-weight:600;margin:0">{{ ui.now }}</h2>
+      <time style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)">{{ now.date }}</time>
+    </div>
+    <p style="margin:0">{{ now.text }}</p>
+  </section>
+
+  <section id="about" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 18px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.about }}</h2>
+    <sc-for list="{{ about }}" as="p" hint-placeholder-count="1"><p style="margin:0 0 12px">{{ p }}</p></sc-for>
+  </section>
+
+  <section id="experience" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.experience }}</h2>
+    <sc-for list="{{ experience }}" as="e" hint-placeholder-count="3">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:18px 0;border-bottom:1px solid var(--rule)">
+        <div style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:3px">{{ e.dates }}</div>
+        <div style="flex:1 1 300px;min-width:0">
+          <h3 style="font-size:17px;font-weight:600;margin:0">{{ e.title }}</h3>
+          <div style="color:var(--muted);margin:2px 0 8px">{{ e.org }}</div>
+          <ul style="margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px">
+            <sc-for list="{{ e.bullets }}" as="b" hint-placeholder-count="2"><li>{{ b }}</li></sc-for>
+          </ul>
+        </div>
+      </article>
+    </sc-for>
+  </section>
+
+  <section id="projects" ref="{{ projectsRef }}" style="padding:40px 0 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px">
+      <h2 style="font-size:1rem;font-weight:600;margin:0">{{ ui.projects }}</h2>
+      <sc-if value="{{ hasFilter }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);display:flex;gap:10px">
+          <span>{{ filterLabel }}</span>
+          <button onClick="{{ clearFilter }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit">{{ ui.clear }}</button>
+        </div>
+      </sc-if>
+    </div>
+    <sc-for list="{{ projects }}" as="p" hint-placeholder-count="5">
+      <article id="{{ p.domId }}" data-featured="{{ p.featuredAttr }}" style="padding:20px 0;border-bottom:1px solid var(--rule)">
+        <h3 style="margin:0 0 6px;font-size:17px;font-weight:600"><button data-name="1" onClick="{{ p.toggle }}" aria-expanded="{{ p.isOpen }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule);padding:0 3px;margin:0 -3px;border-radius:2px">{{ p.name }}</button></h3>
+        <p style="margin:0 0 4px">{{ p.problem }}</p>
+        <p style="margin:0 0 12px;color:var(--muted)">{{ p.outcome }}</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ p.tags }}" as="tg" hint-placeholder-count="1"><button data-tag="1" onClick="{{ tg.go }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit;padding:0 4px;margin:0 -4px;border-radius:2px">#{{ tg.tag }}</button></sc-for>
+          </div>
+          <span style="color:var(--muted)">{{ p.stack }}</span>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-left:auto">
+            <sc-for list="{{ p.links }}" as="lk" hint-placeholder-count="2"><a href="{{ lk.href }}" style="font:inherit">{{ lk.label }}</a></sc-for>
+          </div>
+        </div>
+        <sc-if value="{{ p.isOpen }}" hint-placeholder-val="{{ false }}">
+          <div data-expand="1" style="margin-top:20px;padding-top:18px;border-top:1px solid var(--rule);animation:expand .25s ease-out;display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ p.writeup }}" as="para" hint-placeholder-count="2"><p style="margin:0">{{ para }}</p></sc-for>
+            <div style="border:1px dashed var(--rule);padding:28px 20px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">{{ ui.imageSlot }}</div>
+            <p style="margin:0"><span style="color:var(--muted)">{{ ui.differently }}</span> {{ p.differently }}</p>
+            <button onClick="{{ closeProject }}" style="all:unset;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent);align-self:flex-start">{{ ui.back }}</button>
+          </div>
+        </sc-if>
+      </article>
+    </sc-for>
+    <sc-if value="{{ noProjects }}" hint-placeholder-val="{{ false }}"><p style="margin:16px 0 0;color:var(--muted)">{{ ui.noProjects }}</p></sc-if>
+  </section>
+
+  <section id="reading" ref="{{ readingRef }}" style="padding:40px 0 0">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:4px">
+      <h2 style="font-size:1rem;font-weight:600;margin:0">{{ ui.reading }}</h2>
+      <sc-if value="{{ hasReadingFilter }}" hint-placeholder-val="{{ false }}">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);display:flex;gap:10px">
+          <span>{{ readingFilterLabel }}</span>
+          <button onClick="{{ clearReadingFilter }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit">{{ ui.clear }}</button>
+        </div>
+      </sc-if>
+    </div>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.readingNote }}</p>
+    <sc-for list="{{ reading }}" as="r" hint-placeholder-count="4">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)">
+        <div style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px;display:flex;flex-direction:column;gap:2px"><time>{{ r.date }}</time><span style="font-family:'IBM Plex Mono',monospace;font-size:12px">{{ r.kind }}</span></div>
+        <div style="flex:1 1 300px;min-width:0">
+          <a href="{{ r.href }}">{{ r.title }}</a><span style="color:var(--muted)"> · {{ r.authors }}</span>
+          <p style="margin:4px 0 8px">{{ r.note }}</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12.5px">
+            <sc-for list="{{ r.tags }}" as="tg" hint-placeholder-count="1"><button data-tag="1" onClick="{{ tg.go }}" style="all:unset;cursor:pointer;color:var(--accent);font:inherit;padding:0 4px;margin:0 -4px;border-radius:2px">#{{ tg.tag }}</button></sc-for>
+          </div>
+        </div>
+      </article>
+    </sc-for>
+    <sc-if value="{{ noReading }}" hint-placeholder-val="{{ false }}"><p style="margin:16px 0 0;color:var(--muted)">{{ ui.noReading }}</p></sc-if>
+  </section>
+
+  <section id="writing" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.writing }}</h2>
+    <sc-for list="{{ writing }}" as="w" hint-placeholder-count="2">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)">
+        <time style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">{{ w.date }}</time>
+        <a href="{{ w.href }}" style="flex:1 1 300px;min-width:0">{{ w.title }}</a>
+      </article>
+    </sc-for>
+  </section>
+
+  <section id="tools" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.tools }}</h2>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.toolsNote }}</p>
+    <sc-for list="{{ tools }}" as="t" hint-placeholder-count="4">
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--rule)">
+        <button onClick="{{ t.try }}" style="all:unset;cursor:pointer;flex:0 0 140px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);padding-top:2px;text-align:left">{{ t.usage }}</button>
+        <div style="flex:1 1 300px;min-width:0">
+          <div>{{ t.desc }}</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted);margin-top:2px">{{ t.example }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </section>
+
+  <section id="skills" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.skills }}</h2>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.skillsNote }}</p>
+    <dl style="margin:0">
+      <sc-for list="{{ skills }}" as="g" hint-placeholder-count="5">
+        <div style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:12px 0;border-bottom:1px solid var(--rule)">
+          <dt style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">{{ g.group }}</dt>
+          <dd style="flex:1 1 300px;min-width:0;margin:0;display:flex;flex-wrap:wrap;gap:4px 14px">
+            <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="4">
+              <sc-if value="{{ s.clickable }}" hint-placeholder-val="{{ true }}"><button onClick="{{ s.go }}" style="all:unset;cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ s.label }}</button></sc-if>
+              <sc-if value="{{ s.plain }}" hint-placeholder-val="{{ false }}"><span>{{ s.label }}</span></sc-if>
+            </sc-for>
+          </dd>
+        </div>
+      </sc-for>
+    </dl>
+  </section>
+
+  <section id="guestbook" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.guestbook }}</h2>
+    <p style="margin:12px 0 0;font-size:14px;color:var(--muted)">{{ ui.guestbookNote }}</p>
+    <sc-for list="{{ guestbook }}" as="g" hint-placeholder-count="3">
+      <article style="display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-bottom:1px solid var(--rule)">
+        <div style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px;display:flex;flex-direction:column;gap:2px"><span style="color:var(--ink)">{{ g.name }}</span><time>{{ g.date }}</time></div>
+        <div style="flex:1 1 300px;min-width:0">
+          <p style="margin:0">{{ g.message }}</p>
+          <sc-if value="{{ g.pending }}" hint-placeholder-val="{{ false }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">{{ ui.pending }}</span></sc-if>
+        </div>
+      </article>
+    </sc-for>
+    <form onSubmit="{{ onGuestSubmit }}" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;font-family:'IBM Plex Mono',monospace;font-size:13px">
+      <input aria-label="{{ ui.guestName }}" value="{{ guestName }}" onChange="{{ onGuestName }}" placeholder="{{ ui.guestName }}" style="flex:0 1 140px;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:4px;padding:6px 10px">
+      <input aria-label="{{ ui.guestMsg }}" value="{{ guestMsg }}" onChange="{{ onGuestMsg }}" placeholder="{{ ui.guestMsg }}" maxLength="{{ 200 }}" style="flex:1 1 220px;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid var(--rule);border-radius:4px;padding:6px 10px">
+      <button type="submit" style="font:inherit;color:var(--accent-ink);background:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:6px 14px;cursor:pointer">echo</button>
+    </form>
+  </section>
+
+  <section id="contact" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 18px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.contact }}</h2>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">{{ ui.email }}</span>
+        <div style="flex:1 1 300px;min-width:0;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap">
+          <button onClick="{{ copyEmail }}" style="all:unset;cursor:pointer;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ meta.email }}</button>
+          <span aria-live="polite" style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted)">{{ copiedLabel }}</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">GitHub</span>
+        <a href="{{ meta.github }}" style="flex:1 1 300px;min-width:0">{{ meta.githubLabel }}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">LinkedIn</span>
+        <a href="{{ meta.linkedin }}" style="flex:1 1 300px;min-width:0">{{ meta.linkedinLabel }}</a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:4px 24px">
+        <span style="flex:0 0 140px;font-size:14px;color:var(--muted);padding-top:2px">CV</span>
+        <a href="{{ meta.cv }}" style="flex:1 1 300px;min-width:0">{{ ui.cvDownload }}</a>
+      </div>
+    </div>
+    <p style="margin:18px 0 0;color:var(--muted)">{{ contact.note }}</p>
+  </section>
+
+  <section id="colophon" style="padding:40px 0 0">
+    <h2 style="font-size:1rem;font-weight:600;margin:0 0 14px;padding-bottom:8px;border-bottom:1px solid var(--rule)">{{ ui.colophon }}</h2>
+    <sc-for list="{{ colophon }}" as="c" hint-placeholder-count="3"><p style="margin:0 0 6px;font-size:14px;color:var(--muted)">{{ c }}</p></sc-for>
+  </section>
+</main>
+
+<footer data-print-hide="1" style="max-width:640px;margin:0 auto;padding:24px 20px 48px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;font-size:14px;color:var(--muted)">
+  <span>{{ ui.updated }} {{ meta.updated }}</span>
+  <div style="display:flex;gap:16px;margin-left:auto;flex-wrap:wrap">
+    <button onClick="{{ toggleTheme }}" style="all:unset;cursor:pointer;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ ui.themeLabel }}</button>
+    <button onClick="{{ toggleLang }}" lang="{{ otherLangCode }}" style="all:unset;cursor:pointer;font:inherit;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--rule)">{{ ui.langLabel }}</button>
+    <a href="#colophon" style="font-size:13px">{{ ui.colophon }}</a>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;chipsMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;context&quot;,&quot;options&quot;:[&quot;context&quot;,&quot;recent&quot;],&quot;tsType&quot;:&quot;'context' | 'recent'&quot;,&quot;section&quot;:&quot;Command bar&quot;},&quot;barMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;fixed&quot;,&quot;options&quot;:[&quot;fixed&quot;,&quot;compact&quot;],&quot;tsType&quot;:&quot;'fixed' | 'compact'&quot;,&quot;section&quot;:&quot;Command bar&quot;}}">
+const TAGS = ['ml', 'agents', 'systems', 'web', 'research'];
+const SECTIONS = ['top', 'now', 'about', 'experience', 'projects', 'reading', 'writing', 'tools', 'skills', 'guestbook', 'contact', 'colophon'];
+
+// ---- TOOLS: each run() is a pure function returning the output string. ----
+const TOOLS = [
+  { names: ['tokens', 'token'], usage: 'tokens <text>', desc: { en: 'Rough token count for a piece of text, using the ~4 characters per token rule.', tr: 'Bir metin için kabaca token sayısı, ~4 karakter/token kuralıyla.' }, example: 'tokens the quick brown fox',
+    run: a => { if (!a) return 'usage: tokens <text>'; const chars = a.length, words = a.split(/\s+/).filter(Boolean).length, t = Math.max(1, Math.round(chars / 4)); return `${chars} chars · ${words} words · ~${t} tokens`; } },
+  { names: ['tr', 'ascii'], usage: 'tr <text>', desc: { en: 'Turkish characters to ASCII (ç→c, ş→s, ı→i). Handy for slugs and filenames.', tr: 'Türkçe karakterleri ASCII\'ye çevirir (ç→c, ş→s, ı→i). Slug ve dosya adları için.' }, example: 'tr İstanbul Boğazı',
+    run: a => { if (!a) return 'usage: tr <text>'; const map = { ç: 'c', Ç: 'C', ğ: 'g', Ğ: 'G', ı: 'i', İ: 'I', ö: 'o', Ö: 'O', ş: 's', Ş: 'S', ü: 'u', Ü: 'U' }; return a.replace(/[çÇğĞıİöÖşŞüÜ]/g, c => map[c]); } },
+  { names: ['cron'], usage: 'cron <expr>', desc: { en: 'Explains a five-field cron expression in plain words.', tr: 'Beş alanlı bir cron ifadesini düz sözcüklerle açıklar.' }, example: 'cron 0 9 * * 1-5',
+    run: a => {
+      const f = a.trim().split(/\s+/); if (f.length !== 5) return 'usage: cron <min> <hour> <day> <month> <weekday>';
+      const [mi, h, d, mo, w] = f, days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const name = (v, arr) => v.replace(/\d+/g, n => arr[+n] ?? n);
+      const every = (v, unit) => v === '*' ? `every ${unit}` : v.startsWith('*/') ? `every ${v.slice(2)} ${unit}s` : null;
+      let when;
+      if (mi === '*' && h === '*') when = 'every minute';
+      else if (every(mi, 'minute') && h === '*') when = every(mi, 'minute');
+      else if (h === '*') when = `at minute ${mi} of every hour`;
+      else if (every(h, 'hour')) when = `${every(h, 'hour')} at minute ${mi === '*' ? '0' : mi}`;
+      else when = `at ${h.split(',').map(x => x.padStart(2, '0')).join(', ')}:${(mi === '*' ? '0' : mi).padStart(2, '0')}`;
+      const parts = [when];
+      if (d !== '*') parts.push(`on day ${d} of the month`);
+      if (mo !== '*') parts.push(`in month ${mo}`);
+      if (w !== '*') parts.push(`on ${name(w, days).replace('-', ' to ').replace(/,/g, ', ')}`);
+      return parts.join(' ');
+    } },
+  { names: ['ts', 'epoch'], usage: 'ts [n|date]', desc: { en: 'Unix timestamp to ISO date and back. No argument gives now.', tr: 'Unix zaman damgasını ISO tarihe ve tersine çevirir. Parametresiz şu anı verir.' }, example: 'ts 1767225600',
+    run: a => { let d; if (!a) d = new Date(); else if (/^\d+$/.test(a)) d = new Date(+a * (a.length > 10 ? 1 : 1000)); else d = new Date(a); if (isNaN(d)) return `could not parse: ${a}`; return `${Math.floor(d.getTime() / 1000)}  ${d.toISOString()}  ${d.toLocaleString()}`; } },
+  { names: ['calc', '='], usage: 'calc <expr>', desc: { en: 'Arithmetic with + − × ÷ ^ and parentheses. Nothing is evaluated as code.', tr: '+ − × ÷ ^ ve parantezle aritmetik. Hiçbir şey kod olarak çalıştırılmaz.' }, example: 'calc (1024*8)/1e6',
+    run: a => { if (!a) return 'usage: calc <expr>'; const s = a.replace(/×/g, '*').replace(/÷/g, '/').replace(/\^/g, '**').replace(/\s+/g, ''); if (!/^[\d.()+\-*/e%]+$/.test(s)) return `only numbers and + - * / ^ ( ) allowed`; try { const v = Function('"use strict";return (' + s + ')')(); return Number.isFinite(v) ? `${a} = ${+v.toPrecision(12)}` : 'not a number'; } catch (e) { return `could not evaluate: ${a}`; } } },
+];
+
+// ---- CONTENT: edit this object, never the markup. {en, tr} pairs are picked by language. ----
+const CONTENT = {
+  meta: {
+    name: 'Ali Emre Özcan',
+    role: { en: 'computer engineering student · machine learning intern', tr: 'bilgisayar mühendisliği öğrencisi · makine öğrenmesi stajyeri' },
+    email: 'placeholder@example.com',
+    github: 'https://github.com/placeholder', githubLabel: 'github.com/placeholder',
+    linkedin: 'https://www.linkedin.com/in/placeholder', linkedinLabel: 'linkedin.com/in/placeholder',
+    cv: '#', updated: '2026-09-14',
+  },
+  hero: {
+    line1: { en: "I'm a final-year computer engineering student at İTÜ and a machine learning intern at TAZI, where I build ML models and tool-using agent systems.", tr: "İTÜ Bilgisayar Mühendisliği son sınıf öğrencisiyim. TAZI'de makine öğrenmesi stajyeri olarak ML modelleri ve araç kullanan ajan sistemleri geliştiriyorum." },
+    line2: { en: 'Placeholder: one sentence on the kind of role and team I am looking for.', tr: 'Placeholder: aradığım rol ve ekip türü üzerine tek cümle.' },
+    avail: { en: 'Placeholder: Open to full-time roles from mid-2027', tr: 'Placeholder: 2027 ortasından itibaren tam zamanlı rollere açığım' },
+  },
+  now: {
+    date: { en: 'September 2026', tr: 'Eylül 2026' },
+    text: { en: 'Placeholder: This month at TAZI I am working on … (the specific model or agent component). I am learning … (a paper, a tool, a course). Outside work I am … (thesis progress or a side project). Update this paragraph monthly and change the date.', tr: "Placeholder: Bu ay TAZI'de … üzerinde çalışıyorum (belirli model veya ajan bileşeni). … öğreniyorum (bir makale, araç veya ders). İş dışında … (tez ilerlemesi veya yan proje). Bu paragrafı her ay güncelleyip tarihi değiştir." },
+  },
+  about: {
+    en: ['Placeholder: Three or four sentences in first person. What kinds of problems you like working on, one concrete thing you built and why it mattered, how you like to work with others, and one fact from outside work.'],
+    tr: ['Placeholder: Birinci tekil şahısla üç dört cümle. Ne tür problemleri sevdiğin, yaptığın somut bir şey ve neden önemli olduğu, başkalarıyla nasıl çalıştığın ve iş dışından bir gerçek.'],
+  },
+  experience: [
+    { dates: { en: 'Jun 2026 – present', tr: 'Haz 2026 – devam' }, title: { en: 'Machine learning intern', tr: 'Makine öğrenmesi stajyeri' }, org: 'TAZI Bilişim Teknolojileri, Istanbul',
+      bullets: { en: ['Placeholder: one concrete result with a number (accuracy, latency, cost, time saved).', 'Placeholder: the tool-using agent system you worked on and what it does for users.', 'Placeholder: something you owned end to end, from data to deployment.'], tr: ['Placeholder: sayı içeren somut bir sonuç (doğruluk, gecikme, maliyet, zaman).', 'Placeholder: üzerinde çalıştığın araç kullanan ajan sistemi ve kullanıcılar için ne yaptığı.', 'Placeholder: veriden dağıtıma uçtan uca sahiplendiğin bir iş.'] } },
+    { dates: { en: '2022 – 2027', tr: '2022 – 2027' }, title: { en: 'B.Sc. Computer Engineering', tr: 'Bilgisayar Mühendisliği, Lisans' }, org: { en: 'Istanbul Technical University', tr: 'İstanbul Teknik Üniversitesi' },
+      bullets: { en: ['Placeholder: thesis topic, one sentence, and advisor.'], tr: ['Placeholder: tez konusu, tek cümle, ve danışman.'] } },
+    { dates: { en: 'Placeholder: dates', tr: 'Placeholder: tarihler' }, title: { en: 'Placeholder: earlier internship, teaching assistantship or club role', tr: 'Placeholder: önceki staj, asistanlık veya kulüp görevi' }, org: { en: 'Placeholder: organisation', tr: 'Placeholder: kurum' }, bullets: { en: [], tr: [] } },
+  ],
+  projects: [
+    { slug: 'churn', featured: true, name: { en: 'Placeholder: Churn prediction with explainable features', tr: 'Placeholder: Açıklanabilir özniteliklerle müşteri kaybı tahmini' }, tags: ['ml'], stack: ['Python', 'scikit-learn', 'XGBoost', 'SHAP'],
+      problem: { en: 'Placeholder: Which customers will leave in the next 90 days, and what should the retention team do about it?', tr: 'Placeholder: Hangi müşteriler önümüzdeki 90 günde ayrılacak ve ekip ne yapmalı?' },
+      outcome: { en: 'Placeholder: One sentence with the result, e.g. a lift over the baseline and how the output was used.', tr: 'Placeholder: Sonucu içeren tek cümle, örn. taban çizgisine göre kazanım ve çıktının nasıl kullanıldığı.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }, { label: { en: 'write-up', tr: 'yazı' }, href: '#' }],
+      writeup: { en: ['Placeholder: Paragraph one. The setting and the data: where it came from, how big, what was wrong with it.', 'Placeholder: Paragraph two. What you actually built and the one design choice that mattered most.', 'Placeholder: Paragraph three. How you evaluated it, what the number means to a non-expert, and what happened after.'], tr: ['Placeholder: Birinci paragraf. Ortam ve veri: nereden geldi, ne kadar büyük, nesi yanlıştı.', 'Placeholder: İkinci paragraf. Gerçekte ne yaptığın ve en çok fark yaratan tasarım kararı.', 'Placeholder: Üçüncü paragraf. Nasıl değerlendirdiğin, sayının uzman olmayan biri için anlamı ve sonrasında ne olduğu.'] },
+      differently: { en: 'Placeholder: one honest sentence about what you would change.', tr: 'Placeholder: neyi değiştireceğin üzerine dürüst tek cümle.' } },
+    { slug: 'toolbench', name: { en: 'Placeholder: Evaluation harness for tool-using agents', tr: 'Placeholder: Araç kullanan ajanlar için değerlendirme düzeneği' }, tags: ['agents', 'ml'], stack: ['Python', 'Claude API', 'pytest'],
+      problem: { en: 'Placeholder: How do you know an agent chose the right tool for the right reason, not by luck?', tr: 'Placeholder: Bir ajanın doğru aracı şans eseri değil doğru sebeple seçtiğini nasıl bilirsin?' },
+      outcome: { en: 'Placeholder: What the harness measures and one finding it produced.', tr: 'Placeholder: Düzeneğin neyi ölçtüğü ve ürettiği bir bulgu.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }],
+      writeup: { en: ['Placeholder: Two to four paragraphs.'], tr: ['Placeholder: İki ila dört paragraf.'] }, differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+    { slug: 'kvstore', name: { en: 'Placeholder: Log-structured key-value store', tr: 'Placeholder: Log yapılı anahtar-değer deposu' }, tags: ['systems'], stack: ['Rust'],
+      problem: { en: 'Placeholder: A course project turned into a question about how far a single-node store can go.', tr: 'Placeholder: Tek düğümlü bir deponun nereye kadar gidebileceği sorusuna dönüşen ders projesi.' },
+      outcome: { en: 'Placeholder: Throughput or durability result in one sentence.', tr: 'Placeholder: Tek cümlede verim veya dayanıklılık sonucu.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }],
+      writeup: { en: ['Placeholder: Two to four paragraphs.'], tr: ['Placeholder: İki ila dört paragraf.'] }, differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+    { slug: 'site', name: { en: 'This site', tr: 'Bu site' }, tags: ['web'], stack: ['HTML', 'CSS', 'JavaScript'],
+      problem: { en: 'A portfolio a recruiter can skim in 30 seconds and an engineer can drive from a shell prompt.', tr: 'Bir işe alımcının 30 saniyede tarayabildiği, bir mühendisin komut satırından kullanabildiği bir portfolyo.' },
+      outcome: { en: 'One file, no framework, English and Turkish, every command works with the keyboard.', tr: 'Tek dosya, çerçeve yok, İngilizce ve Türkçe, her komut klavyeyle çalışır.' },
+      links: [{ label: { en: 'code', tr: 'kod' }, href: '#' }],
+      writeup: { en: ['The command bar is the only unusual thing on the page. Everything it does is also reachable by scrolling and clicking, so nobody is locked out.', 'All copy lives in one content object at the top of the script. Updating the site means editing that object.'], tr: ['Komut satırı sayfadaki tek sıra dışı şey. Yaptığı her şeye kaydırarak ve tıklayarak da ulaşılır, kimse dışarıda kalmaz.', 'Tüm metin betiğin başındaki tek bir içerik nesnesinde. Siteyi güncellemek o nesneyi düzenlemek demek.'] },
+      differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+    { slug: 'survey', name: { en: 'Placeholder: Literature survey on tool use in LLM agents', tr: 'Placeholder: LLM ajanlarında araç kullanımı üzerine literatür taraması' }, tags: ['research', 'agents'], stack: ['LaTeX'],
+      problem: { en: 'Placeholder: What the research question was and why it was worth a survey.', tr: 'Placeholder: Araştırma sorusu neydi ve neden taramaya değerdi.' },
+      outcome: { en: 'Placeholder: Where it was presented or who read it.', tr: 'Placeholder: Nerede sunuldu veya kim okudu.' },
+      links: [{ label: { en: 'paper', tr: 'makale' }, href: '#' }],
+      writeup: { en: ['Placeholder: Two to four paragraphs.'], tr: ['Placeholder: İki ila dört paragraf.'] }, differently: { en: 'Placeholder.', tr: 'Placeholder.' } },
+  ],
+  writing: [
+    { date: '2026-08', title: { en: 'Placeholder: A note on evaluating agents that call tools', tr: 'Placeholder: Araç çağıran ajanları değerlendirme üzerine not' }, href: '#' },
+    { date: '2026-05', title: { en: 'Placeholder: What I learned shipping my first model to production', tr: 'Placeholder: İlk modelimi üretime alırken öğrendiklerim' }, href: '#' },
+  ],
+  skills: [
+    { group: { en: 'Languages', tr: 'Diller' }, items: [{ label: 'Python', tag: 'ml' }, { label: 'Rust', tag: 'systems' }, { label: 'C++', tag: 'systems' }, { label: 'SQL', tag: 'ml' }, { label: 'JavaScript', tag: 'web' }] },
+    { group: { en: 'Machine learning', tr: 'Makine öğrenmesi' }, items: [{ label: 'scikit-learn', tag: 'ml' }, { label: 'PyTorch', tag: 'ml' }, { label: 'XGBoost', tag: 'ml' }, { label: { en: 'Model evaluation', tr: 'Model değerlendirme' }, tag: 'ml' }] },
+    { group: { en: 'Agents & LLMs', tr: 'Ajanlar ve LLM\'ler' }, items: [{ label: { en: 'Tool use', tr: 'Araç kullanımı' }, tag: 'agents' }, { label: { en: 'Prompt design', tr: 'İstem tasarımı' }, tag: 'agents' }, { label: { en: 'Agent evaluation', tr: 'Ajan değerlendirme' }, tag: 'agents' }] },
+    { group: { en: 'Infrastructure & tools', tr: 'Altyapı ve araçlar' }, items: [{ label: 'Git', tag: 'systems' }, { label: 'Docker', tag: 'systems' }, { label: 'Linux', tag: 'systems' }, { label: 'PostgreSQL', tag: 'systems' }] },
+    { group: { en: 'Human languages', tr: 'Konuşulan diller' }, items: [{ label: { en: 'Turkish, native', tr: 'Türkçe, anadil' } }, { label: { en: 'English, fluent', tr: 'İngilizce, akıcı' } }] },
+  ],
+  reading: [
+    { date: '2026-09', kind: 'paper', title: { en: 'Placeholder: Toolformer: Language Models Can Teach Themselves to Use Tools', tr: 'Placeholder: Toolformer: Language Models Can Teach Themselves to Use Tools' }, authors: 'Schick et al.', tags: ['agents', 'ml'], href: '#', note: { en: 'Placeholder: one sentence on what you took from it and how it changed what you built.', tr: 'Placeholder: ondan ne aldığın ve yaptığın şeyi nasıl değiştirdiği üzerine tek cümle.' } },
+    { date: '2026-08', kind: 'book', title: { en: 'Placeholder: Designing Data-Intensive Applications', tr: 'Placeholder: Designing Data-Intensive Applications' }, authors: 'Kleppmann', tags: ['systems'], href: '#', note: { en: 'Placeholder: the chapter that mattered and why.', tr: 'Placeholder: önemli olan bölüm ve nedeni.' } },
+    { date: '2026-07', kind: 'paper', title: { en: 'Placeholder: A Unified Approach to Interpreting Model Predictions', tr: 'Placeholder: A Unified Approach to Interpreting Model Predictions' }, authors: 'Lundberg & Lee', tags: ['ml', 'research'], href: '#', note: { en: 'Placeholder: what SHAP did and did not solve for the churn project.', tr: 'Placeholder: SHAP\'ın churn projesinde neyi çözdüğü ve çözmediği.' } },
+    { date: '2026-06', kind: 'post', title: { en: 'Placeholder: a blog post you keep sending people', tr: 'Placeholder: insanlara göndermeye devam ettiğin bir yazı' }, authors: 'Placeholder', tags: ['web'], href: '#', note: { en: 'Placeholder: why you keep sending it.', tr: 'Placeholder: neden göndermeye devam ettiğin.' } },
+  ],
+  guestbook: {
+    repo: 'placeholder/guestbook',   // GitHub repo whose issues store entries; label 'shown' publishes them
+    entries: [
+      { name: 'Placeholder: a colleague', date: '2026-09-02', message: { en: 'Placeholder: approved entries are copied here from the guestbook repo issues.', tr: 'Placeholder: onaylanan girdiler guestbook deposundaki issue\'lardan buraya kopyalanır.' } },
+      { name: 'Placeholder: a classmate', date: '2026-08-21', message: { en: 'Placeholder: keep entries to one or two lines.', tr: 'Placeholder: girdileri bir iki satırda tut.' } },
+    ],
+  },
+  contact: { note: { en: 'Placeholder: Email is the best way to reach me; I reply within two days. LinkedIn messages take longer.', tr: 'Placeholder: Bana en iyi e-postayla ulaşılır; iki gün içinde yanıtlarım. LinkedIn mesajları daha uzun sürer.' } },
+  colophon: {
+    en: ['Built with plain HTML, CSS and JavaScript in a single file, no framework.', 'Set in IBM Plex Sans and IBM Plex Mono.', 'The command bar exists because I spend my day in one, and because it lets the page be driven without a mouse.'],
+    tr: ['Tek dosyada düz HTML, CSS ve JavaScript ile yapıldı, çerçeve yok.', 'IBM Plex Sans ve IBM Plex Mono ile dizildi.', 'Komut satırı var çünkü günümü bir tanesinde geçiriyorum ve sayfanın fare olmadan kullanılmasını sağlıyor.'],
+  },
+};
+
+const UI = {
+  en: { barLabel: 'Command bar. Type help for a list of commands.', kbd: '/ focus · ? help · Tab complete', hintEmpty: 'type help, or press ?', now: 'Now', about: 'About', experience: 'Experience', projects: 'Projects', writing: 'Writing', skills: 'Skills', skillsNote: 'Click a skill to see projects that use it.', contact: 'Contact', colophon: 'Colophon', email: 'Email', cvDownload: 'Download CV (PDF)', updated: 'Last updated', light: 'Light', dark: 'Dark', lang: 'Türkçe', clear: 'clear', back: 'back', differently: 'What I\'d do differently:', imageSlot: 'image or diagram slot — optional', noProjects: 'No projects with that tag yet.', copied: 'copied', copyFail: 'copy failed, select it manually', all: 'all', indexLabel: 'Sections', reading: 'Reading', readingNote: 'Papers, books and posts, one sentence each on what I took from them. Newest first.', noReading: 'Nothing with that tag yet.', tools: 'Tools', toolsNote: 'Small utilities I use myself. Each one is a command in the bar; click a usage line to try it.', guestbook: 'Guestbook', guestbookNote: 'Leave a line. Entries appear after I read them. Also: echo <message> in the bar.', guestName: 'name', guestMsg: 'message', pending: 'awaiting review' },
+  tr: { barLabel: 'Komut satırı. Komut listesi için yardım yazın.', kbd: '/ odak · ? yardım · Tab tamamla', hintEmpty: 'yardım yazın veya ? basın', now: 'Şimdi', about: 'Hakkımda', experience: 'Deneyim', projects: 'Projeler', writing: 'Yazılar', skills: 'Yetenekler', skillsNote: 'Bir yeteneğe tıklayıp onu kullanan projeleri görün.', contact: 'İletişim', colophon: 'Kolofon', email: 'E-posta', cvDownload: 'CV indir (PDF)', updated: 'Son güncelleme', light: 'Açık', dark: 'Koyu', lang: 'English', clear: 'temizle', back: 'geri', differently: 'Farklı yapacağım şey:', imageSlot: 'görsel veya diyagram alanı — isteğe bağlı', noProjects: 'Bu etiketle henüz proje yok.', copied: 'kopyalandı', copyFail: 'kopyalanamadı, elle seçin', all: 'hepsi', indexLabel: 'Bölümler', reading: 'Okumalar', readingNote: 'Makaleler, kitaplar ve yazılar; her biri için aldığım şey üzerine tek cümle. En yeni önce.', noReading: 'Bu etiketle henüz bir şey yok.', tools: 'Araçlar', toolsNote: 'Kendim kullandığım küçük yardımcılar. Her biri satırda bir komut; denemek için kullanım satırına tıklayın.', guestbook: 'Ziyaretçi defteri', guestbookNote: 'Bir satır bırakın. Girdiler okuduktan sonra görünür. Ayrıca: satırda echo <mesaj>.', guestName: 'ad', guestMsg: 'mesaj', pending: 'inceleme bekliyor' },
+};
+
+const MSG = {
+  en: { goto: s => `→ ${s}`, filtered: (n, t) => `${n} project${n === 1 ? '' : 's'} tagged ${t}`, allProjects: 'showing all projects', noTag: t => `no tag called ${t} — tags: ${TAGS.join(', ')}`, noProject: s => `no project called ${s} — try: projects`, projectList: l => `projects: ${l}`, opened: s => `→ project ${s}`, closed: 'closed', nothingOpen: 'nothing to go back from', notFound: (c, s) => `command not found: ${c}` + (s ? ` — did you mean ${s}?` : ' — try help'), theme: t => `theme: ${t}`, lang: 'language: English', copied: 'email copied to clipboard', copyFail: e => `could not copy — the address is ${e}`, opening: s => `opening ${s}`, cleared: '', noHistory: 'no commands yet', ambiguous: l => l, whoami: `${CONTENT.meta.name} — ${CONTENT.meta.role.en}`, ls: SECTIONS.join('  '), sudo: 'you already have every permission this page offers.', rm: 'nothing to remove. the content lives in one object, and it is staying there.', exit: 'this is a web page. the tab close button is up there.', vim: ':q!  you are free.', help: 'commands (arguments in brackets):', helpTail: 'commands also work in Turkish: projeler, hakkında, iletişim, tema, dil …', readFiltered: (n, t) => `${n} reading entr${n === 1 ? 'y' : 'ies'} tagged ${t}`, allReading: 'showing all reading', toolsHead: 'tools:', echoUsage: 'usage: echo <message>  (add your name with  echo name: message)', echoed: 'posted — it appears after review. thanks.', echoOpen: 'opening a prefilled GitHub issue to post it' },
+  tr: { goto: s => `→ ${s}`, filtered: (n, t) => `${t} etiketli ${n} proje`, allProjects: 'tüm projeler gösteriliyor', noTag: t => `${t} diye bir etiket yok — etiketler: ${TAGS.join(', ')}`, noProject: s => `${s} diye bir proje yok — deneyin: projeler`, projectList: l => `projeler: ${l}`, opened: s => `→ proje ${s}`, closed: 'kapatıldı', nothingOpen: 'geri dönülecek bir şey yok', notFound: (c, s) => `komut bulunamadı: ${c}` + (s ? ` — ${s} mi demek istediniz?` : ' — yardım yazmayı deneyin'), theme: t => `tema: ${t === 'dark' ? 'koyu' : 'açık'}`, lang: 'dil: Türkçe', copied: 'e-posta panoya kopyalandı', copyFail: e => `kopyalanamadı — adres: ${e}`, opening: s => `${s} açılıyor`, cleared: '', noHistory: 'henüz komut yok', ambiguous: l => l, whoami: `${CONTENT.meta.name} — ${CONTENT.meta.role.tr}`, ls: SECTIONS.join('  '), sudo: 'bu sayfanın sunduğu tüm izinlere zaten sahipsiniz.', rm: 'silinecek bir şey yok. içerik tek bir nesnede ve orada kalıyor.', exit: 'bu bir web sayfası. sekmeyi kapatma düğmesi yukarıda.', vim: ':q!  özgürsünüz.', help: 'komutlar (parametreler köşeli parantezde):', helpTail: 'komutlar İngilizce de çalışır: projects, about, contact, theme, lang …', readFiltered: (n, t) => `${t} etiketli ${n} okuma`, allReading: 'tüm okumalar gösteriliyor', toolsHead: 'araçlar:', echoUsage: 'kullanım: echo <mesaj>  (adınızı eklemek için  echo ad: mesaj)', echoed: 'gönderildi — incelemeden sonra görünür. teşekkürler.', echoOpen: 'göndermek için önceden doldurulmuş bir GitHub issue açılıyor' },
+};
+
+class Component extends DCLogic {
+  state = { lang: 'en', theme: 'dark', input: '', output: '', hist: [], histIdx: -1, filter: null, readFilter: null, openSlug: null, focused: false, inProjects: false, inReading: false, scrolled: false, copied: false, shown: 0, section: '', guestName: '', guestMsg: '', pendingGuests: [] };
+  inputRef = React.createRef();
+  projectsRef = React.createRef();
+  readingRef = React.createRef();
+  headerRef = React.createRef();
+
+  L = v => (v && typeof v === 'object' && !Array.isArray(v) && 'en' in v) ? (v[this.state.lang] ?? v.en) : v;
+  m = () => MSG[this.state.lang];
+  ui = () => UI[this.state.lang];
+  reduced = () => window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  componentDidMount() {
+    let lang = 'en', theme = 'light';
+    try {
+      const sl = localStorage.getItem('aeo-lang');
+      lang = sl || ((navigator.language || '').toLowerCase().startsWith('tr') ? 'tr' : 'en');
+      theme = localStorage.getItem('aeo-theme-v2') || document.documentElement.getAttribute('data-theme') || 'dark';
+    } catch (e) {}
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.lang = lang;
+    this.setState({ lang, theme }, () => this.applyHash(true));
+    window.addEventListener('keydown', this.onGlobalKey);
+    window.addEventListener('hashchange', this.onHash);
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.observeTries = 0;
+    this.tryObserve();
+    this.revealTries = 0;
+    this.tryReveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.onGlobalKey);
+    window.removeEventListener('hashchange', this.onHash);
+    window.removeEventListener('scroll', this.onScroll);
+    if (this.io) this.io.disconnect();
+    if (this.rio) this.rio.disconnect();
+    if (this.sio) this.sio.disconnect();
+    clearInterval(this.typeT);
+  }
+  tryObserve = () => {
+    const el = this.projectsRef.current, rl = this.readingRef.current;
+    if (el && rl && 'IntersectionObserver' in window) {
+      this.io = new IntersectionObserver(es => { const u = {}; es.forEach(e => { if (e.target === el) u.inProjects = e.isIntersecting; if (e.target === rl) u.inReading = e.isIntersecting; }); this.setState(u); }, { rootMargin: '-140px 0px -45% 0px' });
+      this.io.observe(el); this.io.observe(rl);
+    } else if (this.observeTries++ < 20) setTimeout(this.tryObserve, 400);
+  };
+  tryReveal = () => {
+    const secs = document.querySelectorAll('main > section');
+    if (!secs.length) { if (this.revealTries++ < 20) setTimeout(this.tryReveal, 400); return; }
+    if (!('IntersectionObserver' in window)) { secs.forEach(s => s.setAttribute('data-in', '')); return; }
+    this.rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.setAttribute('data-in', ''); this.rio.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+    secs.forEach(s => this.rio.observe(s));
+    setTimeout(() => secs.forEach(s => s.setAttribute('data-in', '')), 3000);
+    this.sio = new IntersectionObserver(es => { const hit = es.find(e => e.isIntersecting); if (hit) this.setState({ section: hit.target.id }); }, { rootMargin: '-45% 0px -50% 0px' });
+    secs.forEach(s => this.sio.observe(s));
+  };
+  onScroll = () => { const s = window.scrollY > 80; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+
+  // ---- routing ----
+  onHash = () => this.applyHash(false);
+  applyHash(initial) {
+    const h = decodeURIComponent(location.hash.replace(/^#/, ''));
+    if (!h) return;
+    const [sec, arg] = h.split('/');
+    const go = () => this.scrollToId(sec, initial ? 'auto' : undefined);
+    if (sec === 'projects' && arg) {
+      if (TAGS.includes(arg)) this.setState({ filter: arg, openSlug: null }, go);
+      else if (CONTENT.projects.some(p => p.slug === arg)) this.setState({ openSlug: arg }, () => this.scrollToId('project-' + arg, initial ? 'auto' : undefined));
+      else go();
+    } else if (sec === 'reading' && arg && TAGS.includes(arg)) this.setState({ readFilter: arg }, go);
+    else if (SECTIONS.includes(sec)) setTimeout(go, initial ? 150 : 0);
+  }
+  setHash(h) { try { history.replaceState(null, '', h ? '#' + h : location.pathname + location.search); } catch (e) {} }
+  headerOffset() { const el = this.headerRef.current; return (el ? el.getBoundingClientRect().height : 0) + 16; }
+  scrollToId(id, behavior) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - this.headerOffset();
+    window.scrollTo({ top: Math.max(0, top), behavior: behavior || (this.reduced() ? 'auto' : 'smooth') });
+  }
+  goto = sec => { this.setHash(sec === 'top' ? '' : sec); this.scrollToId(sec); this.out(this.m().goto(sec)); };
+
+  // ---- actions ----
+  out = text => {
+    clearInterval(this.typeT);
+    if (this.reduced() || !text) { this.setState({ output: text, shown: text.length }); return; }
+    this.setState({ output: text, shown: 0 });
+    const step = Math.max(2, Math.ceil(text.length / 40));
+    this.typeT = setInterval(() => this.setState(s => { const n = Math.min(s.output.length, s.shown + step); if (n >= s.output.length) clearInterval(this.typeT); return { shown: n }; }), 16);
+  };
+  filterTo = tag => {
+    if (!TAGS.includes(tag)) { this.out(this.m().noTag(tag)); return; }
+    const n = CONTENT.projects.filter(p => p.tags.includes(tag)).length;
+    this.setState({ filter: tag, openSlug: null }, () => this.scrollToId('projects'));
+    this.setHash('projects/' + tag);
+    this.out(this.m().filtered(n, tag));
+  };
+  clearFilter = () => { this.setState({ filter: null }); this.setHash('projects'); this.out(this.m().allProjects); };
+  readingTo = tag => {
+    if (!TAGS.includes(tag)) { this.out(this.m().noTag(tag)); return; }
+    const n = CONTENT.reading.filter(r => r.tags.includes(tag)).length;
+    this.setState({ readFilter: tag }, () => this.scrollToId('reading'));
+    this.setHash('reading/' + tag);
+    this.out(this.m().readFiltered(n, tag));
+  };
+  clearReadingFilter = () => { this.setState({ readFilter: null }); this.setHash('reading'); this.out(this.m().allReading); };
+  echo = raw => {
+    const text = (raw || '').trim();
+    if (!text) { this.out(this.m().echoUsage); return; }
+    let name = '', message = text;
+    const mm = text.match(/^([^:]{1,40}):\s*(.+)$/); if (mm) { name = mm[1].trim(); message = mm[2].trim(); }
+    this.postGuest(name, message);
+  };
+  postGuest = (name, message) => {
+    if (!message) { this.out(this.m().echoUsage); return; }
+    const entry = { name: name || 'anonymous', date: new Date().toISOString().slice(0, 10), message, pending: true };
+    this.setState(s => ({ pendingGuests: [entry, ...s.pendingGuests], guestName: '', guestMsg: '' }));
+    const repo = CONTENT.guestbook.repo;
+    if (repo && !repo.startsWith('placeholder')) {
+      const url = `https://github.com/${repo}/issues/new?title=${encodeURIComponent('guestbook: ' + (name || 'anonymous'))}&body=${encodeURIComponent(message)}`;
+      this.out(this.m().echoOpen); window.open(url, '_blank', 'noopener');
+    } else this.out(this.m().echoed);
+  };
+  onGuestName = e => this.setState({ guestName: e.target.value });
+  onGuestMsg = e => this.setState({ guestMsg: e.target.value });
+  onGuestSubmit = e => { e.preventDefault(); this.postGuest(this.state.guestName.trim(), this.state.guestMsg.trim()); };
+  openProject = slug => {
+    const p = CONTENT.projects.find(x => x.slug === slug);
+    if (!p) { this.out(this.m().noProject(slug)); return; }
+    this.setState({ openSlug: slug, filter: this.state.filter && !p.tags.includes(this.state.filter) ? null : this.state.filter }, () => setTimeout(() => this.scrollToId('project-' + slug), 30));
+    this.setHash('projects/' + slug);
+    this.out(this.m().opened(slug));
+  };
+  closeProject = () => {
+    if (!this.state.openSlug) { if (this.state.filter) { this.clearFilter(); return; } this.out(this.m().nothingOpen); return; }
+    this.setState({ openSlug: null });
+    this.setHash(this.state.filter ? 'projects/' + this.state.filter : 'projects');
+    this.out(this.m().closed);
+  };
+  setTheme = t => {
+    t = t === 'koyu' ? 'dark' : t === 'açık' ? 'light' : t;
+    if (t !== 'dark' && t !== 'light') t = this.state.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('aeo-theme-v2', t); } catch (e) {}
+    this.setState({ theme: t }, () => this.out(this.m().theme(t)));
+  };
+  setLang = l => {
+    if (l !== 'en' && l !== 'tr') l = this.state.lang === 'en' ? 'tr' : 'en';
+    document.documentElement.lang = l;
+    try { localStorage.setItem('aeo-lang', l); } catch (e) {}
+    this.setState({ lang: l }, () => this.out(this.m().lang));
+  };
+  toggleTheme = () => this.setTheme();
+  toggleLang = () => this.setLang();
+  copyEmail = () => {
+    const e = CONTENT.meta.email;
+    const ok = () => { this.setState({ copied: true }); this.out(this.m().copied); clearTimeout(this.copyT); this.copyT = setTimeout(() => this.setState({ copied: false }), 2500); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(e).then(ok, () => this.out(this.m().copyFail(e)));
+    else this.out(this.m().copyFail(e));
+  };
+  openLink = (href, label) => { this.out(this.m().opening(label)); if (href && href !== '#') window.open(href, '_blank', 'noopener'); };
+
+  // ---- commands ----
+  cmds() {
+    const m = this.m(), meta = CONTENT.meta;
+    const slugs = CONTENT.projects.map(p => p.slug);
+    return [
+      { names: ['help', 'yardım', '?'], desc: { en: 'this list', tr: 'bu liste' }, run: () => this.out(this.helpText()) },
+      { names: ['projects', 'projeler'], args: ['all', ...TAGS], desc: { en: '[tag]  list or filter projects', tr: '[etiket]  projeleri listele veya filtrele' }, run: a => a ? (a === 'all' || a === 'hepsi' ? this.clearFilter() : this.filterTo(a)) : this.goto('projects') },
+      { names: ['project', 'proje'], args: slugs, desc: { en: '<slug>  open a project', tr: '<slug>  bir projeyi aç' }, run: a => a ? this.openProject(a) : this.out(m.projectList(slugs.join(', '))) },
+      { names: ['now', 'şimdi'], desc: { en: 'what I am doing this month', tr: 'bu ay ne yapıyorum' }, run: () => this.goto('now') },
+      { names: ['about', 'hakkında', 'hakkımda'], desc: { en: 'who I am', tr: 'kimim' }, run: () => this.goto('about') },
+      { names: ['experience', 'deneyim'], desc: { en: 'work and education', tr: 'iş ve eğitim' }, run: () => this.goto('experience') },
+      { names: ['reading', 'okuma', 'papers'], args: ['all', ...TAGS], desc: { en: '[tag]  papers, books, posts', tr: '[etiket]  makaleler, kitaplar, yazılar' }, run: a => a ? (a === 'all' || a === 'hepsi' ? this.clearReadingFilter() : this.readingTo(a)) : this.goto('reading') },
+      { names: ['writing', 'yazılar'], desc: { en: 'posts and notes', tr: 'yazılar ve notlar' }, run: () => this.goto('writing') },
+      { names: ['tools', 'araçlar'], desc: { en: 'small utilities that run here', tr: 'burada çalışan küçük yardımcılar' }, run: () => this.out([m.toolsHead, ...TOOLS.map(t => `  ${t.usage.padEnd(14)} ${this.L(t.desc)}`)].join('\n')) },
+      { names: ['echo', 'guestbook', 'defter'], desc: { en: '<message>  sign the guestbook', tr: '<mesaj>  ziyaretçi defterini imzala' }, run: (a, line) => a ? this.echo(line.replace(/^\S+\s*/, '')) : this.goto('guestbook') },
+      ...TOOLS.map(t => ({ names: t.names, hidden: true, run: (a, line) => this.out(t.run(line.replace(/^\S+\s*/, ''))) })),
+      { names: ['skills', 'yetenekler'], desc: { en: 'what I work with', tr: 'neyle çalışıyorum' }, run: () => this.goto('skills') },
+      { names: ['contact', 'iletişim'], args: ['email', 'github', 'linkedin', 'cv'], desc: { en: '[email|github|linkedin|cv]', tr: '[email|github|linkedin|cv]' }, run: a => {
+        if (!a) return this.goto('contact');
+        if (a === 'email' || a === 'eposta' || a === 'e-posta') return this.copyEmail();
+        if (a === 'github') return this.openLink(meta.github, 'GitHub');
+        if (a === 'linkedin') return this.openLink(meta.linkedin, 'LinkedIn');
+        if (a === 'cv') return this.openLink(meta.cv, 'CV');
+        this.goto('contact');
+      } },
+      { names: ['cv'], desc: { en: 'download the CV', tr: 'CV indir' }, run: () => this.openLink(meta.cv, 'CV') },
+      { names: ['theme', 'tema'], args: ['light', 'dark'], desc: { en: '[light|dark]', tr: '[açık|koyu]' }, run: a => this.setTheme(a) },
+      { names: ['lang', 'dil'], args: ['en', 'tr'], desc: { en: '[en|tr]', tr: '[en|tr]' }, run: a => this.setLang(a) },
+      { names: ['back', 'geri'], desc: { en: 'close the open project', tr: 'açık projeyi kapat' }, run: () => this.closeProject() },
+      { names: ['top', 'başa'], desc: { en: 'scroll to the top', tr: 'başa dön' }, run: () => this.goto('top') },
+      { names: ['colophon', 'kolofon'], desc: { en: 'how this site is made', tr: 'bu site nasıl yapıldı' }, run: () => this.goto('colophon') },
+      { names: ['history', 'geçmiş'], desc: { en: 'what you typed this session', tr: 'bu oturumda yazdıklarınız' }, run: () => this.out(this.state.hist.length ? this.state.hist.map((h, i) => `${String(i + 1).padStart(3)}  ${h}`).join('\n') : m.noHistory) },
+      { names: ['clear', 'temizle'], desc: { en: 'clear the output line', tr: 'çıktı satırını temizle' }, run: () => this.out('') },
+      { names: ['ls'], hidden: true, run: () => this.out(m.ls) },
+      { names: ['whoami'], hidden: true, run: () => this.out(m.whoami) },
+      { names: ['sudo'], hidden: true, run: () => this.out(m.sudo) },
+      { names: ['rm'], hidden: true, run: () => this.out(m.rm) },
+      { names: ['exit', 'quit', 'çıkış'], hidden: true, run: () => this.out(m.exit) },
+      { names: ['vim', 'vi', 'nano', 'emacs'], hidden: true, run: () => this.out(m.vim) },
+    ];
+  }
+  primaryName(c) { return this.state.lang === 'tr' && c.names[1] && !c.hidden ? c.names[1] : c.names[0]; }
+  helpText() {
+    const m = this.m();
+    const rows = this.cmds().filter(c => !c.hidden).map(c => `  ${this.primaryName(c).padEnd(12)} ${this.L(c.desc)}`);
+    return [m.help, ...rows, m.helpTail].join('\n');
+  }
+  findCmd(name) { return this.cmds().find(c => c.names.includes(name)); }
+  allNames() { return [...new Set([...this.cmds().filter(c => !c.hidden).flatMap(c => c.names.filter(n => n !== '?')), ...TOOLS.map(t => t.names[0])])]; }
+  suggest(word) {
+    const lev = (a, b) => { const d = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]); for (let j = 1; j <= b.length; j++) d[0][j] = j; for (let i = 1; i <= a.length; i++) for (let j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); return d[a.length][b.length]; };
+    let best = null, bd = 3;
+    for (const n of this.allNames()) { const d = n.startsWith(word) ? 0 : lev(word, n); if (d < bd) { bd = d; best = n; } }
+    return best;
+  }
+  exec = raw => {
+    const line = raw.trim();
+    if (!line) return;
+    this.setState(s => ({ hist: [...s.hist, line], histIdx: -1, input: '' }));
+    const [name, ...rest] = line.split(/\s+/);
+    const key = name.toLowerCase(), arg = rest.join(' ').toLowerCase();
+    const cmd = this.findCmd(key);
+    if (!cmd) { this.out(this.m().notFound(name, this.suggest(key))); return; }
+    cmd.run(arg, line);
+  };
+  complete() {
+    const val = this.state.input;
+    const parts = val.split(/\s+/);
+    if (parts.length <= 1) {
+      const q = val.toLowerCase();
+      const ms = this.allNames().filter(n => n.startsWith(q));
+      if (ms.length === 1) this.setState({ input: ms[0] + ' ' });
+      else if (ms.length > 1) { let p = ms[0]; for (const x of ms) while (!x.startsWith(p)) p = p.slice(0, -1); this.setState({ input: p }); this.out(ms.join('  ')); }
+    } else {
+      const cmd = this.findCmd(parts[0].toLowerCase());
+      const opts = (cmd && cmd.args) || [];
+      const ms = opts.filter(o => o.startsWith(parts[1].toLowerCase()));
+      if (ms.length === 1) this.setState({ input: parts[0] + ' ' + ms[0] });
+      else if (ms.length > 1) this.out(ms.join('  '));
+    }
+  }
+
+  // ---- input events ----
+  focusBar = () => { const el = this.inputRef.current; if (el) el.focus(); };
+  onInput = e => this.setState({ input: e.target.value, histIdx: -1 });
+  onFocus = () => this.setState({ focused: true });
+  onBlur = () => this.setState({ focused: false });
+  onKey = e => {
+    const { hist, histIdx } = this.state;
+    if (e.key === 'Enter') { e.preventDefault(); this.exec(this.state.input); }
+    else if (e.key === 'Tab') { e.preventDefault(); this.complete(); }
+    else if (e.key === 'Escape') { e.target.blur(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (!hist.length) return; const i = histIdx < 0 ? hist.length - 1 : Math.max(0, histIdx - 1); this.setState({ histIdx: i, input: hist[i] }); }
+    else if (e.key === 'ArrowDown') { e.preventDefault(); if (histIdx < 0) return; const i = histIdx + 1; if (i >= hist.length) this.setState({ histIdx: -1, input: '' }); else this.setState({ histIdx: i, input: hist[i] }); }
+  };
+  onGlobalKey = e => {
+    const t = e.target;
+    const typing = t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA' || t.isContentEditable);
+    if (typing) return;
+    if (e.key === '/') { e.preventDefault(); this.focusBar(); }
+    else if (e.key === '?') { e.preventDefault(); this.out(this.helpText()); this.focusBar(); }
+    else if (e.key === 'Escape' && this.state.openSlug) this.closeProject();
+  };
+  runChip = label => () => { this.exec(label); this.focusBar(); };
+
+  renderVals() {
+    const { lang, theme, input, output, filter, readFilter, openSlug, focused, inProjects, inReading, scrolled, hist, copied, guestName, guestMsg, pendingGuests } = this.state;
+    const L = this.L, ui = this.ui(), m = this.m();
+    const chipsMode = this.props.chipsMode ?? 'context';
+    const barMode = this.props.barMode ?? 'fixed';
+    const projectsCtx = inProjects || !!openSlug || (!!filter && !inReading);
+    const readingCtx = !projectsCtx && (inReading || !!readFilter);
+    let chips;
+    if (chipsMode === 'recent' && hist.length) {
+      chips = [...new Set([...hist].reverse())].slice(0, 6).map(h => ({ label: h, run: this.runChip(h), active: false }));
+    } else if (readingCtx) {
+      chips = [{ label: ui.all, tag: null }, ...TAGS.map(t => ({ label: t, tag: t }))].map(c => ({ label: c.label, active: readFilter === c.tag, run: () => { c.tag ? this.readingTo(c.tag) : this.clearReadingFilter(); } }));
+    } else if (projectsCtx) {
+      chips = [{ label: ui.all, tag: null }, ...TAGS.map(t => ({ label: t, tag: t }))].map(c => ({ label: c.label, active: filter === c.tag, run: () => { c.tag ? this.filterTo(c.tag) : this.clearFilter(); } }));
+    } else {
+      const pn = (en, tr) => lang === 'tr' ? tr : en;
+      chips = [pn('projects', 'projeler'), pn('about', 'hakkında'), pn('contact email', 'iletişim email'), theme === 'dark' ? pn('theme light', 'tema açık') : pn('theme dark', 'tema koyu'), pn('help', 'yardım')].map(l => ({ label: l, run: this.runChip(l), active: false }));
+    }
+    chips = chips.map(c => ({ ...c, bg: c.active ? 'var(--accent)' : 'transparent', fg: c.active ? 'var(--accent-ink)' : 'var(--muted)', border: c.active ? 'var(--accent)' : 'var(--rule)' }));
+    const im = input.match(/^(\s*\S*)([\s\S]*)$/) || ['', input, ''];
+    const cmdWord = im[1].trim().toLowerCase();
+    const known = !cmdWord || !!this.findCmd(cmdWord) || this.allNames().some(n => n.startsWith(cmdWord));
+    const tok = { cmd: im[1], args: im[2], cmdColor: cmdWord && !known ? 'var(--tok-err)' : 'var(--tok-cmd)' };
+    const err = /^(command not found|komut bulunamadı|no |could not|usage|kullanım|only numbers|.* diye bir)/.test(output);
+    const ok = /^(→|copied|e-posta|posted|gönderildi|theme|tema|language|dil)/.test(output);
+    const outColor = err ? 'var(--out-err)' : ok ? 'var(--out-ok)' : 'var(--muted)';
+    const path = '~' + (this.state.section && this.state.section !== 'top' ? '/' + this.state.section : '');
+
+    const projects = CONTENT.projects.filter(p => !filter || p.tags.includes(filter)).map(p => ({
+      domId: 'project-' + p.slug, featuredAttr: p.featured ? 'true' : 'false', name: L(p.name), problem: L(p.problem), outcome: L(p.outcome),
+      stack: p.stack.join(' · '), isOpen: openSlug === p.slug,
+      toggle: () => openSlug === p.slug ? this.closeProject() : this.openProject(p.slug),
+      tags: p.tags.map(tag => ({ tag, go: () => this.filterTo(tag) })),
+      links: p.links.map(l => ({ label: L(l.label), href: l.href })),
+      writeup: L(p.writeup) || [], differently: L(p.differently),
+    }));
+    const filterCount = projects.length;
+    const reading = CONTENT.reading.filter(r => !readFilter || r.tags.includes(readFilter)).map(r => ({ date: r.date, kind: r.kind, title: L(r.title), authors: r.authors, href: r.href, note: L(r.note), tags: r.tags.map(tag => ({ tag, go: () => this.readingTo(tag) })) }));
+    const guestbook = [...pendingGuests.map(g => ({ ...g })), ...CONTENT.guestbook.entries.map(g => ({ name: g.name, date: g.date, message: L(g.message), pending: false }))];
+    const secLabel = s => ({ now: ui.now, about: ui.about, experience: ui.experience, projects: ui.projects, reading: ui.reading, writing: ui.writing, tools: ui.tools, skills: ui.skills, guestbook: ui.guestbook, contact: ui.contact })[s];
+    return {
+      inputRef: this.inputRef, projectsRef: this.projectsRef, readingRef: this.readingRef, headerRef: this.headerRef,
+      index: SECTIONS.filter(s => s !== 'top' && s !== 'colophon').map(s => ({ href: '#' + s, label: secLabel(s).toLowerCase(), go: e => { e.preventDefault(); this.goto(s); } })),
+      reading, noReading: reading.length === 0, hasReadingFilter: !!readFilter, readingFilterLabel: readFilter ? m.readFiltered(reading.length, readFilter) : '', clearReadingFilter: this.clearReadingFilter,
+      tools: TOOLS.map(t => ({ usage: t.usage, desc: L(t.desc), example: t.example, try: () => { this.setState({ input: t.example }); this.focusBar(); this.scrollToId('top'); } })),
+      guestbook, guestName, guestMsg, onGuestName: this.onGuestName, onGuestMsg: this.onGuestMsg, onGuestSubmit: this.onGuestSubmit,
+      ui: { ...ui, themeLabel: theme === 'dark' ? ui.light : ui.dark, langLabel: ui.lang },
+      otherLangCode: lang === 'en' ? 'tr' : 'en',
+      meta: CONTENT.meta,
+      input, hint: input ? '' : ui.hintEmpty, tok, path, focusedAttr: focused ? 'true' : 'false',
+      outputShown: output.slice(0, this.state.shown), outColor,
+      showExtras: barMode === 'fixed' || focused || !scrolled,
+      chips,
+      hero: { line1: L(CONTENT.hero.line1), line2: L(CONTENT.hero.line2), avail: L(CONTENT.hero.avail) },
+      now: { date: L(CONTENT.now.date), text: L(CONTENT.now.text) },
+      about: L(CONTENT.about),
+      experience: CONTENT.experience.map(e => ({ dates: L(e.dates), title: L(e.title), org: L(e.org), bullets: L(e.bullets) || [] })),
+      projects, noProjects: filterCount === 0,
+      hasFilter: !!filter, filterLabel: filter ? m.filtered(filterCount, filter) : '',
+      clearFilter: this.clearFilter, closeProject: this.closeProject,
+      writing: CONTENT.writing.map(w => ({ date: w.date, title: L(w.title), href: w.href })),
+      skills: CONTENT.skills.map(g => ({ group: L(g.group), items: g.items.map(s => ({ label: L(s.label), clickable: !!s.tag, plain: !s.tag, go: () => this.filterTo(s.tag) })) })),
+      contact: { note: L(CONTENT.contact.note) },
+      copyEmail: this.copyEmail, copiedLabel: copied ? ui.copied : '',
+      colophon: L(CONTENT.colophon),
+      toggleTheme: this.toggleTheme, toggleLang: this.toggleLang, focusBar: this.focusBar,
+      onInput: this.onInput, onKey: this.onKey, onFocus: this.onFocus, onBlur: this.onBlur,
+    };
+  }
+}
+</script>
+</body>
+</html>

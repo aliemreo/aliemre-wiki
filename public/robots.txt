@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+# When the real domain is attached (see CLAUDE.md §9.1), point this at it and
+# add a one-URL sitemap.xml next to index.html if you want one:
+# Sitemap: https://example.com/sitemap.xml

@@ -1,0 +1,26 @@
+# Checks the invariants public/index.html depends on. The content rules live in
+# the page itself, between the preflight markers, so this and the browser dev
+# check never drift apart.
+#
+# Note: production deploys from DigitalOcean App Platform with deploy_on_push,
+# which fires whether or not this passes. To make it actually block, protect
+# `main` and require this check, and land work through pull requests.
+name: preflight
+
+on:
+  pull_request:
+  push:
+    branches: [main, preview]
+
+jobs:
+  preflight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # the meta.updated rule diffs against the base commit
+      - name: Run preflight
+        run: node .github/scripts/preflight.mjs
+        env:
+          # empty on pull_request, where the script falls back to origin/<base>
+          PREFLIGHT_BASE: ${{ github.event.before }}
