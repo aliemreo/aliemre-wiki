@@ -12,7 +12,7 @@ import { gzipSync } from 'node:zlib';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const DIST = ROOT + 'dist/';
 /* CLAUDE.md §6.  React + ReactDOM are about 60 KB of this on their own. */
-const BUDGET = 160 * 1024;
+const BUDGET = 165 * 1024;   // raised from 160 KB at the owner's request, 2026-09-23
 const problems = [], notes = [];
 const fail = (t, d) => problems.push(d ? `${t}\n  ${d}` : t);
 const kb = n => (n / 1024).toFixed(1) + ' KB';

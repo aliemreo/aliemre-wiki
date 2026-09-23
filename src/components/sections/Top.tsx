@@ -36,7 +36,7 @@ export function Top() {
       <Copy className="avail" text={L(h.avail)}><span className="dot" aria-hidden="true" /><Rich text={L(h.avail)} /></Copy>
       <div className="hero-cta">
         <PromptButton caret onClick={() => engine.focusBar()}>{ui.ctaTerminal}</PromptButton>
-        <PromptButton outline onClick={() => engine.exec('mail')}>{ui.ctaEmail}</PromptButton>
+        <PromptButton outline data-mail-home onClick={() => engine.exec('mail')}>{ui.ctaEmail}</PromptButton>
       </div>
       <DebateCta hint="after" className="hero-debate" />
       <Marquee />

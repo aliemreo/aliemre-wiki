@@ -133,7 +133,7 @@ Both run in CI before anything is uploaded; the `deploy` job needs them green.
 | `content.ts` changed but `meta.updated` did not | bump `meta.updated`. Code-only changes do not trigger this |
 | `dist/index.html` was not prerendered, or a section is missing from it | the SSR build or `scripts/prerender.mjs` failed; read the build log |
 | the terminal is in the prerendered HTML | something renders `<Terminal>` before mount; it must stay behind `useMounted()` |
-| gzipped html + js + css exceed 160 KB | a new dependency is too heavy. React is ~60 KB of the budget; tooltips were dropped for this reason |
+| gzipped html + js + css exceed 165 KB | a new dependency is too heavy. React is ~60 KB of the budget; tooltips were dropped for this reason |
 | `404.html`, `favicon.svg`, `og.png` or `robots.txt` is missing from `dist/` | it was removed from `public/` |
 
 The placeholder count is reported, never fatal — CLAUDE.md §8 says they are
