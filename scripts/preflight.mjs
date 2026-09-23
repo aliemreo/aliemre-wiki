@@ -43,7 +43,8 @@ notes.push(`${report.placeholders.length} placeholder strings in CONTENT (intent
     const built = statSync(p).mtimeMs;
     const dir = ROOT + 'ask/knowledge/';
     const newest = Math.max(statSync(ROOT + 'src/content/content.ts').mtimeMs, ...(existsSync(dir) ? readdirSync(dir).filter(f => f.endsWith('.md') && f !== 'profile.md').map(f => statSync(dir + f).mtimeMs) : []));
-    if (built < newest) notes.push('ask/knowledge.txt is older than content.ts or a file in ask/knowledge/ — run npm run ask:prompt and redeploy the Worker (ask/README.md).');
+    if (built < newest && !process.env.GITHUB_ACTIONS) notes.push(   /* a fresh checkout's mtimes mean nothing */
+      'ask/knowledge.txt is older than content.ts or a file in ask/knowledge/ — run npm run ask:prompt and redeploy the Worker (ask/README.md).');
   }
 }
 
@@ -63,6 +64,9 @@ const before = newBranch ? null : git(['show', `${baseRef}:${CONTENT_FILE}`]);
 
 if (newBranch) {
   notes.push('meta.updated check skipped — first push of this branch.');
+} else if (before === null && git(['cat-file', '-e', `${baseRef}^{commit}`]) !== null) {
+  /* the base commit is here, the file is not: this push introduces content.ts */
+  notes.push(`meta.updated check skipped — ${CONTENT_FILE} is new since ${baseRef.slice(0, 7)}.`);
 } else if (before === null) {
   const why = `no ${CONTENT_FILE} at ${baseRef} to compare against`;
   /* Outside CI this is normal — a shallow clone, a first commit, a local run.
