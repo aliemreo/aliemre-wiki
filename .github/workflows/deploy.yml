@@ -1,8 +1,9 @@
-# Production deploy to GitHub Pages: https://aliemreo.github.io/aliemre-wiki/
+# Production deploy to GitHub Pages: https://aliemreozcan.com/ (also https://aliemreo.github.io/aliemre-wiki/, which redirects there)
 #
-# The deploy is gated — `needs: preflight` means a broken <noscript> mirror, a
-# missing Turkish string or an un-bumped meta.updated never reaches the live
-# site. Pull requests are covered separately by preflight.yml.
+# The deploy is gated — `needs: build` means a missing Turkish string, an
+# un-bumped meta.updated, a type error, a broken prerender or a blown size
+# budget never reaches the live site.  Pull requests run the same job through
+# preflight.yml.
 #
 # One-time setup: repo Settings -> Pages -> Source = "GitHub Actions".
 name: deploy
@@ -22,27 +23,38 @@ concurrency:
   cancel-in-progress: false      # never interrupt a production deploy
 
 jobs:
-  preflight:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0         # the meta.updated rule diffs against the base commit
-      - run: node .github/scripts/preflight.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Preflight (content rules)
+        run: npm run preflight
         env:
           PREFLIGHT_BASE: ${{ github.event.before }}
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build and prerender
+        run: npm run build
+      - name: Verify dist (prerender, size budget, static files)
+        run: npm run verify
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
-    needs: preflight
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
-      - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
       - id: deploy
         uses: actions/deploy-pages@v4

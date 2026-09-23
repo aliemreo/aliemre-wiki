@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Ali Emre Özcan — computer engineering student, ML intern</title>
+<meta name="description" content="Final-year computer engineering student at İTÜ and part-time machine learning engineer at TAZI, working on ML models and tool-using agent systems.">
+<link rel="canonical" href="https://aliemreozcan.com/">
+<meta property="og:title" content="Ali Emre Özcan">
+<meta property="og:description" content="Computer engineering student at İTÜ, machine learning engineer at TAZI (part-time). ML models and tool-using agents.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://aliemreozcan.com/">
+<meta property="og:image" content="https://aliemreozcan.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ali Emre Özcan">
+<meta name="twitter:description" content="Computer engineering student at İTÜ, machine learning engineer at TAZI (part-time).">
+<meta name="twitter:image" content="https://aliemreozcan.com/og.png">
+<meta property="og:image:alt" content="Ali Emre Özcan — I build ML models">
+<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Ali Emre Özcan","url":"https://aliemreozcan.com/","jobTitle":"Machine learning engineer","worksFor":{"@type":"Organization","name":"TAZI Bilişim Teknolojileri"},"alumniOf":{"@type":"CollegeOrUniversity","name":"Istanbul Technical University"},"address":{"@type":"PostalAddress","addressLocality":"Istanbul","addressCountry":"TR"},"sameAs":["__GITHUB__"]}</script>
+<link rel="alternate" type="application/rss+xml" title="Writing" href="./writing.xml">
+
+<!-- Fonts are self-hosted from ./fonts (scripts/fonts.mjs); the boot script
+     preloads the chosen set's latin faces. -->
+
+<!-- Runs before first paint so the page never flashes the wrong theme.  The
+     keys match src/lib/prefs.ts. -->
+<script>
+  (function () {
+    var d = document.documentElement;
+    d.classList.add('js');
+    function get(k, fallback) { try { return localStorage.getItem(k) || fallback } catch (e) { return fallback } }
+    d.setAttribute('data-theme', get('aeo-theme-v2', 'light'));
+    d.setAttribute('data-palette', get('aeo-palette', 'amber'));
+    d.setAttribute('data-bg', get('aeo-bg', 'scan'));
+    var t = get('aeo-term', 'folded'); d.setAttribute('data-term', t === 'open' || t === 'wide' || t === 'full' || t === 'mini' ? t : 'folded');
+    var tw = parseInt(get('aeo-term-w', ''), 10); if (tw > 0) d.style.setProperty('--term-w', tw + 'px');
+    var th = parseInt(get('aeo-term-h', ''), 10); if (th > 0) { d.style.setProperty('--term-h', th + 'px'); d.setAttribute('data-term-h', ''); }
+    var f = get('aeo-font', 'geist'); if (f !== 'inter') f = 'geist';
+    d.setAttribute('data-font', f);
+    [(f === 'inter' ? 'inter-tight' : 'geist') + '-latin', 'geist-mono-latin'].forEach(function (name) {
+      var l = document.createElement('link'); l.rel = 'preload'; l.as = 'font'; l.type = 'font/woff2'; l.crossOrigin = 'anonymous'; l.href = './fonts/' + name + '.woff2'; document.head.appendChild(l);
+    });
+    var q = (location.search.match(/[?&]lang=(en|tr)/) || [])[1];
+    d.lang = q || get('aeo-lang', (navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+  })()
+</script>
+</head>
+<body>
+<!-- The build prerenders the document into #root, so the page reads without
+     JavaScript; React hydrates it and adds the terminal. -->
+<div id="root"><!--app-html--></div>
+<script type="module" src="/src/main.tsx"></script>
+</body>
+</html>

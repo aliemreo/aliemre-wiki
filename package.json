@@ -1,0 +1,41 @@
+{
+  "name": "aliemre-wiki",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && vite build --ssr src/entry-server.tsx --outDir dist-ssr && node scripts/prerender.mjs",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "preflight": "node scripts/preflight.mjs",
+    "verify": "node scripts/verify-dist.mjs",
+    "previews": "node scripts/previews.mjs",
+    "check": "npm run preflight && npm run typecheck && npm run build && npm run verify",
+    "fonts": "node scripts/fonts.mjs",
+    "og": "node scripts/og.mjs",
+    "ask:prompt": "node ask/build-prompt.mjs",
+    "ask:test": "node --test ask/*.test.mjs"
+  },
+  "dependencies": {
+    "radix-ui": "^1.6.7",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  }
+}

@@ -1,0 +1,35 @@
+# Cloudflare Worker for the "ask me a question" field.  See README.md.
+name = "aliemre-ask"
+main = "worker.mjs"
+compatibility_date = "2026-01-01"
+
+# knowledge.txt is imported as text by worker.mjs (characters.json is a JSON module, bundled natively)
+rules = [{ type = "Text", globs = ["**/*.txt"], fallthrough = true }]
+
+[vars]
+MODEL = "claude-haiku-4-5-20251001"
+# comma-separated; add a custom domain here when one arrives
+ALLOWED_ORIGINS = "https://aliemreozcan.com,https://www.aliemreozcan.com,https://aliemreo.github.io,http://localhost:5173,http://localhost:4173"
+# the mail dialog (POST /mail): sent through Resend from MAIL_FROM (aliemreozcan.com was
+# verified in Resend on 2026-09-23: DKIM + SPF on send.aliemreozcan.com) to MAIL_TO, a secret
+# so the inbox address stays out of this public repo; Reply-To is the visitor.
+# MAIL_TO unset = /mail answers 503.
+MAIL_FROM = "aliemreozcan.com <site@aliemreozcan.com>"
+
+# per-IP throttle: 5 questions a minute.  Delete this block if your plan lacks the binding;
+# the Worker skips the check when LIMITER is absent.
+[[ratelimits]]
+name = "LIMITER"
+namespace_id = "1001"
+simple = { limit = 5, period = 60 }
+
+# per-IP throttle for mail: 3 messages a minute (Cloudflare allows periods of 10 or 60 s).
+[[ratelimits]]
+name = "MAIL_LIMITER"
+namespace_id = "1002"
+simple = { limit = 3, period = 60 }
+
+# The API keys are secrets, never vars:
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put RESEND_API_KEY
+#   wrangler secret put MAIL_TO          (your inbox)

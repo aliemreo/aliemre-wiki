@@ -1,21 +1,64 @@
 <!doctype html>
+<html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ali Emre Özcan</title>
 <meta name="robots" content="noindex">
+<title>404 — Ali Emre Özcan</title>
 <!--
-  GitHub Pages serves this for any path it does not recognise, and it sends the
-  visitor to the real page with the last path segment as a hash:
-  /aliemre-wiki/projects -> /aliemre-wiki/#projects.
-  The redirect is relative, so it stays correct under the /<repo>/ base of a
-  project site and at a domain root if a custom domain is attached later.
+  GitHub Pages serves this for any path it does not recognise.  A known section
+  name redirects at once (/aliemre-wiki/projects -> /aliemre-wiki/#projects); an
+  unknown path shows this page for a moment, then lands at the top with the
+  segment as a hash so the terminal can say "no page at …".  Self-contained on
+  purpose: it must not depend on the bundle.  Relative redirect, so it works at
+  a domain root too.
 -->
+<style>
+  :root { --bg:#F7F6F1; --ink:#17160F; --muted:#575450; --rule:#DCD9CF; --accent:#8F5600; --tint:#F3E9D3; color-scheme: light }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0F0F0D; --ink:#D6D4CD; --muted:#8F8C82; --rule:#26251F; --accent:#FFB224; --tint:#1C1812; color-scheme: dark } }
+  html { background: var(--bg); color: var(--ink); font-family: Geist, "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; box-sizing: border-box; position: relative; isolation: isolate }
+  body::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 70vh; z-index: -1; pointer-events: none;
+    background-image: radial-gradient(color-mix(in oklch, var(--ink) 11%, transparent) 1px, transparent 1.2px); background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 40%, transparent 100%); mask-image: radial-gradient(ellipse 80% 100% at 50% 0%, black 40%, transparent 100%) }
+  body::after { content: ""; position: absolute; left: 50%; top: -20vh; width: min(1100px, 120vw); aspect-ratio: 2 / 1; transform: translateX(-50%); z-index: -1; pointer-events: none;
+    background: radial-gradient(ellipse at center, color-mix(in oklch, var(--accent) 30%, transparent), transparent 70%); filter: blur(40px) }
+  main { max-width: 560px; width: 100% }
+  .k { font-family: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px }
+  h1 { font-size: clamp(64px, 14vw, 120px); font-weight: 600; letter-spacing: -.04em; line-height: 1; margin: 0 0 20px; color: var(--accent) }
+  p { font-size: 18px; line-height: 1.6; margin: 0 0 10px }
+  .path { font-family: "Geist Mono", ui-monospace, monospace; font-size: 15px; color: var(--muted); word-break: break-all }
+  .muted { color: var(--muted) }
+  a.btn { display: inline-block; margin-top: 22px; padding: 11px 20px; border-radius: 999px; background: var(--accent); color: #fff; text-decoration: none; font-weight: 500 }
+  @media (prefers-color-scheme: dark) { a.btn { color: #161410 } }
+  .bar { height: 2px; background: var(--rule); border-radius: 1px; margin-top: 28px; overflow: hidden }
+  .bar i { display: block; height: 100%; width: 0; background: var(--accent); animation: fill 1.8s linear forwards }
+  @keyframes fill { to { width: 100% } }
+  @media (prefers-reduced-motion: reduce) { .bar { display: none } }
+</style>
+<main>
+  <p class="k">Ali Emre Özcan</p>
+  <h1>404</h1>
+  <p id="msg">There is no page at <span class="path" id="path"></span>.</p>
+  <p class="muted" id="sub">Taking you to the top of the site…</p>
+  <a class="btn" id="go" href="./">Go now</a>
+  <div class="bar" aria-hidden="true"><i></i></div>
+</main>
 <script>
   (function () {
     var seg = location.pathname.replace(/\/+$/, '').split('/').pop() || '';
-    location.replace('./' + location.search + (seg ? '#' + encodeURIComponent(seg) : ''));
+    var target = './' + location.search + (seg ? '#' + encodeURIComponent(seg) : '');
+    var SECTIONS = ['top','now','about','experience','education','projects','reading','writing','tools','skills','guestbook','contact','colophon'];
+    if (SECTIONS.indexOf(seg) >= 0) { location.replace(target); return; }
+    var tr = (navigator.language || '').toLowerCase().indexOf('tr') === 0;
+    document.documentElement.lang = tr ? 'tr' : 'en';
+    document.getElementById('path').textContent = location.pathname;
+    if (tr) {
+      document.getElementById('msg').innerHTML = '<span class="path">' + location.pathname.replace(/</g, '&lt;') + '</span> diye bir sayfa yok.';
+      document.getElementById('sub').textContent = 'Sitenin başına götürülüyorsunuz…';
+      document.getElementById('go').textContent = 'Hemen git';
+    }
+    document.getElementById('go').href = target;
+    setTimeout(function () { location.replace(target); }, 1800);
   })()
 </script>
-<p style="font-family:system-ui,sans-serif;padding:2rem">
-  <a href="./">Ali Emre Özcan — go to the site</a>
-</p>
+</html>

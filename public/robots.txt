@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add a one-URL sitemap.xml next to index.html if you want one, then uncomment:
-# Sitemap: https://aliemreo.github.io/aliemre-wiki/sitemap.xml
+Sitemap: https://aliemreozcan.com/sitemap.xml

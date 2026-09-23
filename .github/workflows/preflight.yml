@@ -1,10 +1,6 @@
-# Checks the invariants public/index.html depends on. The content rules live in
-# the page itself, between the preflight markers, so this and the browser dev
-# check never drift apart.
-#
-# On main this also runs as the first job of deploy.yml, which is what gates the
-# live site. Here it covers pull requests, so a problem is visible before merge.
-# To make it actually block a merge, protect `main` and require this check.
+# The same checks deploy.yml runs before publishing, on every pull request, so
+# a problem is visible before merge.  To make it actually block a merge,
+# protect `main` and require this check.
 name: preflight
 
 on:
@@ -17,8 +13,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0          # the meta.updated rule diffs against the base commit
-      - name: Run preflight
-        run: node .github/scripts/preflight.mjs
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Preflight (content rules)
+        run: npm run preflight
         env:
           # empty on pull_request, where the script falls back to origin/<base>
           PREFLIGHT_BASE: ${{ github.event.before }}
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Build and prerender
+        run: npm run build
+      - name: Verify dist (prerender, size budget, static files)
+        run: npm run verify
