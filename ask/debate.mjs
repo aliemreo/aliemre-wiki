@@ -13,7 +13,7 @@
  *   ?? <question>       a follow-up the visitor could ask next
  *
  * `call(system, user, maxTokens)` is an async iterable of text deltas (the
- * Worker wires it to the Messages API); `files` is parseKnowledge(knowledge.txt).
+ * Worker wires it to DeepSeek through llm.mjs); `files` is parseKnowledge(knowledge.txt).
  * One utterance = one model call over the transcript so far; each sentence is
  * checked by the Verifier before it leaves.  If a call fails, the bench rules
  * `unclear` with the fixed fallback text, so the visitor always gets an ending.

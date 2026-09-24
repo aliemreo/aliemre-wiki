@@ -9,7 +9,7 @@ import type { Lang } from './types.ts';
 const uiEn = {
   barLabel: 'Command bar. Type help for a list of commands.', kbd: '/ focus · ? help · Tab complete', hintEmpty: 'type help, or press ?',
   now: 'Now', about: 'About', experience: 'Experience', education: 'Education', projects: 'Projects', reading: 'Reading', writing: 'Writing', tools: 'Tools', skills: 'Skills', guestbook: 'Guestbook', contact: 'Contact', colophon: 'Colophon',
-  skillsNote: 'Click a skill to see projects that use it.', readingNote: 'Papers, books and posts, one sentence each on what I took from them. Newest first.', toolsNote: 'Small utilities I use myself. Each one is a command in the bar; click a usage line to try it.', guestbookNote: 'Leave a line. Entries appear after I read them. Also: echo <message> in the bar.',
+  skillsNote: 'Click a skill to see projects that use it.', readingNote: 'Papers, books and posts, one sentence each on what I took from them. Newest first.', toolsNote: 'Small utilities I use myself. Each one is a command in the bar; click a usage line to try it.', guestbookNote: 'Leave a line. An automatic check (an AI model, DeepSeek) reads each entry first; approved ones appear here a few minutes later. Also: echo <message> in the bar.',
   email: 'Email', cvDownload: 'Download CV (PDF)', blurbGithub: 'My code and projects on GitHub', blurbLinkedin: 'My profile on LinkedIn', blurbCv: 'My CV as a PDF', blurbWriting: 'A post I wrote', updated: 'Last updated', light: 'Light', dark: 'Dark', lang: 'Türkçe', clear: 'clear', back: 'back',
   differently: 'What I\'d do differently:', writeup: 'write-up', imageSlot: 'image or diagram slot — optional', noProjects: 'No projects with that tag yet.', noReading: 'Nothing with that tag yet.',
   copied: 'copied', copyFail: 'copy failed, select it manually', copyHint: 'click to copy', all: 'all', indexLabel: 'Sections', terminalLabel: 'Terminal', paletteLabel: 'Palette', intro: 'Intro',
@@ -29,7 +29,7 @@ const uiEn = {
 const uiTr: typeof uiEn = {
   barLabel: 'Komut satırı. Komut listesi için yardım yazın.', kbd: '/ odak · ? yardım · Tab tamamla', hintEmpty: 'yardım yazın veya ? basın',
   now: 'Şimdi', about: 'Hakkımda', experience: 'Deneyim', education: 'Eğitim', projects: 'Projeler', reading: 'Okumalar', writing: 'Yazılar', tools: 'Araçlar', skills: 'Yetenekler', guestbook: 'Ziyaretçi defteri', contact: 'İletişim', colophon: 'Kolofon',
-  skillsNote: 'Bir yeteneğe tıklayıp onu kullanan projeleri görün.', readingNote: 'Makaleler, kitaplar ve yazılar; her biri için aldığım şey üzerine tek cümle. En yeni önce.', toolsNote: 'Kendim kullandığım küçük yardımcılar. Her biri satırda bir komut; denemek için kullanım satırına tıklayın.', guestbookNote: 'Bir satır bırakın. Girdiler okuduktan sonra görünür. Ayrıca: satırda echo <mesaj>.',
+  skillsNote: 'Bir yeteneğe tıklayıp onu kullanan projeleri görün.', readingNote: 'Makaleler, kitaplar ve yazılar; her biri için aldığım şey üzerine tek cümle. En yeni önce.', toolsNote: 'Kendim kullandığım küçük yardımcılar. Her biri satırda bir komut; denemek için kullanım satırına tıklayın.', guestbookNote: 'Bir satır bırakın. Her girdiyi önce otomatik bir kontrol (bir yapay zekâ modeli, DeepSeek) okur; onaylananlar birkaç dakika sonra burada görünür. Ayrıca: satırda echo <mesaj>.',
   email: 'E-posta', cvDownload: 'CV indir (PDF)', blurbGithub: 'GitHub’daki kodlarım ve projelerim', blurbLinkedin: 'LinkedIn profilim', blurbCv: 'PDF olarak CV’m', blurbWriting: 'Yazdığım bir yazı', updated: 'Son güncelleme', light: 'Açık', dark: 'Koyu', lang: 'English', clear: 'temizle', back: 'geri',
   differently: 'Farklı yapacağım şey:', writeup: 'yazı', imageSlot: 'görsel veya diyagram alanı — isteğe bağlı', noProjects: 'Bu etiketle henüz proje yok.', noReading: 'Bu etiketle henüz bir şey yok.',
   copied: 'kopyalandı', copyFail: 'kopyalanamadı, elle seçin', copyHint: 'kopyalamak için tıklayın', all: 'hepsi', indexLabel: 'Bölümler', terminalLabel: 'Terminal', paletteLabel: 'Palet', intro: 'Giriş',
@@ -71,7 +71,7 @@ const msgEn = {
   pipesHelp: ['the content is a dataset. sources produce rows, stages transform them:', '  sources   ' + SOURCES.join(' '), '  stages    ' + stagesLine, '', '  projects | grep agents', '  projects | stack | uniq -c', '  reading | where year>=2026 | sort date -r | fields date,title', '  skills | where tag=ml | count', '  history | tail 3'].join('\n'),
   readFiltered: (n: number, t: string) => `${n} reading entr${n === 1 ? 'y' : 'ies'} tagged ${t}`, allReading: 'showing all reading', toolsHead: 'tools:',
   mailOpen: 'opening the mail dialog', mailSent: '→ mail sent — the reply goes to the address you gave', mailError: (e: string) => `could not send (${e}) — try: contact email`, mailUnset: 'no mail endpoint yet — the address is copied instead',
-  echoUsage: 'usage: echo <message>  (add your name with  echo name: message)', echoed: 'posted — it appears after review. thanks.', echoOpen: 'opening a prefilled GitHub issue to post it',
+  echoUsage: 'usage: echo <message>  (add your name with  echo name: message)', guestApproved: '→ signed — it appears on the page in a few minutes', guestHeld: '→ thanks — I read this one before it goes up', guestError: (e: string) => `could not sign (${e}) — try again later`, guestUnset: 'the guestbook is not open yet',
 };
 const msgTr: typeof msgEn = {
   goto: s => `→ ${s}`, filtered: (n, t) => `${t} etiketli ${n} proje`, allProjects: 'tüm projeler gösteriliyor',
@@ -94,7 +94,7 @@ const msgTr: typeof msgEn = {
   pipesHelp: ['içerik bir veri seti. kaynaklar satır üretir, aşamalar dönüştürür:', '  kaynaklar ' + SOURCES.join(' '), '  aşamalar  ' + stagesLine, '', '  projeler | grep agents', '  projeler | stack | uniq -c', '  okuma | where year>=2026 | sort date -r | fields date,title', '  yetenekler | where tag=ml | count', '  geçmiş | tail 3'].join('\n'),
   readFiltered: (n, t) => `${t} etiketli ${n} okuma`, allReading: 'tüm okumalar gösteriliyor', toolsHead: 'araçlar:',
   mailOpen: 'e-posta penceresi açılıyor', mailSent: '→ gönderildi — cevap verdiğiniz adrese gelecek', mailError: e => `gönderilemedi (${e}) — deneyin: iletişim email`, mailUnset: 'henüz e-posta uç noktası yok — bunun yerine adres kopyalanıyor',
-  echoUsage: 'kullanım: echo <mesaj>  (adınızı eklemek için  echo ad: mesaj)', echoed: 'gönderildi — incelemeden sonra görünür. teşekkürler.', echoOpen: 'göndermek için önceden doldurulmuş bir GitHub issue açılıyor',
+  echoUsage: 'kullanım: echo <mesaj>  (adınızı eklemek için  echo ad: mesaj)', guestApproved: '→ imzalandı — birkaç dakika içinde sayfada görünür', guestHeld: '→ teşekkürler — yayınlanmadan önce okuyacağım', guestError: e => `imzalanamadı (${e}) — daha sonra tekrar deneyin`, guestUnset: 'ziyaretçi defteri henüz açık değil',
 };
 export type Msg = typeof msgEn;
 export const MSG: Record<Lang, Msg> = { en: msgEn, tr: msgTr };

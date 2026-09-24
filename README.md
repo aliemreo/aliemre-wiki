@@ -64,7 +64,7 @@ a plain string or an `{ en, tr }` pair. Never edit a component to change words.
 | a project | append an object to `CONTENT.projects`. `slug` must be lowercase ASCII — it doubles as the `project <slug>` command and the `#projects/<slug>` URL |
 | a reading entry | prepend to `CONTENT.reading` |
 | a post | append to `CONTENT.writing` |
-| a guestbook entry | copy an approved issue from `CONTENT.guestbook.repo` into `CONTENT.guestbook.entries` |
+| a guestbook entry | nothing: the Worker publishes approved entries itself and emails you each one (Publish / Remove links). To take one down by hand, delete its line in `src/content/guestbook.json` |
 | a linkable term (a company, a school, a reference) | one row in `src/content/links.ts` (`label`, `href`, `blurb` in both languages), then write `[[key]]` or `[[key|shown text]]` in the copy and run `npm run previews` to capture its card image into `public/previews/` (commit the WebP) |
 | a tag | append to `TAGS`. Filters, chips, pipes and the types pick it up |
 | a terminal tool | append a `{ names, usage, desc, example, run }` object to `src/content/tools.ts`. It becomes a command, a row in the Tools section and a row in the `tools` pipe source |
@@ -229,7 +229,7 @@ tab. The rest of the page blurs behind the panel; Esc, × or a click outside
 closes it; the
 question also lands in the terminal log as `ask …`, and `ask <question>` works
 from the prompt. The answer comes from a small Cloudflare Worker you deploy once
-(`ask/README.md`: five commands), which asks Claude with the site's own content as
+(`ask/README.md`: five commands), which asks DeepSeek (`deepseek-flash`) with the site's own content as
 the knowledge base. Until `meta.ask` in `content.ts` holds the Worker's URL the
 field stays in search mode, and nothing is ever sent on page load.
 
@@ -321,7 +321,6 @@ Everything below still needs real copy. The dev server lists them all.
 - TAZI bullets (3), the thesis line, the third experience entry (or delete it)
 - projects `churn`, `toolbench`, `kvstore`, `survey`: copy, write-ups and links
 - writing (2 entries), reading (4 entries)
-- guestbook entries (2) and `CONTENT.guestbook.repo`
 - `meta.email`, `meta.github`, `meta.linkedin`, `meta.cv`
 - `meta.ask` and `meta.mail` (the Worker's URL; `ask/README.md`)
 - the contact note

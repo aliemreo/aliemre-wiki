@@ -21,7 +21,7 @@ export const CONTENT: Content = {
     github: 'https://github.com/aliemreo', githubLabel: 'github.com/aliemreo',
     linkedin: 'https://www.linkedin.com/in/placeholder', linkedinLabel: 'linkedin.com/in/placeholder',
     cv: '#',
-    ask: 'Placeholder: https://aliemre-ask.<account>.workers.dev',   // see ask/README.md
+    ask: 'https://aliemre-ask.aliemreo.workers.dev',   // see ask/README.md
     mail: 'https://aliemre-ask.aliemreo.workers.dev/mail',   // see ask/README.md, Mail
     askStarters: [
       { en: 'What are you working on right now?', tr: 'Şu anda ne üzerinde çalışıyorsun?' },
@@ -30,7 +30,7 @@ export const CONTENT: Content = {
       { en: 'Ask Defne and Tolga: would you hire him?', tr: 'Defne ile Tolga\'ya sor: onu işe alır mıydınız?' },   // starts the debate (§5.14); rename with ask/characters.json
     ],
     debateStarter: { en: 'Ask Defne and Tolga: would you hire him for an ML engineering role?', tr: 'Defne ile Tolga\'ya sor: onu bir makine öğrenmesi mühendisi rolü için işe alır mıydınız?' },   // the ⌘K "Debate my fit" row asks this
-    updated: '2026-09-23',   // bump on every content change
+    updated: '2026-09-24',   // bump on every content change
   },
   hero: {
     headline: {
@@ -158,15 +158,21 @@ export const CONTENT: Content = {
     { group: { en: 'Human languages', tr: 'Konuşulan diller' }, items: [{ label: { en: 'Turkish, native', tr: 'Türkçe, anadil' } }, { label: { en: 'English, fluent', tr: 'İngilizce, akıcı' } }] },
   ],
   guestbook: {
-    repo: 'placeholder/guestbook',   // GitHub repo whose issues collect entries; approved ones are copied into entries below
-    entries: [
-      { name: 'Placeholder: a colleague', date: '2026-09-02', message: { en: 'Placeholder: approved entries are copied here from the guestbook repo issues.', tr: 'Placeholder: onaylanan girdiler guestbook deposundaki issue\'lardan buraya kopyalanır.' } },
-      { name: 'Placeholder: a classmate', date: '2026-08-21', message: { en: 'Placeholder: keep entries to one or two lines.', tr: 'Placeholder: girdileri bir iki satırda tut.' } },
-    ],
+    endpoint: 'https://aliemre-ask.aliemreo.workers.dev/guestbook',   // see ask/README.md, Guestbook; entries live in guestbook.json
   },
+
   contact: { note: { en: 'Placeholder: Email is the best way to reach me; I reply within two days. LinkedIn messages take longer.', tr: 'Placeholder: Bana en iyi e-postayla ulaşılır; iki gün içinde yanıtlarım. LinkedIn mesajları daha uzun sürer.' } },
   colophon: {
-    en: ['Built with React and TypeScript, prerendered to static HTML so it reads without JavaScript.', 'Set in IBM Plex Sans and IBM Plex Mono.', 'The command bar exists because I spend my day in one, and because it lets the page be driven without a mouse.', 'The small marks next to section titles are Anatolian kilim motifs (su yolu, elibelinde, koçboynuzu, yıldız, pıtrak, göz), drawn on the same pixel grid as the terminal banner.'],
-    tr: ['React ve TypeScript ile yapıldı; JavaScript olmadan da okunsun diye statik HTML’e önceden derlendi.', 'IBM Plex Sans ve IBM Plex Mono ile dizildi.', 'Komut satırı var çünkü günümü bir tanesinde geçiriyorum ve sayfanın fare olmadan kullanılmasını sağlıyor.', 'Bölüm başlıklarının yanındaki küçük işaretler Anadolu kilim motifleri (su yolu, elibelinde, koçboynuzu, yıldız, pıtrak, göz); terminal banner\'ıyla aynı piksel ızgarasında çizildi.'],
+    en: [
+      'React 19 and TypeScript on Vite, prerendered to static HTML: it reads without JavaScript, then hydrates into a working shell.',
+      'Under 165 KB gzipped with no third-party requests: self-hosted fonts, a native <dialog> instead of a modal library, and CI that blocks the deploy if a placeholder slips through.',
+      'Mail goes through a Cloudflare Worker to Resend, with an origin check, a rate limit and a honeypot; the keys never reach the browser.',
+    ],
+    tr: [
+      'Vite üzerinde React 19 ve TypeScript; statik HTML’e önceden derlenir: JavaScript olmadan okunur, sonra çalışan bir kabuğa dönüşür.',
+      'Gzip’li 165 KB’ın altında ve üçüncü taraf isteği yok: kendi sunduğum yazı tipleri, modal kütüphanesi yerine yerel <dialog>, bir yer tutucu kaçarsa yayını durduran CI.',
+      'E-posta bir Cloudflare Worker üzerinden Resend’e gider; köken kontrolü, hız sınırı ve bal küpü alanıyla. Anahtarlar tarayıcıya hiç ulaşmaz.',
+    ],
   },
+
 };

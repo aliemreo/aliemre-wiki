@@ -69,4 +69,4 @@ I'm interested in applied machine learning and systems engineering: generative A
 - Business: CRM, Project management, Business analysis
 - Human languages: Turkish, native, English, fluent
 
-(Rendered from the site content, last updated 2026-09-23.)
+(Rendered from the site content, last updated 2026-09-24.)

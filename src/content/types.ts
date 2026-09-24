@@ -53,7 +53,8 @@ export interface SkillGroup {
   items: { label: Text; tag?: Tag }[];
 }
 
-export interface GuestEntry { name: string; date: string; message: Bi }
+/* a visitor's own entry, in the one language they wrote it in; lives in guestbook.json, written by the Worker */
+export interface GuestEntry { id: string; name: string; date: string; lang: Lang; message: string }
 
 export interface Content {
   meta: {
@@ -81,7 +82,7 @@ export interface Content {
   reading: Reading[];
   writing: Writing[];
   skills: SkillGroup[];
-  guestbook: { repo: string; entries: GuestEntry[] };
+  guestbook: { endpoint?: string };   // ask/guestbook.mjs deployed; a placeholder hides the form. Entries: src/content/guestbook.json
   contact: { note: Bi };
   colophon: BiList;
 }

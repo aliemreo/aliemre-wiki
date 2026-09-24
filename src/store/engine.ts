@@ -33,6 +33,7 @@ export interface DocState extends Prefs {
   askEndpoint: string | null;   // CONTENT.meta.ask (or ?ask= override), null until a real URL is set
   mail: MailState;          // the mail dialog
   mailEndpoint: string | null;  // CONTENT.meta.mail (or ?mail= override), null until a real URL is set
+  guestEndpoint: string | null; // CONTENT.guestbook.endpoint (or ?guestbook= override); null hides the form
 }
 export interface AskTurn { id: number; cmd: 'ask' | 'search' | 'debate'; q: string; a: string; done: boolean; fresh?: boolean /* made in this session: reveal it */; stopped?: boolean; interrupted?: boolean /* a debate the visitor cut in on */; error?: string }
 export interface AskState { open: boolean; turns: AskTurn[]; status: 'idle' | 'thinking' | 'streaming' | 'done' | 'error' }
@@ -46,10 +47,10 @@ export interface TermState {
   cleared: boolean;         // `clear` wipes the banner and welcome too, like a real screen
 }
 
-export const INITIAL_DOC: DocState = { ...DEFAULT_PREFS, filter: null, readFilter: null, openSlug: null, copied: false, pendingGuests: [], ready: false, paletteOpen: false, ask: { open: false, turns: [], status: 'idle' }, askEndpoint: null, mail: { open: false, draft: '', status: 'idle' }, mailEndpoint: null };
+export const INITIAL_DOC: DocState = { ...DEFAULT_PREFS, filter: null, readFilter: null, openSlug: null, copied: false, pendingGuests: [], ready: false, paletteOpen: false, ask: { open: false, turns: [], status: 'idle' }, askEndpoint: null, mail: { open: false, draft: '', status: 'idle' }, mailEndpoint: null, guestEndpoint: null };
 export const INITIAL_TERM: TermState = { input: '', hist: [], histIdx: -1, log: [], focused: false, section: '', hoverHint: '', inProjects: false, inReading: false, expanded: false, cleared: false };
 
-const ERR_RE = /^(command not found|komut bulunamadı|no |could not|usage|kullanım|only numbers|henüz|cevap alınamadı|gönderilemedi|.* diye bir|.* yok\b)/;
+const ERR_RE = /^(command not found|komut bulunamadı|no |could not|usage|kullanım|only numbers|henüz|cevap alınamadı|gönderilemedi|imzalanamadı|.* diye bir|.* yok\b)/;
 const OK_RE = /^(→|copied|kopyalandı|e-posta|posted|gönderildi|theme|tema|language|dil|font|yazı tipi|palette|palet|background|arka plan)/;
 const HIST_KEY = 'aeo-hist', EXPANDED_KEY = 'aeo-term-expanded', ASK_KEY = 'aeo-ask-thread';
 /* a hiring question goes to the debate (§5.14): the trigger words of characters.json in every language, or a character's first name */
@@ -103,6 +104,8 @@ export class Engine {
     /* the mail endpoint, the same way: ?mail=<url> beats CONTENT.meta.mail */
     const mOver = new URLSearchParams(location.search).get('mail'), mConf = CONTENT.meta.mail || '';
     this.setDoc({ mailEndpoint: mOver && /^https?:\/\//.test(mOver) ? mOver : realHref(mConf) && /^https?:\/\//.test(mConf) ? mConf : null });
+    const gOver = new URLSearchParams(location.search).get('guestbook'), gConf = CONTENT.guestbook.endpoint || '';
+    this.setDoc({ guestEndpoint: gOver && /^https?:\/\//.test(gOver) ? gOver : realHref(gConf) && /^https?:\/\//.test(gConf) ? gConf : null });
     /* the conversation survives a reload within the tab */
     try { const t = JSON.parse(session.get(ASK_KEY) || '[]'); if (Array.isArray(t)) this.setAsk({ turns: t.filter(x => x && typeof x.q === 'string' && typeof x.a === 'string').slice(-8).map(x => ({ id: this.askSeq++, cmd: x.cmd === 'search' || x.cmd === 'debate' ? x.cmd : 'ask', q: x.q, a: x.a, done: true })) }); } catch { /* ignore */ }
   }
@@ -684,16 +687,27 @@ export class Engine {
     if (m) { name = m[1].trim(); message = m[2].trim(); }
     this.postGuest(name, message);
   }
-  postGuest(name: string, message: string) {
-    if (!message) { this.out(this.msg().echoUsage); return; }
+  /* the entry shows here at once as "awaiting review"; the Worker moderates it,
+     commits it if approved (the deploy publishes it) and emails the owner */
+  async postGuest(name: string, message: string, hp = '') {
+    const m = this.msg(), url = this.doc.guestEndpoint;
+    if (!message) { this.out(m.echoUsage); return; }
+    if (!url) { this.out(m.guestUnset); return; }
     const entry: PendingGuest = { name: name || 'anonymous', date: new Date().toISOString().slice(0, 10), message, pending: true };
     this.setDoc({ pendingGuests: [entry, ...this.doc.pendingGuests] });
-    const repo = CONTENT.guestbook.repo;
-    if (repo && repo.indexOf('placeholder') !== 0) {
-      const url = `https://github.com/${repo}/issues/new?title=${encodeURIComponent('guestbook: ' + (name || 'anonymous'))}&body=${encodeURIComponent(message)}`;
-      this.out(this.msg().echoOpen);
-      window.open(url, '_blank', 'noopener');
-    } else this.out(this.msg().echoed);
+    const logId = this.pendingId;   /* the `$ echo …` entry, when it came from the prompt */
+    const log = (text: string) => { this.pendingId = logId; this.out(text); };
+    const ctl = new AbortController(), timer = setTimeout(() => ctl.abort(), 15000);
+    try {
+      /* t: ms since the page loaded; a bot fills the form faster than a reader can */
+      const res = await fetch(url, { method: 'POST', headers: { 'content-type': 'application/json' }, signal: ctl.signal,
+        body: JSON.stringify({ name, message, hp, lang: this.doc.lang, t: Math.round(performance.now()) }) });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(j.error || 'HTTP ' + res.status);
+      log(j.status === 'approved' ? m.guestApproved : m.guestHeld);
+    } catch (e) {
+      log(m.guestError(ctl.signal.aborted ? 'timeout' : (e as Error).message || 'network'));
+    } finally { clearTimeout(timer); }
   }
   history() { return this.term.hist; }
 }

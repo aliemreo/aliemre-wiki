@@ -75,6 +75,9 @@ if (newBranch) {
   else notes.push(`meta.updated check skipped — ${why}.`);
 } else if (before === src) {
   notes.push('meta.updated check skipped — CONTENT is unchanged.');
+} else if (updatedIn(before) === updatedIn(src) && Math.abs(Date.parse(updatedIn(src)) - Date.parse(new Date().toISOString().slice(0, 10))) <= 864e5) {
+  /* a second change on the same day: the date is already today (±1 day: the owner is UTC+3, CI is UTC) */
+  notes.push(`meta.updated is already today (${updatedIn(src)}).`);
 } else if (updatedIn(before) === updatedIn(src)) {
   fail(
     `CONTENT changed but meta.updated is still ${updatedIn(src)}`,

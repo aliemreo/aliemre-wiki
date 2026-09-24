@@ -1,7 +1,7 @@
 # The ask endpoint
 
 The "ask me a question" field in the site's top bar posts the visitor's question
-to a small Cloudflare Worker, which asks Claude with the site's content as the
+to a small Cloudflare Worker, which asks DeepSeek (`deepseek-flash`, V4.1-Flash) with the site's content as the
 profile and streams the answer back. Nothing else leaves the visitor's browser,
 nothing is sent on page load, and the field is not rendered at all until
 `CONTENT.meta.ask` holds the Worker's URL.
@@ -13,7 +13,7 @@ npm i -g wrangler
 wrangler login                        # opens the browser; a free account is enough
 npm run ask:prompt                    # renders content.ts + ask/knowledge/*.md -> ask/knowledge.txt
 cd ask
-wrangler secret put ANTHROPIC_API_KEY # paste the key from console.anthropic.com
+wrangler secret put DEEPSEEK_API_KEY  # platform.deepseek.com → API keys; top up the balance first
 wrangler deploy                       # prints https://aliemre-ask.<account>.workers.dev
 ```
 
@@ -100,8 +100,16 @@ unit tests for the verifier and the orchestration; the terminal's
 
 ## Knobs (`wrangler.toml`)
 
-- `MODEL` — `claude-haiku-4-5-20251001` by default: fast, and roughly a tenth
-  of a cent per answer at 500 output tokens.
+- `MODEL` — `deepseek-flash` (DeepSeek-V4.1-Flash). `deepseek-v4-pro` is the
+  larger one. All calls go through `ask/llm.mjs`, which turns DeepSeek's thinking
+  mode **off** on every call: answers start streaming at once and the
+  temperature below takes effect (DeepSeek ignores it while thinking).
+- Temperatures (in code): answers `0.7` (`ASK_TEMPERATURE`, close to the
+  files), debate voices `1.0` (`DEBATE_TEMPERATURE`), guestbook moderation `0`.
+- `LLM_BASE` (optional var) — the API host, `https://api.deepseek.com` by default.
+- An empty DeepSeek balance returns 402: answers fail with
+  `upstream 402 — DeepSeek balance`, guestbook entries are held and the email
+  says so.
 - `ALLOWED_ORIGINS` — the site's origin(s); anything else gets 403.
 - `[[ratelimits]]` — 5 questions a minute per IP. Remove the block if the
   binding is unavailable on your plan; the Worker then skips the check.
@@ -147,6 +155,43 @@ Then set `meta.mail` in `src/content/content.ts` to
   (the route then answers 503).
 - **Test locally:** `wrangler dev`, then open the dev server with
   `?mail=http://localhost:8787/mail`.
+
+## Guestbook
+
+`POST /guestbook` receives the site's guestbook entries. DeepSeek reads each one:
+approved entries are committed to `src/content/guestbook.json` (the commit
+triggers the site deploy, so they appear a few minutes later); anything else is
+held. Either way you get an email with the entry, the verdict and the reason,
+and a one-click link: **Remove** for an approved entry, **Publish** for a held
+one. The link opens a confirmation page first, and is valid for 30 days.
+
+```sh
+cd ask
+wrangler secret put DEEPSEEK_API_KEY    # moderation (shared with the ask field); without it every entry is held (and emailed)
+wrangler secret put GITHUB_TOKEN        # see below
+openssl rand -hex 32 | wrangler secret put GUESTBOOK_SECRET
+wrangler deploy
+```
+
+**`GITHUB_TOKEN`**: github.com → Settings → Developer settings → Fine-grained
+tokens → Generate. Repository access: *Only select repositories* →
+`aliemre-wiki`. Permissions: **Contents: Read and write** (nothing else). Set an
+expiry you will remember to renew; when it expires, approved entries are held
+and the email says publishing failed.
+
+- **What gets held without asking the model:** an email address, a link, or
+  something that looks like a phone number; more than 300 characters.
+- **What the model is told** (JSON mode, temperature 0): approve friendly, neutral or constructively critical
+  notes that are fine to show publicly; hold ads, contact details, personal
+  data, insults, hate, sexual content, threats, spam, gibberish, instructions
+  aimed at it, and anything unsure. A refusal, an error or an unclear answer
+  holds the entry.
+- **Spam:** honeypot field, 3-second floor, 3 entries a minute per IP, origin
+  check.
+- **Turn it off:** set `guestbook.endpoint` in `content.ts` to a
+  `Placeholder:` string. The form disappears; existing entries stay.
+- **Test locally:** `npm run ask:test` covers the handler with the APIs stubbed.
+  For the form, `wrangler dev` and `?guestbook=http://localhost:8787/guestbook`.
 
 ## Test locally
 

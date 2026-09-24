@@ -1,4 +1,4 @@
-# Cloudflare Worker for the "ask me a question" field.  See README.md.
+# Cloudflare Worker for the "ask me a question" field, the mail dialog and the guestbook.  See README.md.
 name = "aliemre-ask"
 main = "worker.mjs"
 compatibility_date = "2026-01-01"
@@ -7,7 +7,8 @@ compatibility_date = "2026-01-01"
 rules = [{ type = "Text", globs = ["**/*.txt"], fallthrough = true }]
 
 [vars]
-MODEL = "claude-haiku-4-5-20251001"
+# DeepSeek-V4.1-Flash (ask/llm.mjs; thinking is turned off per call)
+MODEL = "deepseek-flash"
 # comma-separated; add a custom domain here when one arrives
 ALLOWED_ORIGINS = "https://aliemreozcan.com,https://www.aliemreozcan.com,https://aliemreo.github.io,http://localhost:5173,http://localhost:4173"
 # the mail dialog (POST /mail): sent through Resend from MAIL_FROM (aliemreozcan.com was
@@ -15,6 +16,8 @@ ALLOWED_ORIGINS = "https://aliemreozcan.com,https://www.aliemreozcan.com,https:/
 # so the inbox address stays out of this public repo; Reply-To is the visitor.
 # MAIL_TO unset = /mail answers 503.
 MAIL_FROM = "aliemreozcan.com <site@aliemreozcan.com>"
+# the guestbook (POST /guestbook): approved entries are committed to src/content/guestbook.json here
+GITHUB_REPO = "aliemreo/aliemre-wiki"
 
 # per-IP throttle: 5 questions a minute.  Delete this block if your plan lacks the binding;
 # the Worker skips the check when LIMITER is absent.
@@ -29,7 +32,15 @@ name = "MAIL_LIMITER"
 namespace_id = "1002"
 simple = { limit = 3, period = 60 }
 
+# per-IP throttle for the guestbook: 3 entries a minute.
+[[ratelimits]]
+name = "GUEST_LIMITER"
+namespace_id = "1003"
+simple = { limit = 3, period = 60 }
+
 # The API keys are secrets, never vars:
-#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put DEEPSEEK_API_KEY  (platform.deepseek.com; the account needs a balance)
 #   wrangler secret put RESEND_API_KEY
 #   wrangler secret put MAIL_TO          (your inbox)
+#   wrangler secret put GITHUB_TOKEN     (fine-grained PAT: this repo only, Contents read + write)
+#   wrangler secret put GUESTBOOK_SECRET (openssl rand -hex 32; signs the Publish / Remove links)
