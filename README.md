@@ -14,7 +14,7 @@ to static HTML at build time, served by GitHub Pages. The design contract lives 
     prerender.mjs        writes the static HTML into dist/index.html
     verify-dist.mjs      prerender present, size budget, static files
   index.html             <head> metadata + the no-flash boot script
-  public/                copied as-is: 404.html favicon.svg og.png robots.txt
+  public/                copied as-is: 404.html favicon.png og.png robots.txt
   src/
     content/content.ts   <- ALL COPY LIVES HERE
     content/ui.ts        labels and terminal messages (en/tr)
@@ -134,7 +134,7 @@ Both run in CI before anything is uploaded; the `deploy` job needs them green.
 | `dist/index.html` was not prerendered, or a section is missing from it | the SSR build or `scripts/prerender.mjs` failed; read the build log |
 | the terminal is in the prerendered HTML | something renders `<Terminal>` before mount; it must stay behind `useMounted()` |
 | gzipped html + js + css exceed 165 KB | a new dependency is too heavy. React is ~60 KB of the budget; tooltips were dropped for this reason |
-| `404.html`, `favicon.svg`, `og.png` or `robots.txt` is missing from `dist/` | it was removed from `public/` |
+| `404.html`, `favicon.png`, `og.png` or `robots.txt` is missing from `dist/` | it was removed from `public/` |
 
 The placeholder count is reported, never fatal — CLAUDE.md §8 says they are
 intentional at handoff.

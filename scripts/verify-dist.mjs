@@ -3,7 +3,7 @@
  * Checks the built site in dist/ before it is uploaded (CLAUDE.md §6):
  *   - the prerender is present: the static HTML carries every section and the h1
  *   - total transfer without fonts (html + js + css, gzipped) is under budget
- *   - the files GitHub Pages needs are there: 404.html, favicon.svg, og.png, robots.txt
+ *   - the files GitHub Pages needs are there: 404.html, favicon.png, og.png, robots.txt
  */
 import { readdirSync, readFileSync, statSync, existsSync, appendFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -50,7 +50,7 @@ const missingPreviews = [...Object.entries(LINKS).filter(([k, d]) => d.href && !
 if (missingPreviews.length) notes.push(`preview images missing (cards show the blurb only): ${missingPreviews.join(', ')} — run npm run previews`);
 
 /* ---------- static files --------------------------------------------------- */
-for (const f of ['404.html', 'favicon.svg', 'og.png', 'robots.txt', 'sitemap.xml', 'writing.xml']) if (!existsSync(DIST + f)) fail(`dist/${f} is missing`);
+for (const f of ['404.html', 'favicon.png', 'og.png', 'robots.txt', 'sitemap.xml', 'writing.xml']) if (!existsSync(DIST + f)) fail(`dist/${f} is missing`);
 for (const f of ['sitemap.xml', 'writing.xml']) if (existsSync(DIST + f) && !readFileSync(DIST + f, 'utf8').startsWith('<?xml')) fail(`dist/${f} is not XML`);
 /* fonts are self-hosted: at least the 8 latin/latin-ext faces, and no third-party font request */
 const fontFiles = existsSync(DIST + 'fonts/') ? readdirSync(DIST + 'fonts/').filter(f => f.endsWith('.woff2')).length : 0;

@@ -18,7 +18,7 @@ Fidelity: **high**. Colours, type, spacing, motion timings and command behaviour
 - **Prerendered.** `npm run build` runs the client build, an SSR build of `src/entry-server.tsx`, then `scripts/prerender.mjs` writes `renderToString(<App/>)` into `dist/index.html`. React hydrates that HTML. The terminal renders only on the client (`useMounted`), so with JavaScript off the document is complete and the terminal simply is not there. **There is no `<noscript>` mirror any more; the prerender is the static copy.**
 - No analytics, no external JS, **no third-party requests at all**: fonts are self-hosted. `public/fonts/` holds the variable woff2 files (latin + latin-ext) of Geist, Geist Mono, Inter Tight and Instrument Serif italic, fetched once by `npm run fonts` (`scripts/fonts.mjs`), which also writes `src/styles/fonts.css`. Two switchable sets (`data-font`, `font geist|inter`, `localStorage` `aeo-font`, default `geist`); the boot script preloads the chosen set's latin faces. IBM Plex was retired on 2026-09-21. **One exception (owner's request, 2026-09-22):** the "ask me a question" field (§5.12) posts the visitor's own question to the owner's endpoint (`CONTENT.meta.ask`, the Cloudflare Worker in `ask/`) — only when they press Enter, nothing on load, and the field is not rendered until a real URL is set. **Second exception (owner's request, 2026-09-23):** the mail dialog (§5.13) posts the visitor's message to `CONTENT.meta.mail` (the same Worker, route `/mail`) — only when they press send. **Third exception (owner's request, 2026-09-23):** the guestbook form posts the visitor's entry to `CONTENT.guestbook.endpoint` (the same Worker, `/guestbook`) — only on submit; the form is not rendered until a real URL is set.
 - Deploy target: **GitHub Pages, deployed from `main` by GitHub Actions, artifact = `dist/`.** Live at `https://aliemreo.github.io/aliemre-wiki/`. See §9.
-- `public/` holds the files copied verbatim into `dist/`: `favicon.svg` (a `$` glyph, `#6FE3CF` on `#000`), `robots.txt`, `og.png` placeholder (1200×630), `404.html`.
+- `public/` holds the files copied verbatim into `dist/`: `favicon.png` (the owner's photo, 96px, since 2026-11-15; it replaced the `$` glyph SVG), `robots.txt`, `og.png` placeholder (1200×630), `404.html`.
 - `vite.config.ts` uses `base: './'` so every asset URL is relative. Nothing may assume the site lives at a domain root or at `/aliemre-wiki/`.
 
 Repo layout:
@@ -35,7 +35,7 @@ Repo layout:
     og.mjs               owner-run: renders public/og.png from the hero copy
     verify-dist.mjs      prerender present, size budget, static files
   index.html             Vite entry: <head> metadata, the no-flash boot script, #root
-  public/                copied as-is: 404.html (designed, redirects) favicon.svg og.png robots.txt fonts/ previews/
+  public/                copied as-is: 404.html (designed, redirects) favicon.png og.png robots.txt fonts/ previews/
   src/
     main.tsx             hydrateRoot (or createRoot on the dev server)
     entry-server.tsx     render() for the prerender
@@ -316,7 +316,7 @@ cursor blink · output typing · banner pixel reveal · plate title cycle on fir
 - WCAG AA on both themes for body text; large-heading 3:1 minimum.
 - JS off: the prerendered page is complete and readable, index links work, no terminal, no empty boxes.
 - No hydration mismatch: the server render and the first client render are identical (English, no prefs, no terminal). Anything that depends on `window`, `localStorage` or `Math.random` goes in an effect.
-- `<title>`, meta description, Open Graph, Twitter card, JSON-LD `Person`, `favicon.svg`.
+- `<title>`, meta description, Open Graph, Twitter card, JSON-LD `Person`, `favicon.png`.
 - Print: hides terminal, chips, forms, tools, guestbook, colophon, motifs, backgrounds; plates become rules; black text on white; fits 1–2 pages once the placeholder copy is real.
 - Lighthouse: performance ≥ 95, a11y 100. **Total transfer without fonts < 165 KB gzipped** (raised from 160 KB at the owner's request on 2026-09-23, when the mail dialog's send animation filled it) (html + js + css; preview images are not counted), enforced by `scripts/verify-dist.mjs`. React + ReactDOM are about 60 KB of that on their own, tailwind-merge about 8.5 KB; the budget was 120 KB for the framework-free version. The shadcn primitives are kept lean (no ring/shadow/aria-invalid/svg classes, only the variants in use) — `npm run check` prints the total.
 - No `console.error`; the placeholder warning is the only allowed `console.warn`, on the dev server only.
@@ -371,7 +371,7 @@ There is no separate staging URL: GitHub Pages serves one site per repository. P
 
 `npm run preflight` (`scripts/preflight.mjs`) enforces §2 and §7 for the content: every `en` string has a `tr` sibling, and `meta.updated` was bumped when `content.ts` changed. It imports `src/content/content.ts` and `src/lib/contentReport.ts` directly, so the browser dev check and CI share one implementation; that is why those two files must stay free of runtime imports.
 
-`npm run verify` (`scripts/verify-dist.mjs`) checks the build: the prerender is present and carries every section, the terminal was not prerendered, no `Placeholder:` and no `[[` token reached the HTML, the transfer budget holds, `404.html`, `favicon.svg`, `og.png`, `robots.txt`, `sitemap.xml`, `writing.xml` made it into `dist/`, at least eight woff2 files sit in `dist/fonts/` and nothing references Google Fonts, and it lists any linked term whose preview image is missing (a note, not a failure).
+`npm run verify` (`scripts/verify-dist.mjs`) checks the build: the prerender is present and carries every section, the terminal was not prerendered, no `Placeholder:` and no `[[` token reached the HTML, the transfer budget holds, `404.html`, `favicon.png`, `og.png`, `robots.txt`, `sitemap.xml`, `writing.xml` made it into `dist/`, at least eight woff2 files sit in `dist/fonts/` and nothing references Google Fonts, and it lists any linked term whose preview image is missing (a note, not a failure).
 
 ### 9.4 The ask endpoint (and mail)
 
