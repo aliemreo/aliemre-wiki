@@ -89,6 +89,7 @@ Rules:
 7. **Do not add sections without asking.** The list is deliberate: `top, now, about, experience, education, projects, reading, writing, tools, skills, guestbook, contact, colophon` (education was added at the owner's request on 2026-09-20). A section is one row in `SECTION_DEFS`, one component in `components/sections/`, one entry in `sections/index.tsx`, a label in `ui.ts` (both languages) and a command.
 8. Keep the content file human-editable: 2-space indent, one project per block, comments only where the data shape is not obvious.
 10. **Linkable terms are data too.** `src/content/links.ts` holds every organisation, school or reference the copy links to: `{ label, href, blurb:{en,tr}, preview?, confirm? }`. Copy refers to one with `[[key]]` (renders the label) or `[[key|custom text]]`; `<Rich>` (`src/components/Rich.tsx`) turns the token into a `LinkPreview` card (click to open, §5.10; `cards={false}` would give an ordinary `.rich-link`), and `plain()` (`src/lib/rich.ts`) flattens it wherever text is shown raw — the pipes, `search`, `rowText`. Adding a term = one row in `links.ts`, then `npm run previews` for its screenshot. `verify-dist` fails if `[[` reaches the prerender.
+11. **The framing is a switch.** `FOCUS` at the top of `content.ts` is `'research'` (PhD/MSc applications, since 2026-11-15: thesis featured, research question in the hero) or `'industry'` (the engineering framing). The fields that differ — `meta.role`, the first ask starter, `hero`, `about`, project order and the featured slug — are written for both in `VARIANTS` and read through `pick()`; everything else is shared. Edit both variants when you change one of those fields; preflight checks the inactive one's translations too. Switching is one edit plus `meta.updated`.
 9. **`content.ts` must import only types.** Node loads it directly (type stripping) in `scripts/preflight.mjs` and `scripts/verify-dist.mjs`; a runtime import would drag the app into a script that has no bundler.
 
 ### 2.1 Monthly update checklist (also in README.md)
@@ -149,6 +150,7 @@ CONTENT = {
   colophon: { en:[...], tr:[...] },
 }
 TAGS = ['ml','agents','systems','web','research']
+// hero, about, meta.role, the first askStarter and project order/featured come from VARIANTS[FOCUS] (§2.11)
 SECTIONS = SECTION_DEFS.map(d => d.id)   // top … colophon, see sections.ts
 PALETTES = ['aqua','amber','mint','sky','rose','lime','violet','paper']
 ```

@@ -17,7 +17,7 @@ import { execFileSync } from 'node:child_process';
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const CONTENT_FILE = 'src/content/content.ts';
 
-const { CONTENT } = await import(ROOT + CONTENT_FILE);
+const { CONTENT, VARIANTS, FOCUS } = await import(ROOT + CONTENT_FILE);
 const { contentReport } = await import(ROOT + 'src/lib/contentReport.ts');
 
 const problems = [];
@@ -26,6 +26,12 @@ const fail = (title, detail, items) => problems.push({ title, detail, items: ite
 
 /* ---------- content rules (shared with the browser) --------------------- */
 const report = contentReport(CONTENT);
+/* VARIANTS holds both framings (FOCUS picks one); the inactive one must stay translated too */
+const variantReport = contentReport(VARIANTS);
+for (const path of variantReport.untranslated) {
+  const p = 'VARIANTS.' + path;
+  if (!report.untranslated.includes(p)) report.untranslated.push(p);
+}
 if (report.untranslated.length) {
   fail(
     `${report.untranslated.length} English string${report.untranslated.length === 1 ? '' : 's'} with no Turkish sibling`,
@@ -34,6 +40,7 @@ if (report.untranslated.length) {
   );
 }
 notes.push(`${report.placeholders.length} placeholder strings in CONTENT (intentional at handoff — see README).`);
+notes.push(`FOCUS is '${FOCUS}'; ${variantReport.placeholders.length} placeholder string${variantReport.placeholders.length === 1 ? '' : 's'} across both framings in VARIANTS.`);
 
 /* ---------- ask/knowledge.txt (the Worker's knowledge base) must not lag behind content.ts or ask/knowledge/ */
 {
